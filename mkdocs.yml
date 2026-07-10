@@ -1,0 +1,67 @@
+site_name: "OpenClaw"
+site_description: "A collaborative workspace for environmental data science, working groups, and agent-supported synthesis."
+
+nav:
+  - Home: index.md
+  - Start Here:
+      - Overview: start-here/index.md
+      - What is OpenClaw?: start-here/what-is-openclaw.md
+      - First 10 Minutes: start-here/first-10-minutes.md
+      - Choose Your Path: start-here/user-paths.md
+  - Use OpenClaw:
+      - Launch Locally: use/launch-locally.md
+      - Workspace File Manager: workspace-file-manager.md
+      - GitHub Repository Manager: github-repository-manager.md
+      - Where Files Go: use/where-files-go.md
+      - Tasks, Decisions, Checkpoints: use/tasks-decisions-checkpoints.md
+      - Troubleshooting: troubleshooting.md
+  - Working Groups:
+      - Template Mode: oasis-template.md
+      - OpenClaw Workspace: scienceclaw.md
+      - Agent Team: agent-team.md
+      - Scientific Working Group: working-group.md
+      - Outputs and Reports: use/outputs-and-reports.md
+      - Publishing Workflow: publishing-workflow.md
+  - Data and Storage:
+      - Storage Model: storage-model.md
+      - Local Mounts: storage/local-mounts.md
+      - Remote Storage: storage/remote-storage.md
+      - Stream-First Data: storage/stream-first-data.md
+      - Storage Secrets: storage/secrets.md
+  - Maintainer / Advanced:
+      - Architecture: architecture.md
+      - Setup: setup.md
+      - Operations: operations.md
+      - Security: security.md
+      - Model Routing: model-routing.md
+      - Slack Integration: slack-integration.md
+      - Kubernetes Workers: kubernetes-workers.md
+      - Distributed Runtime: distributed-runtime.md
+      - Workspace CMS: workspace-cms.md
+      - Glossary: reference/glossary.md
+
+theme:
+  name: material
+  logo: assets/brand/scienceclaw.png
+  favicon: assets/brand/scienceclaw.png
+  palette:
+    primary: custom
+    accent: custom
+  features:
+    - navigation.sections
+    - navigation.top
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+
+extra_css:
+  - stylesheets/extra.css
+
+plugins:
+  - search
