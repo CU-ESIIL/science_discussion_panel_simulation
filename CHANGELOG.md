@@ -2,6 +2,22 @@
 
 ## Unreleased
 
+### Added
+
+- Added the OASIS Scientific Discussion Panel scaffold with disclosed simulated
+  panelist perspectives, a Moderator, backstage support agents, panel
+  constitution files, topic queue, discussion rounds, position history,
+  disagreement map, evidence ledger, fact-check records, bounded experiment
+  records, current synthesis, and panel status files.
+- Added panel control commands and deterministic panel demo support through
+  `make init-panel`, `make panel-status`, `make panel-pause`,
+  `make panel-resume`, `make panel-queue`, `make panel-round`, `make demo`,
+  `scripts/panel_control.py`, and `scripts/demo_panel_discussion.py`.
+- Added `docs/secret-migration.md`, `scripts/check-secret-config.sh`, and
+  panel-oriented documentation for architecture, panelists, support agents,
+  constitution, persistent loop, questions, evidence, experiments, memory,
+  AI-VERDE, resource limits, and human oversight.
+
 ### Fixed
 
 - `scripts/start-instance.sh` now validates that `SCIENCECLAW_RUNTIME_ROOT` is writable before use and automatically falls back to `$RUNNER_TEMP`/`/tmp` with a warning when the configured path is unavailable. This prevents startup failures like `mkdir: cannot create directory '/private': Permission denied` on restricted runners.
@@ -9,6 +25,15 @@
 
 ### Changed
 
+- Reframed the default repository and seeded workspace from a deliverable-oriented
+  scientific working group to a persistent scientific discussion panel while
+  preserving Docker, Docker Compose, OpenClaw, AI-VERDE, mounted secrets, CMS,
+  GitHub manager, storage, worker, Slack, MkDocs, smoke-test, and multi-instance
+  infrastructure.
+- Updated `.env.example`, `config/working_group.yaml`, seed model assignments,
+  seed startup prompts, Makefile targets, smoke tests, and GitHub Actions labels
+  for the panel model while retaining deprecated working-group aliases for
+  compatibility.
 - Reworked the MkDocs information architecture into a simpler product-style navigation with Start Here, Use OpenClaw, Working Groups, Data and Storage, and Maintainer / Advanced sections.
 - Redesigned the homepage with OASIS-inspired hero, section bands, visual interludes, gallery-style card grids, and clearer calls to action for onboarding, working-group use, storage, and advanced customization.
 - Added a new `docs/start-here/what-is-openclaw.md` overview page to explain the container, agent workspace, and scientific collaboration layers in plain language for new scientists.

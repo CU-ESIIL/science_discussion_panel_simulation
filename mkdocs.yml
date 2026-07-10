@@ -1,5 +1,5 @@
-site_name: "OpenClaw"
-site_description: "A collaborative workspace for environmental data science, working groups, and agent-supported synthesis."
+site_name: "OASIS Scientific Discussion Panel"
+site_description: "A persistent evidence-based scientific forum for AI in ecology, powered by OpenClaw."
 
 nav:
   - Home: index.md
@@ -15,13 +15,21 @@ nav:
       - Where Files Go: use/where-files-go.md
       - Tasks, Decisions, Checkpoints: use/tasks-decisions-checkpoints.md
       - Troubleshooting: troubleshooting.md
-  - Working Groups:
-      - Template Mode: oasis-template.md
-      - OpenClaw Workspace: scienceclaw.md
-      - Agent Team: agent-team.md
-      - Scientific Working Group: working-group.md
-      - Outputs and Reports: use/outputs-and-reports.md
-      - Publishing Workflow: publishing-workflow.md
+  - Scientific Discussion Panel:
+      - Overview: panel-architecture.md
+      - Panelists: panelists.md
+      - Moderator and Support Agents: moderator-and-support-agents.md
+      - Panel Constitution: panel-constitution.md
+      - Persistent Discussion Loop: persistent-discussion-loop.md
+      - Asking the Panel Questions: asking-the-panel.md
+      - Evidence and Citations: evidence-and-citations.md
+      - Experiments: experiments.md
+      - Memory and Discussion Records: memory-and-discussion-records.md
+      - AI-VERDE Configuration: ai-verde-configuration.md
+      - Secret Migration: secret-migration.md
+      - Resource Limits: resource-limits.md
+      - Security and Human Oversight: security-and-human-oversight.md
+      - Legacy Template Notes: oasis-template.md
   - Data and Storage:
       - Storage Model: storage-model.md
       - Local Mounts: storage/local-mounts.md

@@ -71,10 +71,10 @@ else
 fi
 
 section "Template Structure"
-if scripts/test-working-group.sh >/tmp/scienceclaw-doctor-working-group.log 2>&1; then
-  pass "working-group scaffold test passed"
+if scripts/test-panel.sh >/tmp/scienceclaw-doctor-panel.log 2>&1; then
+  pass "scientific discussion panel scaffold test passed"
 else
-  fail "working-group scaffold test failed; see /tmp/scienceclaw-doctor-working-group.log"
+  fail "panel scaffold test failed; see /tmp/scienceclaw-doctor-panel.log"
 fi
 
 if scripts/test-scienceclaw-layout.sh >/tmp/scienceclaw-doctor-layout.log 2>&1; then
@@ -84,14 +84,10 @@ else
 fi
 
 section "Secrets"
-if [ -f ".env" ]; then
-  if scripts/check-secrets.sh >/tmp/scienceclaw-doctor-secrets.log 2>&1; then
-    pass "Slack secret validation passed"
-  else
-    warn "Slack secrets are missing or incomplete; this is fine unless Slack is enabled"
-  fi
+if scripts/check-secret-config.sh >/tmp/scienceclaw-doctor-secrets.log 2>&1; then
+  pass "secret configuration check passed"
 else
-  warn "skipping secret validation because .env is missing"
+  warn "secret configuration has missing requirements for selected mode; see /tmp/scienceclaw-doctor-secrets.log"
 fi
 
 if git ls-files --error-unmatch .env >/dev/null 2>&1; then
@@ -108,4 +104,3 @@ else
 fi
 
 exit "${status}"
-

@@ -87,6 +87,7 @@ prompt_value() {
 if [ "${noninteractive}" -eq 1 ]; then
   case "${profile}" in
     local-only)
+      set_env_value OPENCLAW_START_INTERACTION_AGENT 0
       set_env_value OPENCLAW_START_PI_LIAISON 0
       ;;
     slack-verde)
@@ -109,7 +110,7 @@ case "${profile}" in
   slack-verde|interactive)
     prompt_secret SLACK_BOT_TOKEN "Slack bot token"
     prompt_secret SLACK_APP_TOKEN "Slack Socket Mode app token"
-    prompt_value SLACK_DEFAULT_CHANNEL "Slack default channel" "#science-working-group"
+    prompt_value SLACK_DEFAULT_CHANNEL "Slack default channel" "#science-discussion-panel"
     prompt_value VERDE_LLM_BASE_URL "AI-VERDE base URL" "https://llm-api.cyverse.ai/v1"
     prompt_secret VERDE_LLM_API_KEY "AI-VERDE API key"
     prompt_value VERDE_LLM_DEFAULT_MODEL "AI-VERDE default model" ""

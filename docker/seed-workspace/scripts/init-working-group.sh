@@ -9,7 +9,7 @@ usage() {
   cat <<'EOF'
 Usage: init-working-group.sh [--workspace PATH] [--template-root PATH] [--force]
 
-Create or refresh the scientific working group scaffold.
+Create or refresh the scientific discussion panel scaffold.
 
 Default behavior is non-destructive: existing files are left untouched.
 Use --force to overwrite existing starter files from the template root.
@@ -90,6 +90,17 @@ seed_file() {
 }
 
 required_dirs=(
+  "NORM_PROPOSALS"
+  "DISCUSSION_ROUNDS"
+  "POSITION_HISTORY"
+  "LITERATURE"
+  "LITERATURE/evidence_packets"
+  "EXPERIMENTS"
+  "EXPERIMENTS/proposals"
+  "EXPERIMENTS/results"
+  "FACT_CHECKS"
+  "DAILY_SYNTHESIS"
+  "panel_sources"
   "documents"
   "projects"
   "projects/_template"
@@ -130,6 +141,23 @@ required_dirs=(
 
 starter_files=(
   "README.md"
+  "PANEL_BRIEF.md"
+  "PANEL_CONSTITUTION.md"
+  "PANEL_NORMS_HISTORY.md"
+  "PANELIST_ROSTER.md"
+  "PANEL_INTAKE.md"
+  "CURRENT_POSITIONS.md"
+  "TOPIC_QUEUE.yaml"
+  "QUESTIONS_FROM_USER.md"
+  "DISCUSSION_INDEX.md"
+  "DISAGREEMENT_MAP.md"
+  "EVIDENCE_LEDGER.yaml"
+  "CURRENT_SYNTHESIS.md"
+  "WHAT_WOULD_CHANGE_OUR_MINDS.md"
+  "OPEN_QUESTIONS.md"
+  "AUDIENCE_GUIDE.md"
+  "SYSTEM_STATUS.md"
+  "DISSENTS.md"
   "WORKING_GROUP_COCKPIT.md"
   "MEMORY.md"
   "AGENTS.md"
@@ -154,6 +182,24 @@ starter_files=(
   "CONTRIBUTION_GUIDE.md"
   "CONSENSUS_STATE.md"
   "CHECKPOINT.md"
+  "NORM_PROPOSALS/README.md"
+  "DISCUSSION_ROUNDS/README.md"
+  "POSITION_HISTORY/README.md"
+  "LITERATURE/README.md"
+  "LITERATURE/evidence_packets/README.md"
+  "EXPERIMENTS/README.md"
+  "EXPERIMENTS/proposals/README.md"
+  "EXPERIMENTS/results/README.md"
+  "FACT_CHECKS/README.md"
+  "DAILY_SYNTHESIS/README.md"
+  "panel_sources/README.md"
+  "panel_sources/tanya_berger_wolf.md"
+  "panel_sources/lauren_gillespie.md"
+  "panel_sources/jenna_kline.md"
+  "panel_sources/justin_kitzes.md"
+  "panel_sources/katherine_siegel.md"
+  "panel_sources/ty_tuff.md"
+  "panel_sources/moderator.md"
   "config/README.md"
   "config/working_group.yaml"
   "documents/README.md"
@@ -214,6 +260,7 @@ starter_files=(
   "memory/quarantine/README.md"
   "prompts/README.md"
   "prompts/pi-liaison-startup.md"
+  "prompts/interaction-agent-startup.md"
   "runtime/README.md"
   "cache/README.md"
   "services/README.md"
@@ -222,6 +269,9 @@ starter_files=(
   "scripts/README.md"
   "scripts/init-working-group.sh"
   "scripts/start-pi-liaison.sh"
+  "scripts/start-interaction-agent.sh"
+  "scripts/panel-control.sh"
+  "scripts/check-secret-config.sh"
   "scripts/check-secrets.sh"
   "scripts/mask-secrets.sh"
 )
@@ -236,10 +286,13 @@ done
 
 chmod +x "${workspace}/scripts/init-working-group.sh" 2>/dev/null || true
 chmod +x "${workspace}/scripts/start-pi-liaison.sh" 2>/dev/null || true
+chmod +x "${workspace}/scripts/start-interaction-agent.sh" 2>/dev/null || true
+chmod +x "${workspace}/scripts/panel-control.sh" 2>/dev/null || true
+chmod +x "${workspace}/scripts/check-secret-config.sh" 2>/dev/null || true
 chmod +x "${workspace}/scripts/check-secrets.sh" 2>/dev/null || true
 chmod +x "${workspace}/scripts/mask-secrets.sh" 2>/dev/null || true
 
-echo "Scientific working group scaffold initialized at ${workspace}"
+echo "Scientific discussion panel scaffold initialized at ${workspace}"
 echo "Directories created: ${#created_dirs[@]}"
 if [ "${#created_dirs[@]}" -gt 0 ]; then
   printf '  - %s\n' "${created_dirs[@]}"

@@ -1,9 +1,9 @@
 # DECISIONS.md
 
-Major project decisions belong here. Keep entries concise and reviewable.
+Record meaningful panel architecture, governance, data, model-routing, or
+publication decisions here.
 
-| Date | Decision | Alternatives considered | Rationale | Owner | Review date |
+| Date | Decision | Alternatives | Rationale | Owner | Review |
 | --- | --- | --- | --- | --- | --- |
-| 2026-05-17 | Use an 11-role working group with a PI Liaison plus explicit skeptic and impact roles to reduce groupthink and improve scientific relevance. | Single generalist agent; technical-only agent group; ad hoc roles per task; ten-role team without a user-facing liaison. | Environmental data synthesis needs coordination, evidence discipline, disagreement, responsible translation, and a coherent human-facing interface. Bounded roles make review easier. | Scientific Director | 2026-06-17 |
-| 2026-05-17 | Add a PI Liaison / User Interview Agent as the default human-facing gateway. | Let every role talk to the user directly; keep all intake in ad hoc chat; use only the Scientific Director for intake. | A single liaison reduces interruptions, preserves user context, batches questions, and turns a multi-agent group into one coherent conversation for the PI. | PI Liaison / User Interview Agent | 2026-06-17 |
-| 2026-05-18 | Seed reusable governance templates and role reproducibility notes by default. | Keep norms only in ad hoc chat; require every user to recreate protocols after launch. | Default norms, decision rules, memory quarantine, artifact registry, societal impact review, and role handoff notes make deployments more reproducible while remaining reviewable. | Deputy Director / Integrator | 2026-06-18 |
+| seed | Use a persistent scientific discussion panel instead of a deliverable-oriented project team. | Keep the old working-group workflow; use a single chatbot. | The requested central product is continuing evidence-based conversation with durable disagreement, evidence, and memory. | Interaction Agent and Moderator | first live review |
+| seed | Keep Docker, OpenClaw, AI-VERDE, mounted secret files, CMS, GitHub manager, storage zones, Slack option, worker option, and smoke tests. | Rebuild runtime architecture. | The repository infrastructure is useful and should remain compatible while the operating metaphor changes. | Infrastructure maintainers | first release review |

@@ -266,21 +266,22 @@ if [ "${OPENCLAW_CONFIGURE_SLACK:-1}" != "0" ] \
   && [ -n "${SLACK_BOT_TOKEN:-}" ] \
   && [ -n "${SLACK_APP_TOKEN:-}" ]; then
   echo "Configuring Slack channel from environment-backed credentials..."
-  openclaw channels add --channel slack --use-env --name pi-liaison >/tmp/openclaw-slack-configure.log 2>&1 || {
+  openclaw channels add --channel slack --use-env --name interaction-agent >/tmp/openclaw-slack-configure.log 2>&1 || {
     echo "Slack channel configuration failed. Recent log:" >&2
     sed -E 's/(xoxb-|xapp-)[A-Za-z0-9._-]+/\1****REDACTED/g' /tmp/openclaw-slack-configure.log | tail -n 80 >&2
     exit 1
   }
 fi
 
-if [ "${OPENCLAW_START_PI_LIAISON:-1}" != "0" ]; then
+start_interaction="${OPENCLAW_START_INTERACTION_AGENT:-${OPENCLAW_START_PI_LIAISON:-1}}"
+if [ "${start_interaction}" != "0" ]; then
   case "${1:-}" in
     /bin/bash|bash|/bin/sh|sh)
-      liaison_script="${workspace}/scripts/start-pi-liaison.sh"
-      if [ -x "${liaison_script}" ]; then
-        exec "${liaison_script}"
-      elif [ -f "${seed_dir}/scripts/start-pi-liaison.sh" ]; then
-        exec bash "${seed_dir}/scripts/start-pi-liaison.sh"
+      interaction_script="${workspace}/scripts/start-interaction-agent.sh"
+      if [ -x "${interaction_script}" ]; then
+        exec "${interaction_script}"
+      elif [ -f "${seed_dir}/scripts/start-interaction-agent.sh" ]; then
+        exec bash "${seed_dir}/scripts/start-interaction-agent.sh"
       fi
       ;;
   esac

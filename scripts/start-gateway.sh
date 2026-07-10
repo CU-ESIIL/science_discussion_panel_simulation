@@ -6,12 +6,12 @@ cd "${repo_root}"
 
 mkdir -p "${HOME}/.openclaw" "${repo_root}/workspace"
 
-"${repo_root}/scripts/check-secrets.sh"
+"${repo_root}/scripts/check-secret-config.sh"
 
 container_id="$(
   docker compose run -d \
     --service-ports \
-    -e OPENCLAW_START_PI_LIAISON=0 \
+    -e OPENCLAW_START_INTERACTION_AGENT=0 \
     openclaw-local \
     openclaw gateway run --force
 )"

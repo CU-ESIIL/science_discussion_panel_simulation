@@ -1,7 +1,7 @@
 FROM node:24-bookworm-slim
 
 LABEL org.opencontainers.image.title="ScienceClaw"
-LABEL org.opencontainers.image.description="AI-native environmental synthesis workspace built on OpenClaw."
+LABEL org.opencontainers.image.description="Persistent scientific discussion panel for AI in ecology, built on OpenClaw."
 
 ENV HOME=/root
 ENV DATA_ROOT=/data
@@ -17,10 +17,11 @@ ENV OPENCLAW_CONTROL_ORIGINS=http://127.0.0.1:18789,http://localhost:18789
 ENV WORKSPACE_UI_PORT=8888
 ENV OPENCLAW_SEED_WORKSPACE=1
 ENV OPENCLAW_INIT_WORKING_GROUP=1
+ENV OPENCLAW_START_INTERACTION_AGENT=1
 ENV OPENCLAW_START_PI_LIAISON=1
 ENV OPENCLAW_CONFIGURE_SLACK=1
 ENV SCIENCECLAW_BRANDING=1
-ENV SCIENCECLAW_PROJECT_TITLE="OASIS ScienceClaw Working Group"
+ENV SCIENCECLAW_PROJECT_TITLE="OASIS Scientific Discussion Panel"
 ENV NODE_ENV=production
 ARG OPENCLAW_VERSION=2026.5.18
 
@@ -92,14 +93,24 @@ COPY branding/control-ui /opt/scienceclaw/branding/control-ui
 COPY docs/assets/brand /opt/scienceclaw/branding/assets
 COPY scripts/install-control-ui-branding.sh /usr/local/bin/scienceclaw-install-control-ui-branding
 COPY scripts/seed_file_manager_demo.py /usr/local/bin/scienceclaw-seed-file-manager-demo
+COPY scripts/panel_control.py /usr/local/bin/scienceclaw-panel-control
+COPY scripts/panel_control.py /usr/local/bin/panel_control.py
+COPY scripts/demo_panel_discussion.py /usr/local/bin/scienceclaw-demo-panel-discussion
+COPY scripts/check-secret-config.sh /usr/local/bin/scienceclaw-check-secret-config
 RUN chmod +x /usr/local/bin/openclaw-container-entrypoint \
     && chmod +x /usr/local/bin/scienceclaw-service-entrypoint \
     && chmod +x /usr/local/bin/scienceclaw-init-data-layout \
     && chmod +x /usr/local/bin/openclaw-storage \
     && chmod +x /usr/local/bin/scienceclaw-install-control-ui-branding \
     && chmod +x /usr/local/bin/scienceclaw-seed-file-manager-demo \
+    && chmod +x /usr/local/bin/scienceclaw-panel-control \
+    && chmod +x /usr/local/bin/scienceclaw-demo-panel-discussion \
+    && chmod +x /usr/local/bin/scienceclaw-check-secret-config \
     && chmod +x /opt/openclaw/seed-workspace/scripts/init-working-group.sh \
+    && chmod +x /opt/openclaw/seed-workspace/scripts/start-interaction-agent.sh \
     && chmod +x /opt/openclaw/seed-workspace/scripts/start-pi-liaison.sh \
+    && chmod +x /opt/openclaw/seed-workspace/scripts/panel-control.sh \
+    && chmod +x /opt/openclaw/seed-workspace/scripts/check-secret-config.sh \
     && chmod +x /opt/openclaw/seed-workspace/scripts/check-secrets.sh \
     && chmod +x /opt/openclaw/seed-workspace/scripts/mask-secrets.sh \
     && chmod +x /opt/scienceclaw/cms/scienceclaw_cms.py \

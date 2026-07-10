@@ -1,23 +1,8 @@
-# USER.md - Human Context
+# USER.md
 
-Use this file for durable, user-approved context that helps the PI Liaison work well with the human PI.
+Use this file only for user-approved context that helps the Interaction Agent
+serve the human operator. Do not infer preferences, permissions, or identity.
 
-Do not turn this into a dossier. Keep it sparse, useful, and respectful. Do not add private facts, sensitive details, credentials, or inferred personal information unless the user explicitly provides and approves them.
-
-## Basic Context
-
-- **Name:** `[user-provided]`
-- **Preferred name:** `[user-provided]`
-- **Timezone:** `[user-provided]`
-- **Primary working style:** `[brief notes]`
-
-## Collaboration Preferences
-
-- **Preferred output formats:** `[paper, report, proposal, analysis package, website, etc.]`
-- **Review cadence:** `[as-needed / milestone / daily / weekly]`
-- **Question style:** `[batched / direct / only blockers]`
-- **Known constraints:** `[time, compute, data, collaboration, privacy]`
-
-## Privacy Boundary
-
-Only record user context that improves scientific collaboration. When in doubt, ask before storing.
+The user can ask the panel questions, request summaries, pause or resume the
+panel, change cadence, select panelists for a round, and set research or
+experiment permissions.

@@ -1,9 +1,8 @@
-# QUESTIONS_FOR_USER.md - Batched Human Questions
+# Compatibility Note
 
-This is the single queue where agents submit questions for the user. Agents should write questions here instead of interrupting the user directly. The PI Liaison reviews this queue, deduplicates questions, merges related issues, and asks the user only batched, high-priority followups.
+This file remains only for older links and scripts that expect
+`QUESTIONS_FOR_USER.md`.
 
-Every question should explain why it matters and what decision is blocked. Low-priority curiosity questions should stay out of the user-facing batch unless they block a meaningful decision.
-
-| Date | Agent | Question | Why it matters | Decision blocked | Priority | Status |
-| --- | --- | --- | --- | --- | --- | --- |
-| `[date]` | `[agent]` | `[question]` | `[reason]` | `[decision]` | `[low/medium/high]` | open |
+Use `QUESTIONS_FROM_USER.md` for the panel question queue. The Interaction Agent
+queues user questions there and must not invent panel responses that were not
+actually produced.

@@ -1,6 +1,9 @@
 # Operations Guide
 
-This page documents the reproducible operating path for the ScienceClaw/OpenClaw scientific working group container with Slack Socket Mode and ChatGPT/Codex OAuth.
+This page documents the reproducible operating path for the ScienceClaw/OpenClaw
+scientific discussion panel container with Slack Socket Mode and ChatGPT/Codex
+OAuth. Slack should route through the Interaction Agent; it must not bypass
+human approval gates or directly trigger arbitrary shell execution.
 
 The working deployment has four separate gates:
 
@@ -13,11 +16,12 @@ Treat these as separate checks. A failure in one layer can look like a silent Sl
 
 ## Start the Gateway
 
-Create a local `.env` from `.env.example`, add Slack tokens, and validate them:
+Create a local `.env` from `.env.example`, add Slack tokens, and validate
+configuration without printing secret values:
 
 ```bash
 cp .env.example .env
-scripts/check-secrets.sh
+scripts/check-secret-config.sh
 ```
 
 Start the long-running Gateway container:
@@ -32,7 +36,11 @@ The script prints a Docker container id. Keep that id for diagnostics. You can a
 docker ps --filter name=openclaw
 ```
 
-For multi-instance local work, keep the service boundaries strict. The OpenClaw Gateway is the only service that owns OpenClaw state and sessions. The workspace CMS and JupyterLab services share `/workspace` for files and outputs, but they use lightweight service entrypoints and must not register Slack channels, rewrite OpenClaw config, or run Gateway startup.
+For multi-instance local work, keep the service boundaries strict. The OpenClaw
+Gateway is the only service that owns OpenClaw state and sessions. The workspace
+CMS and JupyterLab services share `/workspace` for files and panel records, but
+they use lightweight service entrypoints and must not register Slack channels,
+rewrite OpenClaw config, or run Gateway startup.
 
 ## Open The Main Browser UI
 
@@ -106,13 +114,13 @@ Healthy Codex OAuth status should show the `openai-codex` profile and may show u
 Before testing Slack, run a direct agent reply check:
 
 ```bash
-docker exec <container-id> openclaw agent --session-id slack-ready-check-$(date +%s) --message 'Reply with exactly: PI Liaison ready' --timeout 120
+docker exec <container-id> openclaw agent --session-id slack-ready-check-$(date +%s) --message 'Reply with exactly: Interaction Agent ready' --timeout 120
 ```
 
 Expected output:
 
 ```text
-PI Liaison ready
+Interaction Agent ready
 ```
 
 Then test in Slack:
@@ -129,13 +137,13 @@ Then test in Slack:
 | Browser reaches `http://127.0.0.1:18789/` but shows `Auth required` | The Gateway is up, but the browser is using an un-tokenized URL | Use the token-bearing URL from `openclaw dashboard --no-open` |
 | Browser accepts the token but shows `Device pairing required` | The local browser has not been approved for Control UI access yet | Run `openclaw devices list`, then `openclaw devices approve <REQUEST_ID>` inside the live Gateway container |
 | Slack says `access not configured` | Slack user is not paired | Run `openclaw pairing approve slack <PAIRING_CODE>` inside the Gateway container |
-| Slack provider is not connected | Socket Mode token, bot token, channel, or Slack app setup is wrong | Run `scripts/check-secrets.sh`, check Socket Mode, app-level token, bot membership, and event subscriptions |
+| Slack provider is not connected | Socket Mode token, bot token, channel, or Slack app setup is wrong | Run `scripts/check-secret-config.sh`, check Socket Mode, app-level token, bot membership, and event subscriptions |
 | Slack replies with `Model login expired` | Gateway cannot refresh Codex OAuth | Run `openclaw models auth login --provider openai-codex --set-default` inside the live Gateway container |
 | Direct agent test fails with `token_expired` | OAuth metadata exists but backend refresh is rejected | Re-auth in the live Gateway container; restart Gateway only after confirming the profile works |
 | Direct messages show "Sending messages to this app has been turned off" | Slack App Home messages are disabled | Enable the App Home Messages tab and reinstall the Slack app |
 | Approval button does not respond or CLI says `scope upgrade pending approval` | The local operator device needs a scope upgrade, or background cron jobs are locking the same session | Run `openclaw devices list`, approve the pending local device with `openclaw devices approve <REQUEST_ID>`, then pause noisy cron jobs with `openclaw cron disable <JOB_ID>` |
 | Agent replies stall while cron jobs keep spawning subagents | A recurring improvement/review loop is overloading the Gateway or sharing a locked session | Run `openclaw cron list`, disable the loop, and check `openclaw tasks list --status running --json` before restarting work |
-| New instance opens but the agent dropdown is missing | The instance has only the default `main` agent registered | Run `openclaw agents list`; restore the 11-agent registry without copying another instance's token, port, sessions, or workspace |
+| New instance opens but the agent dropdown is missing | The instance has only the default `main` agent registered | Run `openclaw agents list`; restore the panel agent registry without copying another instance's token, port, sessions, or workspace |
 | Agent fails with `session file changed while embedded prompt lock was released` | Browser, CLI, heartbeat, or a background task touched the same active transcript | Stop using that transcript, inspect `openclaw tasks list --json` and `openclaw sessions --agent main --json`, archive the failed session, then start a fresh browser session |
 
 ## Recover a Stuck Approval Flow
@@ -173,15 +181,15 @@ docker exec <gateway-container> openclaw agents list
 docker exec <gateway-container> openclaw sessions --agent main --json
 ```
 
-The agent list should show 11 agents. If only `main` appears, repair the agent registry before using the browser. If a session-lock error appears, archive the failed session rather than deleting the instance. See the [multi-instance runbook](instance-runbook.md) before copying state or updating OpenClaw.
+The agent list should show the Interaction Agent plus panel and backstage roles. If only `main` appears, repair the agent registry before using the browser. If a session-lock error appears, archive the failed session rather than deleting the instance. See the [multi-instance runbook](instance-runbook.md) before copying state or updating OpenClaw.
 
 ## Scaling Notes
 
-Use one narrowly mounted `workspace/` per scientific working group or project. Avoid mounting the user's whole home directory. The source scaffold lives in `docker/seed-workspace`; runtime notes and project files live in the mounted `workspace/`, while durable runtime state and optional outputs live under `/data`.
+Use one narrowly mounted `workspace/` per scientific discussion panel or project. Avoid mounting the user's whole home directory. The source scaffold lives in `docker/seed-workspace`; runtime notes and panel files live in the mounted `workspace/`, while durable runtime state and optional outputs live under `/data`.
 
 For multiple Slack channels, prefer explicit channel ids in `.env` or deployment-specific environment files. Use a stable value such as `channel:C0123456789` when supported, because channel names can change.
 
-For multiple users, approve each Slack sender intentionally and document who is allowed to operate the Liaison. Slack should remain the PI Liaison interface, not a direct execution surface for every agent.
+For multiple users, approve each Slack sender intentionally and document who is allowed to operate the Interaction Agent. Slack should remain the Interaction Agent interface, not a direct execution surface for every agent.
 
 For multiple deployments, keep secrets out of images and git. Build the same image, provide different `.env` files or deployment secrets, and keep each deployment's `~/.openclaw` state separate.
 

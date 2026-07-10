@@ -1,4 +1,4 @@
-name: Working group smoke test
+name: Scientific discussion panel smoke test
 
 on:
   push:
@@ -15,8 +15,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Run working group smoke test
-        run: scripts/test-working-group.sh
+      - name: Run panel smoke test
+        run: scripts/test-panel.sh
 
       - name: Run ScienceClaw layout smoke test
         run: scripts/test-scienceclaw-layout.sh

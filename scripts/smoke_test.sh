@@ -14,7 +14,7 @@ fail() { echo "fail: $1" >&2; status=1; }
 cd "${repo_root}"
 
 echo "== Required files and directories =="
-for path in Dockerfile docker-compose.yml Makefile .env.example README.md docs config docker/seed-workspace scripts/demo_environmental_workflow.py; do
+for path in Dockerfile docker-compose.yml Makefile .env.example README.md docs config docker/seed-workspace scripts/demo_panel_discussion.py scripts/panel_control.py; do
   if [ -e "${path}" ]; then
     pass "${path}"
   else
@@ -24,7 +24,7 @@ done
 
 echo
 echo "== Template smoke tests =="
-scripts/test-working-group.sh >/tmp/scienceclaw-smoke-working-group.log 2>&1 && pass "working-group scaffold" || fail "working-group scaffold failed"
+scripts/test-panel.sh >/tmp/scienceclaw-smoke-panel.log 2>&1 && pass "scientific discussion panel scaffold" || fail "panel scaffold failed"
 scripts/test-scienceclaw-layout.sh >/tmp/scienceclaw-smoke-layout.log 2>&1 && pass "data layout scaffold" || fail "data layout scaffold failed"
 scripts/smoke_test_workspace.sh >/tmp/scienceclaw-smoke-file-manager.log 2>&1 && pass "workspace file manager" || fail "workspace file manager failed"
 scripts/smoke_test_github_manager.sh >/tmp/scienceclaw-smoke-github-manager.log 2>&1 && pass "GitHub repository manager" || fail "GitHub repository manager failed"
@@ -52,7 +52,7 @@ fi
 
 echo
 echo "== Python and geospatial imports =="
-python3 -m py_compile scripts/demo_environmental_workflow.py && pass "demo workflow compiles" || fail "demo workflow does not compile"
+python3 -m py_compile scripts/demo_panel_discussion.py scripts/panel_control.py && pass "panel demo compiles" || fail "panel demo does not compile"
 python3 - <<'PY' && pass "core Python geospatial imports available" || warn "geospatial imports are not all available in this host Python; they are expected inside the container image"
 mods = ["numpy", "rasterio", "geopandas", "shapely", "pyproj"]
 for mod in mods:
@@ -60,14 +60,16 @@ for mod in mods:
 PY
 
 echo
-echo "== Demo workflow =="
+echo "== Panel demo =="
 demo_workspace="${tmp_root}/workspace"
-python3 scripts/demo_environmental_workflow.py --workspace "${demo_workspace}" >/tmp/scienceclaw-smoke-demo.log
+python3 scripts/demo_panel_discussion.py --workspace "${demo_workspace}" >/tmp/scienceclaw-smoke-demo.log
 for path in \
-  "${demo_workspace}/outputs/demo/demo_habitat_suitability.csv" \
-  "${demo_workspace}/outputs/demo/figures/demo_habitat_suitability.svg" \
-  "${demo_workspace}/outputs/demo/metadata.json" \
-  "${demo_workspace}/outputs/demo/report.md"; do
+  "${demo_workspace}/DISCUSSION_ROUNDS/round-001/summary.md" \
+  "${demo_workspace}/DISCUSSION_ROUNDS/round-001/evidence_packet.md" \
+  "${demo_workspace}/CURRENT_POSITIONS.md" \
+  "${demo_workspace}/DISAGREEMENT_MAP.md" \
+  "${demo_workspace}/EVIDENCE_LEDGER.yaml" \
+  "${demo_workspace}/EXPERIMENTS/results/round-001_calibration_demo.json"; do
   if [ -s "${path}" ]; then
     pass "created ${path#${demo_workspace}/}"
   else

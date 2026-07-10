@@ -1,0 +1,81 @@
+topics:
+  - topic_id: esa-q1-new-science-discoveries
+    title: "New science discoveries"
+    description: "What discoveries and ecological insights can AI and machine learning enable in biodiversity monitoring, behavior, conservation, and forecasting?"
+    source: "ESA panel seed question"
+    priority: 1
+    status: pending
+    relevant_panelists: ["tanya_berger_wolf", "lauren_gillespie", "justin_kitzes", "ty_tuff"]
+    evidence_needed: true
+    related_rounds: []
+    unresolved_questions: []
+  - topic_id: esa-q2-responsible-reproducible-ai
+    title: "Responsible and reproducible AI"
+    description: "How can AI methods be transparent, reproducible, accurate, interpretable, ethical, and scientifically rigorous?"
+    source: "ESA panel seed question"
+    priority: 1
+    status: pending
+    relevant_panelists: ["katherine_siegel", "ty_tuff", "lauren_gillespie", "justin_kitzes"]
+    evidence_needed: true
+    related_rounds: []
+    unresolved_questions: []
+  - topic_id: esa-q3-technical-barriers-workforce
+    title: "Technical barriers and workforce development"
+    description: "What technical, computational, educational, institutional, and cultural challenges hinder adoption of AI in ecology?"
+    source: "ESA panel seed question"
+    priority: 1
+    status: pending
+    relevant_panelists: ["ty_tuff", "jenna_kline", "lauren_gillespie"]
+    evidence_needed: true
+    related_rounds: []
+    unresolved_questions: []
+  - topic_id: esa-q4-translation-uncertainty-scalability
+    title: "Translation, uncertainty, and scalability"
+    description: "How can AI support forecasting, conservation planning, and environmental decisions while reducing uncertainty and scaling impact?"
+    source: "ESA panel seed question"
+    priority: 1
+    status: pending
+    relevant_panelists: ["moderator", "katherine_siegel", "tanya_berger_wolf", "ty_tuff"]
+    evidence_needed: true
+    related_rounds: []
+    unresolved_questions: []
+  - topic_id: prediction-vs-causal-explanation
+    title: "Prediction versus causal explanation"
+    description: "When does predictive performance support explanation, mechanism, or causal claims?"
+    source: "seeded subtopic"
+    priority: 2
+    status: pending
+    relevant_panelists: ["katherine_siegel", "lauren_gillespie", "justin_kitzes"]
+    evidence_needed: true
+    related_rounds: []
+    unresolved_questions: []
+  - topic_id: ecological-discovery-vs-pattern-recognition
+    title: "Ecological discovery versus automated pattern recognition"
+    description: "What distinguishes new ecological knowledge from automated detection of correlations?"
+    source: "seeded subtopic"
+    priority: 2
+    status: pending
+    relevant_panelists: ["tanya_berger_wolf", "katherine_siegel", "ty_tuff"]
+    evidence_needed: true
+    related_rounds: []
+    unresolved_questions: []
+  - topic_id: foundation-models-for-biodiversity
+    title: "Foundation models for biodiversity"
+    description: "Benefits, limitations, and risks of large foundation models for biodiversity science."
+    source: "seeded subtopic"
+    priority: 3
+    status: pending
+    relevant_panelists: ["lauren_gillespie", "tanya_berger_wolf", "ty_tuff"]
+    evidence_needed: true
+    related_rounds: []
+    unresolved_questions: []
+  - topic_id: when-ai-should-not-be-used
+    title: "When AI should not be used"
+    description: "Cases where simple models, direct observation, community governance, or no automation may be preferable."
+    source: "seeded subtopic"
+    priority: 3
+    status: pending
+    relevant_panelists: ["katherine_siegel", "bias_balance_reviewer", "ty_tuff"]
+    evidence_needed: true
+    related_rounds: []
+    unresolved_questions: []

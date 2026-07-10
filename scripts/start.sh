@@ -6,10 +6,11 @@ cd "${repo_root}"
 
 mkdir -p "${HOME}/.openclaw" "${repo_root}/workspace"
 
-if [ "${OPENCLAW_START_PI_LIAISON:-1}" != "0" ]; then
+start_interaction="${OPENCLAW_START_INTERACTION_AGENT:-${OPENCLAW_START_PI_LIAISON:-1}}"
+if [ "${start_interaction}" != "0" ]; then
   case "${1:-}" in
     ""|bash|/bin/bash|sh|/bin/sh)
-      "${repo_root}/scripts/check-secrets.sh"
+      "${repo_root}/scripts/check-secret-config.sh"
       ;;
   esac
 fi

@@ -14,10 +14,11 @@ mkdir -p "${workspace}"
 bash "${template_root}/scripts/init-working-group.sh" --workspace "${workspace}" --template-root "${template_root}"
 
 echo
-echo "Initialized OASIS ScienceClaw working group workspace:"
+echo "Initialized OASIS Scientific Discussion Panel workspace:"
 echo "  ${workspace}"
+echo
+echo "Note: scripts/init_working_group.sh is a backward-compatible alias."
 echo
 echo "Next safe checks:"
 echo "  make doctor"
 echo "  make checkpoint"
-

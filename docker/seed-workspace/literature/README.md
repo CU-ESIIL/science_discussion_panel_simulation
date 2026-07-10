@@ -1,5 +1,5 @@
-# Literature
+# LITERATURE
 
-Use this directory for source notes, citation inventories, evidence tables, and license/citation requirements.
-
-Prefer primary sources when possible. Document uncertainty when source rights, data permissions, or interpretation limits are unclear.
+Store source notes, citation metadata, evidence packets, and article summaries.
+Do not treat search-engine summaries as evidence. Record search date, source
+type, access path, license or rights notes when known, and evidence strength.

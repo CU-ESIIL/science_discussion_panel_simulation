@@ -1,58 +1,49 @@
-# Local working-group configuration copied from the OASIS ScienceClaw template.
-# Edit this file inside a spawned working group to describe the specific project.
-# Keep secrets out of this file.
+# Local panel configuration copied from the OASIS Scientific Discussion Panel template.
+# The filename is retained for compatibility with older scripts.
 
-project:
-  title: "OASIS ScienceClaw"
-  short_title: "ScienceClaw"
-  subtitle: "ESIIL's multi-agent workspace"
-  mission: "A calm, reproducible, GitHub-native scientific operations environment for environmental synthesis."
-  lifecycle_state: "proposed"
-  repository: "set-after-spawn"
-  branch: "set-after-spawn"
-  powered_by: "OpenClaw"
+panel:
+  title: "OASIS Scientific Discussion Panel"
+  theme: "AI for Ecology: Accelerating Discoveries, Reducing Uncertainties, and Scaling Solutions"
+  default_landing: "PANEL_BRIEF.md"
+  default_human_interface: "Interaction Agent"
+  status: "paused"
+  simulation_disclosure_required: true
 
-branding:
-  enabled: true
-  project_title: "OASIS ScienceClaw"
-  short_title: "ScienceClaw"
-  subtitle: "ESIIL's multi-agent workspace"
-  primary_color: "#234A65"
-  accent_blue: "#42BCDC"
-  accent_green: "#007135"
-  body_text: "#161A19"
-  relief_gray: "#E3E3E3"
-
-workspace:
-  default_landing: "WORKING_GROUP_COCKPIT.md"
-  private_workspace: "/workspace"
-  data_root: "/data"
-  external_storage_root: "/external_storage"
-  repository_principle: "GitHub = control plane; repo = memory; container = runtime."
-
-agents:
-  default_human_interface: "PI Liaison / User Interview Agent"
-  direct_user_access_to_all_agents: false
-  require_human_review_for_public_outputs: true
+discussion_loop:
+  autorun: false
+  interval_minutes: 60
+  max_turns_per_round: 12
+  max_panelists_per_round: 4
+  max_research_tasks_per_round: 2
+  max_experiments_per_day: 1
+  require_experiment_approval: true
+  idle_when_no_topic: true
+  timezone: "America/Denver"
 
 integrations:
   slack:
     enabled: false
-    notes: "Slack should talk to the PI Liaison, not directly to execution agents."
+    notes: "Slack should talk to the Interaction Agent, not directly to execution agents."
+  verde:
+    enabled: true
+    notes: "AI-VERDE endpoint and key remain configurable through env or mounted secret files."
   github:
     enabled: true
-    notes: "Use issues, branches, pull requests, workflows, releases, and commits as visible operational state."
-  verde:
-    enabled: false
-    notes: "Use open-model API routes for bounded, reviewable specialist tasks only."
-
-lifecycle:
-  state: "proposed"
-  last_checkpoint: ""
-  next_review: ""
+    notes: "GitHub remains the control plane and selected repository manager."
 
 safety:
-  agents_may_recommend_humans_approve: true
-  publication_requires_human_approval: true
-  sensitive_claims_require_review: true
-  secrets_live_outside_repo: true
+  no_impersonation: true
+  no_final_consensus_required: true
+  append_only_records:
+    - "DISCUSSION_ROUNDS/"
+    - "POSITION_HISTORY/"
+    - "FACT_CHECKS/"
+    - "EXPERIMENTS/"
+  human_approval_required_for:
+    - "publishing"
+    - "deleting files"
+    - "pushing to GitHub"
+    - "new mounts"
+    - "billed APIs"
+    - "expensive experiments"
+    - "sensitive public claims"

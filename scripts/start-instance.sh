@@ -23,7 +23,7 @@ mkdir -p \
   "${instance_root}/openclaw"
 
 if [ "${ENABLE_INSTANCE_SLACK:-0}" = "1" ]; then
-  "${repo_root}/scripts/check-secrets.sh"
+  SCIENCECLAW_SECRET_MODE=slack "${repo_root}/scripts/check-secret-config.sh"
 else
   export SLACK_BOT_TOKEN=""
   export SLACK_APP_TOKEN=""
@@ -79,6 +79,7 @@ export OPENCLAW_MODEL="${OPENCLAW_MODEL:-verde/js2/gpt-oss-120b}"
 export WORKSPACE_UI_PORT="${workspace_ui_port}"
 workspace_ui_token="${WORKSPACE_UI_TOKEN:-scienceclaw}"
 export SCIENCECLAW_CMS_PORT="${cms_port}"
+export OPENCLAW_START_INTERACTION_AGENT=0
 export OPENCLAW_START_PI_LIAISON=0
 export OPENCLAW_CONFIGURE_SLACK="${OPENCLAW_CONFIGURE_SLACK:-0}"
 
@@ -133,6 +134,6 @@ Validate before project work:
   docker exec ${gateway_container_id} openclaw status
   docker exec ${gateway_container_id} openclaw agent --agent main --session-id instance-smoke-\$(date +%s) --message 'Reply with exactly: OK' --timeout 120
 
-Expected: 11 agents, main = PI Liaison, and the smoke test replies OK.
+Expected: Interaction Agent plus panel/backstage roles, and the smoke test replies OK.
 If the dropdown is missing or a session-lock error appears, see docs/instance-runbook.md.
 EOF
