@@ -1,25 +1,48 @@
 # Setup Guide
 
-ScienceClaw is a small project for building and running an OpenClaw-based environmental synthesis workspace on your laptop in Docker.
+ScienceClaw is the local container appliance behind the OASIS Scientific
+Discussion Panel. It builds and runs an OpenClaw-based scientific discussion
+workspace on your laptop in Docker.
 
-It persists OpenClaw state in `~/.openclaw`, exposes that state inside the container at `/data/.openclaw`, mounts a narrow `./workspace` into `/data/workspace` and `/workspace`, and includes helpers for ChatGPT/Codex OAuth login when that route is available.
+It persists OpenClaw state in `~/.openclaw`, exposes that state inside the
+container at `/data/.openclaw`, mounts a narrow `./workspace` into
+`/data/workspace` and `/workspace`, mounts `./data` for runtime outputs, and
+mounts `./external_storage` for larger local or externally managed data.
 
-The image also bootstraps local defaults before each command runs: local Gateway mode, Docker-friendly Gateway bind settings, token auth, Control UI origins for local browser use, a Codex default model, the `/data` runtime layout, and starter workspace files from `docker/seed-workspace`.
+The image also bootstraps local defaults before each command runs: local Gateway
+mode, Docker-friendly Gateway bind settings, token auth, Control UI origins for
+local browser use, a default model route, the `/data` runtime layout, and starter
+panel workspace files from `docker/seed-workspace`.
 
-The default workspace is a scientific working group scaffold for environmental data science. It includes 11 bounded roles, a PI Liaison gateway, shared memory registers, project folders, skeptic review, and human approval rules.
+The default workspace is a persistent scientific discussion panel scaffold. It
+includes disclosed simulated panelist perspectives, a Moderator, an Interaction
+Agent, backstage support agents, shared memory files, project folders, evidence
+ledgers, disagreement maps, bounded experiment records, and human approval
+rules.
 
-The `0.1.0-alpha.1` baseline is intended to be reproducible from the repository: build the image, provide local `.env` credentials, and the container seeds the working-group setup automatically.
+The appliance is intended to be reproducible from the repository: build the
+image, provide local `.env` settings and optional local secrets, and the
+container seeds the discussion-panel setup automatically.
 
 ## Quick Start
 
 ```bash
+cp .env.example .env
 docker compose build
-scripts/start.sh
-scripts/login-codex.sh
-scripts/status.sh
+docker compose up -d
+docker compose ps
+make panel-status
 ```
 
-If OpenClaw opens a login URL from inside Docker, copy it into your laptop browser. If the CLI asks for a callback URL, paste the full browser redirect URL back into the terminal.
+Open:
+
+- OpenClaw Control UI: `http://127.0.0.1:18789/`
+- Workspace CMS: `http://127.0.0.1:8090/`
+- JupyterLab: `http://127.0.0.1:8888/lab?token=scienceclaw`
+
+If OpenClaw opens a login URL from inside Docker, copy it into your laptop
+browser. If the CLI asks for a callback URL, paste the full browser redirect URL
+back into the terminal.
 
 For Slack-connected Gateway operation, use the operations runbook:
 
@@ -36,21 +59,27 @@ If Slack returns an access pairing code, approve the specific user:
 docker exec -it <container-id> openclaw pairing approve slack <PAIRING_CODE>
 ```
 
-Generated documents, heartbeat notes, soul files, and memory should be written under `/workspace` inside the container. They appear on the host under `./workspace`.
+Generated discussion records, heartbeat notes, memory files, and working drafts
+should be written under `/workspace` inside the container. They appear on the
+host under `./workspace`.
 
-To inspect or edit files through the optional browser workspace UI:
-
-```bash
-docker compose up workspace-ui
-```
-
-Then open `http://127.0.0.1:8888` and use the `WORKSPACE_UI_TOKEN` value from `.env`, or the default local token `scienceclaw`.
+To inspect or edit files through the browser workspace UI, open JupyterLab at
+`http://127.0.0.1:8888/lab?token=scienceclaw`, or use the `WORKSPACE_UI_TOKEN`
+value from `.env` if you changed it.
 
 ## Auth Options
 
 ChatGPT/Codex OAuth can be convenient when your OpenClaw version, account entitlement, quota, and provider policy support it. It is not guaranteed and may require periodic re-login.
 
 OpenAI API-key mode uses `OPENAI_API_KEY` from `.env` and bills through your OpenAI API account. It is optional for OAuth mode, but it is usually more predictable for automation.
+
+AI-VERDE and other OpenAI-compatible providers can be configured through
+`VERDE_LLM_BASE_URL`, `VERDE_LLM_API_KEY_FILE`, `VERDE_LLM_DEFAULT_MODEL`, and
+the role-level routing files in the workspace.
+
+GitHub push/pull from inside the container needs a local token file or injected
+environment token. Organization secrets in GitHub are for Actions runners; they
+do not appear automatically in local Docker Compose runs.
 
 ## Safety
 

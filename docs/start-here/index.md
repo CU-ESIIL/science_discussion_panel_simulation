@@ -1,8 +1,11 @@
 # Start Here
 
-This section is the shortest path into OpenClaw.
+This section is the shortest path into the OASIS Scientific Discussion Panel
+container.
 
-OpenClaw gives you a ready-to-use scientific runtime, a shared workspace for people and agents, and a calmer way to move from setup to outputs.
+OpenClaw gives the container its Gateway, Control UI, agents, sessions, and
+model routes. ScienceClaw adds the project layout, file/CMS review tools,
+GitHub manager, storage model, seeded panel memory, and human approval rules.
 
 !!! note "You do not need to understand Docker deeply to begin"
     Start by treating the container as a portable lab bench: it holds the tools. The repository is the lab notebook: it holds the memory.
@@ -21,7 +24,9 @@ flowchart LR
 
 Repeat this when you feel lost:
 
-**GitHub = control plane. Repo = memory. Container = runtime. Secrets are injected, never stored. External storage holds large durable data.**
+**GitHub = control plane. Repo = durable public memory. Container = runtime.
+Workspace = active panel memory. Secrets are injected, never stored. External
+storage holds large durable data.**
 
 ## First Path
 
@@ -34,9 +39,9 @@ Repeat this when you feel lost:
 The calm command loop is:
 
 ```bash
-make init-working-group
-make doctor
-make checkpoint
+cp .env.example .env
+docker compose up -d
+make panel-status
 ```
 
 ## User Modes
@@ -44,7 +49,7 @@ make checkpoint
 | Mode | Start With | Main Concern |
 | --- | --- | --- |
 | Everyday Scientist | [What is OpenClaw?](what-is-openclaw.md) | Understanding the system without infrastructure overload |
-| Working Group Lead | [Template Mode](../oasis-template.md) | Making a reusable working group from the base image |
+| Panel Lead | [Panel Architecture](../panel-architecture.md) | Understanding roles, records, and human review gates |
 | Data/Workflow Maintainer | [Where Files Go](../use/where-files-go.md) | Data placement, provenance, and reproducible outputs |
 | Infrastructure Admin | [Operations](../operations.md) | Ports, credentials, startup, and deployment |
 | Developer/Customizer | [Architecture](../architecture.md) | Extending agents, docs, branding, and workflows |

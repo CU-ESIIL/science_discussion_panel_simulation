@@ -2,6 +2,58 @@
 
 This log records implementation prompts that change the reusable ScienceClaw/OASIS template. Keep private user data, credentials, and live workspace secrets out of this file.
 
+## 2026-07-10 - Container Purpose And Local Use Documentation
+
+### Prompt Summary
+
+Update `AGENTS.md`, the prompt log, and the website so the repository clearly
+explains what the OASIS Scientific Discussion Panel container does and what
+people need to run it locally.
+
+### Files Changed
+
+- `AGENTS.md`
+- `.gitignore`
+- `docs/index.md`
+- `docs/quick-start.md`
+- `docs/use/launch-locally.md`
+- `docs/setup.md`
+- `docs/resource-limits.md`
+- `docs/start-here/index.md`
+- `CHANGELOG.md`
+- `PROMPT_ACTION_LOG.md`
+
+### Architectural Decisions
+
+- Present this repository as a reusable ScienceClaw/OpenClaw container appliance
+  rather than only a static documentation website.
+- Make the three local services explicit: OpenClaw Gateway, Workspace CMS, and
+  JupyterLab.
+- Document the runtime split between repository source, replaceable container,
+  active `./workspace` memory, `./data` outputs, `./external_storage`, `.env`,
+  and ignored `./secrets`.
+- Clarify that a no-secrets local run supports the UI, seeded panel workspace,
+  deterministic demo, and panel controls, while live model calls and GitHub
+  write operations require local credentials.
+- Clarify that GitHub organization secrets are available to GitHub Actions
+  runners, not automatically to laptop Docker Compose runs.
+- Document `SCIENCECLAW_CONTAINER_MEMORY=20g` as the 20 GiB container memory
+  setting while noting that host Docker must allow the memory and that bind
+  mounts are not capped by Compose disk quotas.
+- Ignore generated `workspace/projects/*` runtime scaffolds while preserving the
+  tracked example project.
+
+### Tests Run
+
+- Local Compose stack was rebuilt and run with Docker Desktop.
+- Verified `openclaw-local`, `workspace-cms`, and `workspace-ui` were running.
+- Verified the OpenClaw Gateway, Workspace CMS, and JupyterLab URLs returned
+  pages from the host.
+- Verified the `openclaw-local` container memory limit was `21474836480` bytes
+  with a 2 CPU cap.
+- Verified `scienceclaw-panel-control status --workspace /data/workspace`
+  reported the seeded panel state.
+
 ## 2026-05-25 - Project Workspace And External Data Routing
 
 ### Prompt Summary

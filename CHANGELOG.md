@@ -17,6 +17,10 @@
   panel-oriented documentation for architecture, panelists, support agents,
   constitution, persistent loop, questions, evidence, experiments, memory,
   AI-VERDE, resource limits, and human oversight.
+- Added clearer container-oriented onboarding across the website, including
+  local URLs, service roles, 20 GiB memory configuration, no-secrets demo use,
+  and the difference between GitHub Actions secrets and local Docker Compose
+  secret files.
 
 ### Fixed
 
@@ -34,9 +38,14 @@
   seed startup prompts, Makefile targets, smoke tests, and GitHub Actions labels
   for the panel model while retaining deprecated working-group aliases for
   compatibility.
+- Updated `AGENTS.md` to identify this repository as the OASIS Scientific
+  Discussion Panel container appliance and to document what users need for local
+  operation, secrets, GitHub access, and Docker resource settings.
 - Reworked the MkDocs information architecture into a simpler product-style navigation with Start Here, Use OpenClaw, Working Groups, Data and Storage, and Maintainer / Advanced sections.
 - Redesigned the homepage with OASIS-inspired hero, section bands, visual interludes, gallery-style card grids, and clearer calls to action for onboarding, working-group use, storage, and advanced customization.
 - Added a new `docs/start-here/what-is-openclaw.md` overview page to explain the container, agent workspace, and scientific collaboration layers in plain language for new scientists.
+- Ignored runtime-generated `workspace/projects/*` folders while preserving the
+  tracked example project template.
 
 ## 0.1.0-alpha.1 - 2026-05-17
 

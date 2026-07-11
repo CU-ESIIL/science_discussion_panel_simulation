@@ -1,0 +1,486 @@
+{
+  "sessions": [
+    {
+      "id": "oasis-panel-2026-07-10",
+      "title": "Ecologists Meet AI: what should the panel track first?",
+      "startedAt": "2026-07-10T09:00:00-06:00",
+      "endedAt": "2026-07-10T10:34:00-06:00",
+      "summary": "The panel mapped early priorities for AI-assisted ecological discovery, with strong agreement on evidence traceability and open science, active disagreement about benchmark governance, and unresolved questions around foundation-model evaluation."
+    }
+  ],
+  "agents": [
+    { "id": "interaction-agent", "name": "Interaction Agent", "role": "Human-facing liaison" },
+    { "id": "scientific-director", "name": "Scientific Director", "role": "Scientific framing" },
+    { "id": "domain-scientist", "name": "Domain Scientist", "role": "Ecological interpretation" },
+    { "id": "data-engineer", "name": "Data Engineer", "role": "Data and infrastructure" },
+    { "id": "quant-modeler", "name": "Quantitative Modeler", "role": "Models and benchmarks" },
+    { "id": "citation-curator", "name": "Citation and Evidence Curator", "role": "Evidence tracking" },
+    { "id": "skeptic", "name": "Skeptic", "role": "Assumptions and failure modes" },
+    { "id": "narrative-lead", "name": "Scientific Narrative Lead", "role": "Synthesis and communication" },
+    { "id": "societal-impact", "name": "Societal Impact Translator", "role": "Ethics and impact" }
+  ],
+  "topics": [
+    {
+      "id": "evidence-traceability",
+      "label": "Evidence traceability",
+      "category": "evidence",
+      "canonicalTags": ["evidence", "citations", "provenance"],
+      "relatedTopicIds": ["open-science", "model-interpretability"],
+      "status": "broad agreement"
+    },
+    {
+      "id": "foundation-models",
+      "label": "Ecological foundation models",
+      "category": "models",
+      "canonicalTags": ["foundation models", "species distribution", "generalization"],
+      "relatedTopicIds": ["benchmarks", "remote-sensing", "data-quality"],
+      "status": "unresolved"
+    },
+    {
+      "id": "data-quality",
+      "label": "Data quality and bias",
+      "category": "data",
+      "canonicalTags": ["dataset bias", "sampling gaps", "metadata"],
+      "relatedTopicIds": ["remote-sensing", "ai-ethics"],
+      "status": "active"
+    },
+    {
+      "id": "benchmarks",
+      "label": "Benchmark governance",
+      "category": "governance",
+      "canonicalTags": ["benchmarks", "evaluation", "governance"],
+      "relatedTopicIds": ["foundation-models", "open-science"],
+      "status": "disagreement"
+    },
+    {
+      "id": "model-interpretability",
+      "label": "Model interpretability",
+      "category": "methods",
+      "canonicalTags": ["interpretability", "mechanisms", "decision support"],
+      "relatedTopicIds": ["evidence-traceability", "ai-ethics"],
+      "status": "active"
+    },
+    {
+      "id": "open-science",
+      "label": "Open science workflow",
+      "category": "collaboration",
+      "canonicalTags": ["open science", "reproducibility", "FAIR"],
+      "relatedTopicIds": ["evidence-traceability", "benchmarks"],
+      "status": "broad agreement"
+    },
+    {
+      "id": "remote-sensing",
+      "label": "Remote sensing",
+      "category": "data",
+      "canonicalTags": ["remote sensing", "imagery", "earth observation"],
+      "relatedTopicIds": ["foundation-models", "data-quality"],
+      "status": "low engagement"
+    },
+    {
+      "id": "agent-governance",
+      "label": "Agent governance",
+      "category": "infrastructure",
+      "canonicalTags": ["agent governance", "approval gates", "audit"],
+      "relatedTopicIds": ["open-science", "ai-ethics"],
+      "status": "low engagement"
+    },
+    {
+      "id": "ai-ethics",
+      "label": "AI ethics and sovereignty",
+      "category": "ethics",
+      "canonicalTags": ["ethics", "data sovereignty", "community review"],
+      "relatedTopicIds": ["data-quality", "agent-governance"],
+      "status": "active"
+    }
+  ],
+  "events": [
+    {
+      "id": "evt-001",
+      "sessionId": "oasis-panel-2026-07-10",
+      "timestamp": "2026-07-10T09:02:00-06:00",
+      "agentId": "interaction-agent",
+      "agentName": "Interaction Agent",
+      "summary": "Opened the session by asking which discussion records should be publishable to the website.",
+      "topicTags": ["open-science", "agent-governance"],
+      "stance": "clarification",
+      "contributionType": "question",
+      "status": "newly raised"
+    },
+    {
+      "id": "evt-002",
+      "sessionId": "oasis-panel-2026-07-10",
+      "timestamp": "2026-07-10T09:06:00-06:00",
+      "agentId": "citation-curator",
+      "agentName": "Citation and Evidence Curator",
+      "summary": "Proposed that every factual claim promoted to the site must link to evidence or be marked as speculation.",
+      "topicTags": ["evidence-traceability", "open-science"],
+      "stance": "agree",
+      "contributionType": "proposal",
+      "confidence": 0.91,
+      "evidenceRefs": ["EVIDENCE_LEDGER.yaml"]
+    },
+    {
+      "id": "evt-003",
+      "sessionId": "oasis-panel-2026-07-10",
+      "timestamp": "2026-07-10T09:10:00-06:00",
+      "agentId": "scientific-director",
+      "agentName": "Scientific Director",
+      "summary": "Agreed that traceability should be a first-class panel norm because it lets readers separate evidence from synthesis.",
+      "topicTags": ["evidence-traceability"],
+      "stance": "agree",
+      "contributionType": "norm",
+      "relatedEventIds": ["evt-002"],
+      "confidence": 0.88,
+      "status": "accepted"
+    },
+    {
+      "id": "evt-004",
+      "sessionId": "oasis-panel-2026-07-10",
+      "timestamp": "2026-07-10T09:14:00-06:00",
+      "agentId": "skeptic",
+      "agentName": "Skeptic",
+      "summary": "Warned that citation density can create false confidence if evidence quality is not assessed.",
+      "topicTags": ["evidence-traceability", "data-quality"],
+      "stance": "clarification",
+      "contributionType": "claim",
+      "confidence": 0.82
+    },
+    {
+      "id": "evt-005",
+      "sessionId": "oasis-panel-2026-07-10",
+      "timestamp": "2026-07-10T09:19:00-06:00",
+      "agentId": "data-engineer",
+      "agentName": "Data Engineer",
+      "summary": "Identified sampling gaps, inconsistent metadata, and inconsistent taxonomies as immediate blockers for ecological AI workflows.",
+      "topicTags": ["data-quality"],
+      "stance": "neutral",
+      "contributionType": "evidence",
+      "confidence": 0.79,
+      "evidenceRefs": ["DATA_MANIFEST.md", "storage/storage.yml"]
+    },
+    {
+      "id": "evt-006",
+      "sessionId": "oasis-panel-2026-07-10",
+      "timestamp": "2026-07-10T09:24:00-06:00",
+      "agentId": "domain-scientist",
+      "agentName": "Domain Scientist",
+      "summary": "Asked whether foundation models are discovering ecological mechanisms or mostly interpolating known observational patterns.",
+      "topicTags": ["foundation-models", "model-interpretability"],
+      "stance": "unresolved",
+      "contributionType": "question",
+      "status": "actively discussed"
+    },
+    {
+      "id": "evt-007",
+      "sessionId": "oasis-panel-2026-07-10",
+      "timestamp": "2026-07-10T09:29:00-06:00",
+      "agentId": "quant-modeler",
+      "agentName": "Quantitative Modeler",
+      "summary": "Argued that foundation models can be useful discovery tools if evaluation includes transfer, perturbation tests, and counterfactual checks.",
+      "topicTags": ["foundation-models", "benchmarks"],
+      "stance": "agree",
+      "contributionType": "claim",
+      "confidence": 0.74
+    },
+    {
+      "id": "evt-008",
+      "sessionId": "oasis-panel-2026-07-10",
+      "timestamp": "2026-07-10T09:34:00-06:00",
+      "agentId": "skeptic",
+      "agentName": "Skeptic",
+      "summary": "Disagreed that benchmark performance alone should be treated as evidence of ecological discovery.",
+      "topicTags": ["foundation-models", "benchmarks", "model-interpretability"],
+      "stance": "disagree",
+      "contributionType": "claim",
+      "relatedEventIds": ["evt-007"],
+      "confidence": 0.86
+    },
+    {
+      "id": "evt-009",
+      "sessionId": "oasis-panel-2026-07-10",
+      "timestamp": "2026-07-10T09:39:00-06:00",
+      "agentId": "societal-impact",
+      "agentName": "Societal Impact Translator",
+      "summary": "Raised concern that benchmark choices can privilege well-instrumented ecosystems and marginalize community-held knowledge.",
+      "topicTags": ["benchmarks", "ai-ethics", "data-quality"],
+      "stance": "disagree",
+      "contributionType": "claim",
+      "confidence": 0.8
+    },
+    {
+      "id": "evt-010",
+      "sessionId": "oasis-panel-2026-07-10",
+      "timestamp": "2026-07-10T09:44:00-06:00",
+      "agentId": "scientific-director",
+      "agentName": "Scientific Director",
+      "summary": "Proposed that benchmark governance should include domain experts, data stewards, and community review where data sovereignty is relevant.",
+      "topicTags": ["benchmarks", "ai-ethics", "open-science"],
+      "stance": "agree",
+      "contributionType": "proposal",
+      "confidence": 0.83
+    },
+    {
+      "id": "evt-011",
+      "sessionId": "oasis-panel-2026-07-10",
+      "timestamp": "2026-07-10T09:48:00-06:00",
+      "agentId": "narrative-lead",
+      "agentName": "Scientific Narrative Lead",
+      "summary": "Summarized the split: benchmarks are necessary for comparison but insufficient as a definition of discovery.",
+      "topicTags": ["benchmarks", "foundation-models"],
+      "stance": "neutral",
+      "contributionType": "summary",
+      "relatedEventIds": ["evt-007", "evt-008", "evt-009", "evt-010"]
+    },
+    {
+      "id": "evt-012",
+      "sessionId": "oasis-panel-2026-07-10",
+      "timestamp": "2026-07-10T09:52:00-06:00",
+      "agentId": "interaction-agent",
+      "agentName": "Interaction Agent",
+      "summary": "Queued a follow-up discussion on how to score interpretability without overclaiming mechanism.",
+      "topicTags": ["model-interpretability", "future-work"],
+      "stance": "unresolved",
+      "contributionType": "action",
+      "actionOwner": "quant-modeler",
+      "status": "deferred"
+    },
+    {
+      "id": "evt-013",
+      "sessionId": "oasis-panel-2026-07-10",
+      "timestamp": "2026-07-10T09:57:00-06:00",
+      "agentId": "data-engineer",
+      "agentName": "Data Engineer",
+      "summary": "Mentioned remote sensing as a useful source for repeated observation but noted the panel had not yet scoped sensor bias.",
+      "topicTags": ["remote-sensing", "data-quality"],
+      "stance": "neutral",
+      "contributionType": "claim",
+      "confidence": 0.68
+    },
+    {
+      "id": "evt-014",
+      "sessionId": "oasis-panel-2026-07-10",
+      "timestamp": "2026-07-10T10:01:00-06:00",
+      "agentId": "citation-curator",
+      "agentName": "Citation and Evidence Curator",
+      "summary": "Flagged remote sensing as low engagement rather than low importance and requested evidence packets before conclusions.",
+      "topicTags": ["remote-sensing", "evidence-traceability"],
+      "stance": "clarification",
+      "contributionType": "action",
+      "actionOwner": "citation-curator",
+      "status": "needs evidence"
+    },
+    {
+      "id": "evt-015",
+      "sessionId": "oasis-panel-2026-07-10",
+      "timestamp": "2026-07-10T10:06:00-06:00",
+      "agentId": "scientific-director",
+      "agentName": "Scientific Director",
+      "summary": "Confirmed a decision to publish a latest-discussion brief only after human review and clear labels for synthetic panel content.",
+      "topicTags": ["open-science", "agent-governance"],
+      "stance": "agree",
+      "contributionType": "decision",
+      "confidence": 0.92,
+      "status": "accepted"
+    },
+    {
+      "id": "evt-016",
+      "sessionId": "oasis-panel-2026-07-10",
+      "timestamp": "2026-07-10T10:10:00-06:00",
+      "agentId": "societal-impact",
+      "agentName": "Societal Impact Translator",
+      "summary": "Proposed preserving minority viewpoints in public summaries so disagreement is treated as useful scientific information.",
+      "topicTags": ["ai-ethics", "open-science"],
+      "stance": "agree",
+      "contributionType": "norm",
+      "confidence": 0.9,
+      "status": "accepted"
+    },
+    {
+      "id": "evt-017",
+      "sessionId": "oasis-panel-2026-07-10",
+      "timestamp": "2026-07-10T10:14:00-06:00",
+      "agentId": "skeptic",
+      "agentName": "Skeptic",
+      "summary": "Supported the minority-view norm and added that repeated arguments should not be counted as new evidence.",
+      "topicTags": ["ai-ethics", "evidence-traceability"],
+      "stance": "agree",
+      "contributionType": "norm",
+      "relatedEventIds": ["evt-016"],
+      "confidence": 0.84,
+      "status": "accepted"
+    },
+    {
+      "id": "evt-018",
+      "sessionId": "oasis-panel-2026-07-10",
+      "timestamp": "2026-07-10T10:18:00-06:00",
+      "agentId": "quant-modeler",
+      "agentName": "Quantitative Modeler",
+      "summary": "Asked for a future comparison of ecological foundation-model claims against classical mechanistic baselines.",
+      "topicTags": ["foundation-models", "model-interpretability", "future-work"],
+      "stance": "unresolved",
+      "contributionType": "question",
+      "status": "needs evidence"
+    },
+    {
+      "id": "evt-019",
+      "sessionId": "oasis-panel-2026-07-10",
+      "timestamp": "2026-07-10T10:22:00-06:00",
+      "agentId": "domain-scientist",
+      "agentName": "Domain Scientist",
+      "summary": "Proposed an action item to define three ecological mechanism examples before the next foundation-model round.",
+      "topicTags": ["foundation-models", "model-interpretability"],
+      "stance": "agree",
+      "contributionType": "action",
+      "actionOwner": "domain-scientist",
+      "status": "proposed"
+    },
+    {
+      "id": "evt-020",
+      "sessionId": "oasis-panel-2026-07-10",
+      "timestamp": "2026-07-10T10:25:00-06:00",
+      "agentId": "data-engineer",
+      "agentName": "Data Engineer",
+      "summary": "Mentioned agent governance briefly as a logging and approval problem but the panel did not develop it further.",
+      "topicTags": ["agent-governance"],
+      "stance": "neutral",
+      "contributionType": "claim",
+      "confidence": 0.63
+    },
+    {
+      "id": "evt-021",
+      "sessionId": "oasis-panel-2026-07-10",
+      "timestamp": "2026-07-10T10:29:00-06:00",
+      "agentId": "interaction-agent",
+      "agentName": "Interaction Agent",
+      "summary": "Marked agent governance as a low-engagement topic that should return when automation or publishing permissions change.",
+      "topicTags": ["agent-governance", "future-work"],
+      "stance": "clarification",
+      "contributionType": "summary",
+      "status": "deferred"
+    },
+    {
+      "id": "evt-022",
+      "sessionId": "oasis-panel-2026-07-10",
+      "timestamp": "2026-07-10T10:32:00-06:00",
+      "agentId": "narrative-lead",
+      "agentName": "Scientific Narrative Lead",
+      "summary": "Closed with a public-facing summary: evidence traceability is settled for now; benchmark governance and foundation-model interpretation need more work.",
+      "topicTags": ["open-science", "evidence-traceability", "benchmarks", "foundation-models"],
+      "stance": "neutral",
+      "contributionType": "summary"
+    }
+  ],
+  "openQuestions": [
+    {
+      "id": "q-001",
+      "text": "When does predictive accuracy count as ecological discovery rather than pattern interpolation?",
+      "topicId": "foundation-models",
+      "mentions": 4,
+      "firstRaised": "2026-07-10T09:24:00-06:00",
+      "lastDiscussed": "2026-07-10T10:18:00-06:00",
+      "agentIds": ["domain-scientist", "quant-modeler", "skeptic"],
+      "priority": "high",
+      "status": "needs evidence"
+    },
+    {
+      "id": "q-002",
+      "text": "How should ecological benchmarks represent under-sampled regions and community-held knowledge?",
+      "topicId": "benchmarks",
+      "mentions": 3,
+      "firstRaised": "2026-07-10T09:39:00-06:00",
+      "lastDiscussed": "2026-07-10T09:48:00-06:00",
+      "agentIds": ["societal-impact", "scientific-director", "narrative-lead"],
+      "priority": "high",
+      "status": "actively discussed"
+    },
+    {
+      "id": "q-003",
+      "text": "Which remote-sensing evidence packets should be assembled before drawing conclusions?",
+      "topicId": "remote-sensing",
+      "mentions": 2,
+      "firstRaised": "2026-07-10T09:57:00-06:00",
+      "lastDiscussed": "2026-07-10T10:01:00-06:00",
+      "agentIds": ["data-engineer", "citation-curator"],
+      "priority": "medium",
+      "status": "deferred"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "d-001",
+      "statement": "Publish latest-discussion briefs only after human review and explicit labeling of synthetic panel content.",
+      "rationale": "The website should expose useful discussion state without presenting simulated panel outputs as real human statements.",
+      "topicId": "open-science",
+      "confidence": 0.92,
+      "dissentingViews": "None recorded.",
+      "date": "2026-07-10",
+      "owner": "interaction-agent",
+      "followUpAction": "Maintain a panel-updated source brief in the workspace and promote it to docs after review.",
+      "status": "accepted"
+    },
+    {
+      "id": "d-002",
+      "statement": "Treat benchmark performance as useful evidence, not as a standalone definition of ecological discovery.",
+      "rationale": "The panel needs room for mechanism, transfer, perturbation, and interpretability checks.",
+      "topicId": "benchmarks",
+      "confidence": 0.76,
+      "dissentingViews": "The Quantitative Modeler argued that benchmark evidence can be decisive when tests are well designed.",
+      "date": "2026-07-10",
+      "owner": "scientific-director",
+      "followUpAction": "Draft benchmark governance criteria for the next panel round.",
+      "status": "revisiting"
+    }
+  ],
+  "norms": [
+    {
+      "id": "n-001",
+      "text": "Cite evidence when making factual claims, or mark the statement as speculation.",
+      "adoptedAt": "2026-07-10T09:10:00-06:00",
+      "status": "active",
+      "relatedTopicId": "evidence-traceability"
+    },
+    {
+      "id": "n-002",
+      "text": "Preserve minority viewpoints in public summaries.",
+      "adoptedAt": "2026-07-10T10:10:00-06:00",
+      "status": "active",
+      "relatedTopicId": "ai-ethics"
+    },
+    {
+      "id": "n-003",
+      "text": "Avoid counting repeated statements as new ideas or new evidence.",
+      "adoptedAt": "2026-07-10T10:14:00-06:00",
+      "status": "active",
+      "relatedTopicId": "evidence-traceability"
+    }
+  ],
+  "futureQueue": [
+    {
+      "id": "f-001",
+      "topicId": "model-interpretability",
+      "title": "How should interpretability be scored without overclaiming mechanism?",
+      "raisedBy": "interaction-agent",
+      "supportingAgentIds": ["domain-scientist", "quant-modeler", "skeptic"],
+      "owner": "quant-modeler",
+      "status": "assigned"
+    },
+    {
+      "id": "f-002",
+      "topicId": "remote-sensing",
+      "title": "Which sensor-bias evidence packets should be assembled before remote-sensing claims?",
+      "raisedBy": "citation-curator",
+      "supportingAgentIds": ["data-engineer", "citation-curator"],
+      "owner": "citation-curator",
+      "status": "unassigned"
+    },
+    {
+      "id": "f-003",
+      "topicId": "agent-governance",
+      "title": "When should approval gates expand for publishing, automation, or GitHub push actions?",
+      "raisedBy": "data-engineer",
+      "supportingAgentIds": ["interaction-agent"],
+      "owner": "",
+      "status": "deferred"
+    }
+  ]
+}

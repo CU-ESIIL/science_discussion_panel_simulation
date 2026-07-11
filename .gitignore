@@ -24,6 +24,9 @@ storage/datasets.local.json
 storage/*.local.yml
 
 # Track only explicit workspace templates that are part of this repo.
+workspace/projects/*
+!workspace/projects/example/
+!workspace/projects/example/**
 !workspace/services/
 workspace/services/*
 !workspace/services/pi_liaison/

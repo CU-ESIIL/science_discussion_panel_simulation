@@ -1,0 +1,201 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cu-esiil.github.io/science_discussion_panel_simulation/schemas/discussion-event.schema.json",
+  "title": "ScienceClaw Discussion Minutes",
+  "type": "object",
+  "required": ["sessions", "agents", "topics", "events"],
+  "additionalProperties": false,
+  "properties": {
+    "sessions": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/session" }
+    },
+    "agents": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/agent" }
+    },
+    "topics": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/topic" }
+    },
+    "events": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/discussionEvent" }
+    },
+    "openQuestions": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/openQuestion" },
+      "default": []
+    },
+    "decisions": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/decision" },
+      "default": []
+    },
+    "norms": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/norm" },
+      "default": []
+    },
+    "futureQueue": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/futureQueueItem" },
+      "default": []
+    }
+  },
+  "$defs": {
+    "session": {
+      "type": "object",
+      "required": ["id", "title", "startedAt"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "startedAt": { "type": "string", "format": "date-time" },
+        "endedAt": { "type": "string", "format": "date-time" },
+        "summary": { "type": "string" }
+      }
+    },
+    "agent": {
+      "type": "object",
+      "required": ["id", "name", "role"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "role": { "type": "string" }
+      }
+    },
+    "topic": {
+      "type": "object",
+      "required": ["id", "label", "category", "canonicalTags"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string" },
+        "label": { "type": "string" },
+        "category": { "type": "string" },
+        "canonicalTags": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "relatedTopicIds": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": []
+        },
+        "status": { "type": "string" }
+      }
+    },
+    "discussionEvent": {
+      "type": "object",
+      "required": [
+        "id",
+        "sessionId",
+        "timestamp",
+        "agentId",
+        "agentName",
+        "summary",
+        "topicTags",
+        "stance",
+        "contributionType"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string" },
+        "sessionId": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "agentId": { "type": "string" },
+        "agentName": { "type": "string" },
+        "summary": { "type": "string" },
+        "sourceText": { "type": "string" },
+        "topicTags": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" }
+        },
+        "stance": {
+          "type": "string",
+          "enum": ["agree", "disagree", "neutral", "unresolved", "clarification"]
+        },
+        "contributionType": {
+          "type": "string",
+          "enum": ["claim", "evidence", "question", "proposal", "decision", "norm", "action", "summary"]
+        },
+        "relatedEventIds": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "evidenceRefs": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "actionOwner": { "type": "string" },
+        "status": { "type": "string" }
+      }
+    },
+    "openQuestion": {
+      "type": "object",
+      "required": ["id", "text", "topicId", "mentions", "firstRaised", "lastDiscussed", "agentIds", "priority", "status"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string" },
+        "text": { "type": "string" },
+        "topicId": { "type": "string" },
+        "mentions": { "type": "integer", "minimum": 0 },
+        "firstRaised": { "type": "string", "format": "date-time" },
+        "lastDiscussed": { "type": "string", "format": "date-time" },
+        "agentIds": { "type": "array", "items": { "type": "string" } },
+        "priority": { "type": "string", "enum": ["low", "medium", "high"] },
+        "status": { "type": "string", "enum": ["newly raised", "actively discussed", "needs evidence", "deferred", "resolved"] }
+      }
+    },
+    "decision": {
+      "type": "object",
+      "required": ["id", "statement", "rationale", "topicId", "confidence", "date", "owner", "followUpAction", "status"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string" },
+        "statement": { "type": "string" },
+        "rationale": { "type": "string" },
+        "topicId": { "type": "string" },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+        "dissentingViews": { "type": "string" },
+        "date": { "type": "string" },
+        "owner": { "type": "string" },
+        "followUpAction": { "type": "string" },
+        "status": { "type": "string", "enum": ["proposed", "accepted", "revisiting", "completed"] }
+      }
+    },
+    "norm": {
+      "type": "object",
+      "required": ["id", "text", "adoptedAt", "status"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string" },
+        "text": { "type": "string" },
+        "adoptedAt": { "type": "string", "format": "date-time" },
+        "status": { "type": "string" },
+        "relatedTopicId": { "type": "string" }
+      }
+    },
+    "futureQueueItem": {
+      "type": "object",
+      "required": ["id", "topicId", "title", "raisedBy", "supportingAgentIds", "status"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string" },
+        "topicId": { "type": "string" },
+        "title": { "type": "string" },
+        "raisedBy": { "type": "string" },
+        "supportingAgentIds": { "type": "array", "items": { "type": "string" } },
+        "owner": { "type": "string" },
+        "status": { "type": "string" }
+      }
+    }
+  }
+}
