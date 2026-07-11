@@ -3,7 +3,19 @@ hide:
   - toc
 ---
 
-# OASIS Scientific Discussion Panel
+<section class="site-photo-hero">
+  <img src="assets/panel/ecologists-meet-ai-hero.png" alt="Ecologists and AI researchers discussing ecosystem science on a conference panel">
+  <div class="site-photo-hero__copy">
+    <p class="eyebrow">OASIS Scientific Discussion Panel</p>
+    <h1>Ecologists meet AI in a container built for durable scientific memory.</h1>
+    <p>Run a disclosed simulated panel, preserve evidence and disagreement, and publish reviewed discussion summaries to the website.</p>
+    <div class="cta-buttons">
+      <a class="md-button md-button--primary" href="quick-start/">Start locally</a>
+      <a class="md-button" href="dashboard/discussion-dashboard/">View dashboard</a>
+      <a class="md-button" href="reports/latest-discussion/">Latest discussion</a>
+    </div>
+  </div>
+</section>
 
 OASIS Scientific Discussion Panel is a local ScienceClaw/OpenClaw container for
 a persistent evidence-based scientific forum about **AI for Ecology:
@@ -22,6 +34,14 @@ has a final answer.
 
 ## What This Container Is For
 
+<div class="panel-image-strip">
+  <img src="assets/panel/panel-tile-01-speaker.png" alt="Panel participant speaking with a microphone">
+  <img src="assets/panel/panel-tile-05-key-questions.png" alt="Participant writing key questions about ecological AI on a board">
+  <img src="assets/panel/panel-tile-07-breakout.png" alt="Small group discussing notes around a laptop">
+  <img src="assets/panel/panel-tile-08-voting.png" alt="Audience members voting with colored cards">
+  <img src="assets/panel/panel-tile-10-map-talk.png" alt="Presenter pointing to a species richness map">
+</div>
+
 - Run a disclosed simulated scientific panel focused on AI for ecology.
 - Keep scientific memory in files that people can inspect, edit, review, and
   version.
@@ -31,6 +51,35 @@ has a final answer.
   decide what should be published or pushed to GitHub.
 - Provide a repeatable local environment for model routing, evidence checks,
   small experiments, report review, and repository operations.
+
+## Public Discussion Outputs
+
+The panel maintains a latest-discussion brief in the workspace. After human
+review, that brief can be promoted into the website so readers can see what the
+panel most recently discussed, what dominated, what stalled, what remains
+unresolved, and what should happen next.
+
+The dashboard turns structured minutes into a visual summary of conversation
+activity: topic volume, stance distributions, open questions, decisions, adopted
+norms, future queue, timeline, and agent participation.
+
+<div class="homepage-card-grid">
+  <a class="homepage-card" href="reports/latest-discussion/">
+    <strong>Latest discussion</strong>
+    <p>Reviewed public brief of the most recent panel round.</p>
+    <span>Read the brief</span>
+  </a>
+  <a class="homepage-card" href="dashboard/discussion-dashboard/">
+    <strong>Conversation dashboard</strong>
+    <p>See which topics dominated, stalled, resolved, or remained contested.</p>
+    <span>Open dashboard</span>
+  </a>
+  <a class="homepage-card" href="discussion-coding-protocol/">
+    <strong>Coding protocol</strong>
+    <p>Structured minute-taking rules for panel agents and reviewers.</p>
+    <span>See the model</span>
+  </a>
+</div>
 
 ## Mental Model
 

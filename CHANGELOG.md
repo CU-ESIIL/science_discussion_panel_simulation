@@ -21,6 +21,11 @@
   local URLs, service roles, 20 GiB memory configuration, no-secrets demo use,
   and the difference between GitHub Actions secrets and local Docker Compose
   secret files.
+- Added the supplied Ecologists Meet AI hero/contact-sheet artwork as tracked
+  site assets, cropped reusable panel tiles, a public latest-discussion brief,
+  a generated discussion dashboard, structured mock minutes, a discussion-event
+  schema, an agent coding protocol, CSV/JSON exports, and tests for dashboard
+  aggregation.
 
 ### Fixed
 
@@ -41,6 +46,8 @@
 - Updated `AGENTS.md` to identify this repository as the OASIS Scientific
   Discussion Panel container appliance and to document what users need for local
   operation, secrets, GitHub access, and Docker resource settings.
+- Updated the homepage to use the supplied hero image and link directly to the
+  latest discussion brief, dashboard, and discussion coding protocol.
 - Reworked the MkDocs information architecture into a simpler product-style navigation with Start Here, Use OpenClaw, Working Groups, Data and Storage, and Maintainer / Advanced sections.
 - Redesigned the homepage with OASIS-inspired hero, section bands, visual interludes, gallery-style card grids, and clearer calls to action for onboarding, working-group use, storage, and advanced customization.
 - Added a new `docs/start-here/what-is-openclaw.md` overview page to explain the container, agent workspace, and scientific collaboration layers in plain language for new scientists.

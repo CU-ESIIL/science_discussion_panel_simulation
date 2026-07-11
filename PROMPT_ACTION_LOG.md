@@ -2,6 +2,76 @@
 
 This log records implementation prompts that change the reusable ScienceClaw/OASIS template. Keep private user data, credentials, and live workspace secrets out of this file.
 
+## 2026-07-10 - Discussion Dashboard And Site Imagery
+
+### Prompt Summary
+
+Use the supplied Ecologists Meet AI hero image and panel contact sheet on the
+website, add a panel-updated latest-discussion document that can be promoted to
+the site, and create a dashboard showing what discussions dominated, what did
+not go far, agreement, disagreement, open questions, decisions, norms, and
+participation.
+
+### Files Changed
+
+- `docs/assets/panel/ecologists-meet-ai-hero.png`
+- `docs/assets/panel/ecologists-meet-ai-contact-sheet.png`
+- `docs/assets/panel/panel-tile-01-speaker.png`
+- `docs/assets/panel/panel-tile-02-audience.png`
+- `docs/assets/panel/panel-tile-03-panel-stage.png`
+- `docs/assets/panel/panel-tile-04-poster-dialogue.png`
+- `docs/assets/panel/panel-tile-05-key-questions.png`
+- `docs/assets/panel/panel-tile-06-floor-question.png`
+- `docs/assets/panel/panel-tile-07-breakout.png`
+- `docs/assets/panel/panel-tile-08-voting.png`
+- `docs/assets/panel/panel-tile-09-table-discussion.png`
+- `docs/assets/panel/panel-tile-10-map-talk.png`
+- `docs/data/discussion-minutes.mock.json`
+- `docs/data/discussion-events.csv`
+- `docs/dashboard/discussion-dashboard.md`
+- `docs/dashboard/index.md`
+- `docs/discussion-coding-protocol.md`
+- `docs/index.md`
+- `docs/reports/index.md`
+- `docs/reports/latest-discussion.md`
+- `docs/stylesheets/extra.css`
+- `config/discussion-coding-protocol.md`
+- `config/discussion-event.schema.json`
+- `docker/seed-workspace/config/discussion-coding-protocol.md`
+- `docker/seed-workspace/reports/latest-discussion.md`
+- `docker/seed-workspace/scripts/init-working-group.sh`
+- `mkdocs.yml`
+- `scripts/discussion_dashboard.py`
+- `scripts/test-discussion-dashboard.py`
+- `CHANGELOG.md`
+- `PROMPT_ACTION_LOG.md`
+
+### Architectural Decisions
+
+- Keep the dashboard as a static MkDocs page generated from structured minutes
+  so GitHub Pages can render it without a live app server.
+- Store mock discussion data separately from presentation in
+  `docs/data/discussion-minutes.mock.json`.
+- Put aggregation and page rendering in `scripts/discussion_dashboard.py` so
+  future real panel logs can replace the mock data.
+- Add a JSON schema and coding protocol so panel agents can record consistent
+  minute events.
+- Seed a workspace `reports/latest-discussion.md` source document for agents to
+  update before human review promotes it into `docs/reports/`.
+- Treat low engagement as either low event volume or explicit panel status, so
+  proposed-but-underdeveloped topics remain visible.
+
+### Tests Run
+
+- `python3 scripts/discussion_dashboard.py`
+- `python3 scripts/test-discussion-dashboard.py`
+- `python3 -m json.tool docs/data/discussion-minutes.mock.json`
+- `python3 -m json.tool config/discussion-event.schema.json`
+- `git diff --check`
+- `scripts/test-panel.sh`
+- `docker compose config --quiet`
+- Attempted `python3 -m mkdocs build --strict`; not run because the host Python environment does not have `mkdocs` installed.
+
 ## 2026-07-10 - Container Purpose And Local Use Documentation
 
 ### Prompt Summary
