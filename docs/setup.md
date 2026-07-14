@@ -14,11 +14,11 @@ mode, Docker-friendly Gateway bind settings, token auth, Control UI origins for
 local browser use, a default model route, the `/data` runtime layout, and starter
 panel workspace files from `docker/seed-workspace`.
 
-The default workspace is a persistent scientific discussion panel scaffold. It
-includes disclosed simulated panelist perspectives, a Moderator, an Interaction
-Agent, backstage support agents, shared memory files, project folders, evidence
-ledgers, disagreement maps, bounded experiment records, and human approval
-rules.
+The default workspace is a Scientific Panel Digital Twin scaffold. It includes
+14 functional scientific roles, shared memory files, structured discussion
+events, a tag ontology, evidence ledgers, disagreement maps, bounded experiment
+records, decision records, action items, collaboration norms, dashboard-ready
+metadata, and human approval rules.
 
 The appliance is intended to be reproducible from the repository: build the
 image, provide local `.env` settings and optional local secrets, and the

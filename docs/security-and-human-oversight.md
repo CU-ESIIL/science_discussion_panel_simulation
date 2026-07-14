@@ -13,5 +13,5 @@ Humans approve:
 - public claims involving communities, Tribes, Indigenous knowledge, public
   health, law, or policy
 
-Slack, when enabled, routes through the Interaction Agent only. It must not
-become a direct arbitrary shell execution surface.
+Slack, when enabled, routes through the PI Liaison only. It must not become a
+direct arbitrary shell execution surface.

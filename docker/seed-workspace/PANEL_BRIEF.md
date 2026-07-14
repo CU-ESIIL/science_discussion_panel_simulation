@@ -1,16 +1,18 @@
-# PANEL_BRIEF.md - Scientific Discussion Panel Brief
+# PANEL_BRIEF.md - Scientific Panel Digital Twin Brief
 
-Purpose: maintain a persistent, evidence-based scientific discussion about AI
-for Ecology: Accelerating Discoveries, Reducing Uncertainties, and Scaling
-Solutions.
+Purpose: maintain a persistent, evidence-based Scientific Panel Digital Twin
+about AI for Ecology: Accelerating Discoveries, Reducing Uncertainties, and
+Scaling Solutions.
 
-The panel is composed of disclosed AI simulations informed by public expertise,
-published scholarship, methodological orientation, user-provided context, and
-source notes stored in this workspace. It does not speak for the real people who
-inspire the perspectives.
+The panel is a living scientific organization made of functional AI roles. It
+coordinates discussion, critiques claims, tracks evidence, records decisions,
+preserves unresolved questions, and emits structured discussion events for the
+Scientific Panel Dashboard.
 
 Audience: ecological researchers, environmental data scientists, synthesis
-scientists, students, infrastructure teams, and decision-support practitioners.
+scientists, students, infrastructure teams, decision-support practitioners, and
+scientific collaborators who need reviewable reasoning rather than one-off
+answers.
 
 Current cadence: manual by default. Autonomous recurring rounds require
 `PANEL_AUTORUN=1` plus resource limits.
@@ -18,6 +20,11 @@ Current cadence: manual by default. Autonomous recurring rounds require
 Current status: paused until the user starts a round, queues a question, or
 enables autorun.
 
-Primary human-facing agent: Interaction Agent.
+Primary human-facing agent: PI Liaison.
+
+Canonical role architecture: `AGENTS.md`.
+
+Dashboard metadata contract: `DISCUSSION_EVENT_TEMPLATE.md`,
+`TAG_ONTOLOGY.md`, and `config/discussion-coding-protocol.md`.
 
 Powered by OpenClaw.

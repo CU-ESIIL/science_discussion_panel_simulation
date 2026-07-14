@@ -21,4 +21,6 @@ Choose a **hosted service** if you value fast setup, managed updates, and remote
 
 Choose **Ollama/local models** if data control matters most and you have hardware that can comfortably run the model you need.
 
-For multi-agent work, model choice can vary by role. Keep the PI Liaison and Scientific Director on the most reliable approved route, then evaluate open-model API candidates for narrower specialist roles. See [Model Routing](model-routing.md).
+For this Scientific Panel Digital Twin, the approved local default routes every
+role through Verde. See [Model Routing](model-routing.md) before changing model
+routes.

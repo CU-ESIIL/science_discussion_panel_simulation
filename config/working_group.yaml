@@ -8,7 +8,7 @@ project:
   title: "OASIS Scientific Discussion Panel"
   short_title: "ScienceClaw Panel"
   subtitle: "Persistent AI-for-ecology scientific forum"
-  mission: "Maintain a durable, evidence-based conversation among disclosed simulated scientific perspectives."
+  mission: "Maintain a durable, evidence-based Scientific Panel Digital Twin that reasons, documents, critiques, remembers, and improves shared understanding."
   lifecycle_state: "active-template"
   repository: "CU-ESIIL/science_discussion_panel_simulation"
   branch: "main"
@@ -52,31 +52,32 @@ workspace:
     - "SYSTEM_STATUS.md"
 
 agents:
-  user_facing_default: "interaction-agent"
+  user_facing_default: "pi-liaison"
   human_review_required: true
   tiers:
-    on_stage_panel:
-      - "Tanya Berger-Wolf simulated perspective"
-      - "Lauren Gillespie simulated perspective"
-      - "Jenna Kline simulated perspective"
-      - "Justin Kitzes simulated perspective"
-      - "Katherine Siegel simulated perspective"
-      - "Ty Tuff simulated perspective"
-    moderation:
-      - "Moderator composite simulation"
-    backstage_support:
-      - "Interaction Agent"
-      - "Discussion Producer"
-      - "Evidence and Literature Curator"
-      - "Fact Checker"
-      - "Experiment Steward"
-      - "Memory and Transcript Curator"
-      - "Bias and Balance Reviewer"
+    coordination:
+      - "PI Liaison"
+      - "Scientific Director"
+      - "Team Science Facilitator"
+      - "Agent Operations Manager"
+    scientific_reasoning:
+      - "Domain Scientist"
+      - "Quantitative Modeler"
+      - "Data Engineer / Infrastructure Scientist"
+      - "Skeptical Reviewer"
+    evidence_and_memory:
+      - "Citation and Evidence Curator"
+      - "Decision Recorder"
+      - "Discussion Intelligence Agent"
+      - "Scientific Narrative Lead"
+    impact_and_execution:
+      - "Societal Impact Agent"
+      - "Cloud Infrastructure Engineer"
 
 integrations:
   slack:
     enabled: false
-    user_facing_component: "Interaction Agent only"
+    user_facing_component: "PI Liaison only"
   github:
     enabled: true
     role: "control-plane"
@@ -94,6 +95,9 @@ workflow_modes:
   panel_intake: true
   constitution_formation: true
   persistent_discussion_loop: true
+  structured_minutes: true
+  semantic_tagging: true
+  dashboard_event_exports: true
   evidence_curation: true
   bounded_experiments: true
   checkpoint: true

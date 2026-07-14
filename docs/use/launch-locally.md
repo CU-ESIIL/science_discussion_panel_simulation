@@ -40,8 +40,43 @@ docker compose up -d
 After the first build, use:
 
 ```bash
-docker compose up -d
+make start
 ```
+
+## Open The Control UI
+
+Open `http://127.0.0.1:18789/#token=scienceclaw-local` when using the default
+local token from `.env`.
+
+You can also run:
+
+```bash
+make open-ui
+```
+
+If the page asks for authentication, use the mode configured in `.env`:
+
+- `OPENCLAW_GATEWAY_AUTH_MODE=token`: open the Control UI with
+  `#token=<OPENCLAW_GATEWAY_TOKEN>` at the end of the URL.
+- `OPENCLAW_GATEWAY_AUTH_MODE=password`: enter `OPENCLAW_GATEWAY_PASSWORD` in
+  the password field. Passwords are not stored by the browser UI.
+
+If `.env` does not set a stable token, use the generated token-bearing URL from:
+
+```bash
+docker compose exec openclaw-local openclaw dashboard --no-open
+```
+
+For local laptop runs, ScienceClaw disables the extra one-time browser/device
+pairing gate by default:
+
+```dotenv
+SCIENCECLAW_DISABLE_CONTROL_UI_DEVICE_PAIRING=1
+```
+
+Token or password auth still applies. Set this value to `0` only when you want
+the Control UI to require explicit `openclaw devices approve` approval for each
+new browser profile.
 
 ## Stop
 
@@ -55,6 +90,23 @@ This stops services. It does not automatically delete named volumes.
 
 ```bash
 docker compose ps
+```
+
+## Cron Jobs
+
+OpenClaw Gateway cron jobs are disabled on container startup by default because
+old scheduled jobs can keep sending repeated error messages to connected
+channels. Leave this setting in `.env` unless you are intentionally testing
+scheduled Gateway work:
+
+```dotenv
+SCIENCECLAW_DISABLE_OPENCLAW_CRON=1
+```
+
+To turn off cron jobs in a running local container:
+
+```bash
+make cron-off
 ```
 
 ## Verify The Panel

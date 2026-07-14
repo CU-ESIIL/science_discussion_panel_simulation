@@ -47,6 +47,9 @@ required_files=(
   PANEL_NORMS_HISTORY.md
   DISSENTS.md
   PANELIST_ROSTER.md
+  TAG_ONTOLOGY.md
+  STRUCTURED_MEMORY.md
+  DISCUSSION_EVENT_TEMPLATE.md
   CURRENT_POSITIONS.md
   TOPIC_QUEUE.yaml
   QUESTIONS_FROM_USER.md
@@ -67,13 +70,6 @@ required_files=(
   scripts/start-interaction-agent.sh
   scripts/panel-control.sh
   scripts/check-secret-config.sh
-  panel_sources/tanya_berger_wolf.md
-  panel_sources/lauren_gillespie.md
-  panel_sources/jenna_kline.md
-  panel_sources/justin_kitzes.md
-  panel_sources/katherine_siegel.md
-  panel_sources/ty_tuff.md
-  panel_sources/moderator.md
 )
 
 if [ ! -x "${init_script}" ]; then
@@ -103,24 +99,36 @@ for file in "${required_files[@]}"; do
 done
 
 for name in \
-  "Tanya Berger-Wolf" \
-  "Lauren Gillespie" \
-  "Jenna Kline" \
-  "Justin Kitzes" \
-  "Katherine Siegel" \
-  "Ty Tuff"; do
-  if ! grep -qi "${name} simulated perspective" "${workspace}/AGENTS.md"; then
-    echo "Missing simulated panelist in AGENTS.md: ${name}" >&2
+  "PI Liaison" \
+  "Scientific Director" \
+  "Domain Scientist" \
+  "Quantitative Modeler" \
+  "Data Engineer / Infrastructure Scientist" \
+  "Citation and Evidence Curator" \
+  "Skeptical Reviewer" \
+  "Team Science Facilitator" \
+  "Scientific Narrative Lead" \
+  "Societal Impact Agent" \
+  "Decision Recorder" \
+  "Discussion Intelligence Agent" \
+  "Cloud Infrastructure Engineer" \
+  "Agent Operations Manager"; do
+  if ! grep -q "${name}" "${workspace}/AGENTS.md"; then
+    echo "Missing Scientific Panel Digital Twin role in AGENTS.md: ${name}" >&2
     exit 1
   fi
 done
 
-grep -q "Interaction Agent" "${workspace}/AGENTS.md" || { echo "Interaction Agent is not documented." >&2; exit 1; }
-grep -q "disclosed AI simulations" "${workspace}/PANEL_BRIEF.md" || { echo "Panel disclosure missing." >&2; exit 1; }
+grep -q "Scientific Panel Digital Twin" "${workspace}/AGENTS.md" || { echo "Digital twin architecture missing." >&2; exit 1; }
+grep -q "structured event" "${workspace}/DISCUSSION_EVENT_TEMPLATE.md" || { echo "Discussion event template missing." >&2; exit 1; }
+grep -q "Canonical Categories" "${workspace}/TAG_ONTOLOGY.md" || { echo "Tag ontology missing." >&2; exit 1; }
+grep -q "Structured memory" "${workspace}/STRUCTURED_MEMORY.md" || grep -q "Memory Type" "${workspace}/STRUCTURED_MEMORY.md" || { echo "Structured memory map missing." >&2; exit 1; }
+grep -q "Scientific Panel Digital Twin" "${workspace}/PANEL_BRIEF.md" || { echo "Panel digital twin brief missing." >&2; exit 1; }
 grep -q "no_impersonation: true" "${workspace}/config/working_group.yaml" || { echo "No-impersonation config missing." >&2; exit 1; }
 grep -q "VERDE_LLM_API_KEY_FILE" "${workspace}/MODEL_ASSIGNMENTS.md" || { echo "AI-VERDE secret-file support missing." >&2; exit 1; }
 grep -q "max_experiments_per_day" "${workspace}/config/working_group.yaml" || { echo "Experiment bound missing." >&2; exit 1; }
 grep -q "citation" "${workspace}/AGENTS.md" || { echo "Citation discipline missing." >&2; exit 1; }
+grep -q "Discussion Intelligence Agent" "${workspace}/config/discussion-coding-protocol.md" || { echo "Discussion Intelligence Agent coding duty missing." >&2; exit 1; }
 
 if ! grep -q "Files created: 0" <<< "${second_output}"; then
   echo "Init script is not idempotent; second run created files." >&2

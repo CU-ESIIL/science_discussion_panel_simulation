@@ -5,9 +5,31 @@ panel:
   title: "OASIS Scientific Discussion Panel"
   theme: "AI for Ecology: Accelerating Discoveries, Reducing Uncertainties, and Scaling Solutions"
   default_landing: "PANEL_BRIEF.md"
-  default_human_interface: "Interaction Agent"
+  architecture: "Scientific Panel Digital Twin"
+  default_human_interface: "PI Liaison"
   status: "paused"
-  simulation_disclosure_required: true
+  structured_minutes_required: true
+  dashboard_events_required: true
+
+agents:
+  coordination:
+    - "PI Liaison"
+    - "Scientific Director"
+    - "Team Science Facilitator"
+    - "Agent Operations Manager"
+  scientific_reasoning:
+    - "Domain Scientist"
+    - "Quantitative Modeler"
+    - "Data Engineer / Infrastructure Scientist"
+    - "Skeptical Reviewer"
+  evidence_and_memory:
+    - "Citation and Evidence Curator"
+    - "Decision Recorder"
+    - "Discussion Intelligence Agent"
+    - "Scientific Narrative Lead"
+  impact_and_execution:
+    - "Societal Impact Agent"
+    - "Cloud Infrastructure Engineer"
 
 discussion_loop:
   autorun: false
@@ -23,7 +45,7 @@ discussion_loop:
 integrations:
   slack:
     enabled: false
-    notes: "Slack should talk to the Interaction Agent, not directly to execution agents."
+    notes: "Slack should talk to the PI Liaison, not directly to execution agents."
   verde:
     enabled: true
     notes: "AI-VERDE endpoint and key remain configurable through env or mounted secret files."

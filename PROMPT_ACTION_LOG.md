@@ -2,6 +2,185 @@
 
 This log records implementation prompts that change the reusable ScienceClaw/OASIS template. Keep private user data, credentials, and live workspace secrets out of this file.
 
+## 2026-07-13 - Scientific Panel Digital Twin Reset
+
+### Prompt Summary
+
+Reset the OpenClaw default agent templates to the Scientific Panel Digital Twin
+architecture, replacing the older role set with 14 collaborative scientific
+roles and structured dashboard-ready discussion outputs.
+
+### Files Changed
+
+- `docker/entrypoint.sh`
+- `docker/seed-workspace/AGENTS.md`
+- `docker/seed-workspace/PANELIST_ROSTER.md`
+- `docker/seed-workspace/TAG_ONTOLOGY.md`
+- `docker/seed-workspace/STRUCTURED_MEMORY.md`
+- `docker/seed-workspace/DISCUSSION_EVENT_TEMPLATE.md`
+- `docker/seed-workspace/MODEL_ASSIGNMENTS.md`
+- `docker/seed-workspace/config/working_group.yaml`
+- `docker/seed-workspace/config/discussion-coding-protocol.md`
+- `docker/seed-workspace/scripts/init-working-group.sh`
+- `docker/seed-workspace/scripts/start-interaction-agent.sh`
+- `scripts/demo_panel_discussion.py`
+- `scripts/panel_control.py`
+- `scripts/test-panel.sh`
+- `config/working_group.yaml`
+- `config/discussion-coding-protocol.md`
+- `docs/agent-team.md`
+- `docs/panelists.md`
+- `docs/panel-architecture.md`
+- `docs/moderator-and-support-agents.md`
+- `docs/asking-the-panel.md`
+- `docs/operations.md`
+- `docs/troubleshooting.md`
+- `docs/instance-runbook.md`
+- `docs/model-options.md`
+- `docs/model-routing.md`
+- `README.md`
+- `CHANGELOG.md`
+- live `workspace/` seed copy
+
+### Architectural Decisions
+
+- Treat the Scientific Panel Digital Twin as the default OpenClaw agent
+  registry, not as a layer on top of older working-group agents.
+- Use 14 functional scientific roles rather than real-person-inspired simulated
+  panelists.
+- Make structured discussion events, tag normalization, evidence references,
+  decisions, norms, uncertainty, confidence, and action items part of every
+  meaningful contribution.
+- Keep PI Liaison as the human-facing default and Discussion Intelligence Agent
+  as the dashboard metadata owner.
+
+### Tests Run
+
+- `scripts/test-panel.sh`
+- `docker compose config --quiet`
+- `git diff --check`
+- `docker compose build`
+- `docker compose up -d --force-recreate`
+- `docker compose exec -T openclaw-local openclaw agents list`
+- `docker compose exec -T openclaw-local openclaw config get agents.defaults.subagents.allowAgents`
+- `docker compose exec -T openclaw-local openclaw config get agents.defaults.models`
+
+## 2026-07-13 - Route All Panel Agents To Verde
+
+### Prompt Summary
+
+Switch the local ScienceClaw panel so every agent uses the configured AI-VERDE
+route instead of leaving human-facing or director-level roles on OpenAI/Codex.
+
+### Files Changed
+
+- `.env.example`
+- `docker-compose.yml`
+- `docker/entrypoint.sh`
+- `docker/seed-workspace/MODEL_ASSIGNMENTS.md`
+- `docker/seed-workspace/services/pi_liaison/.env.template`
+- `docs/ai-verde-configuration.md`
+- `docs/model-routing.md`
+- `README.md`
+- `CHANGELOG.md`
+- `PROMPT_ACTION_LOG.md`
+
+### Architectural Decisions
+
+- Make `verde/js2/gpt-oss-120b` the default local OpenClaw model route.
+- Keep `SCIENCECLAW_VERDE_ONLY_MODE=1` enabled so persisted OpenClaw state does
+  not leave stale OpenAI/Codex routes in the default agent allowlist.
+- Treat the user's approval as the route-change approval required for the
+  Interaction Agent, Moderator, and sensitive panel support roles.
+- Preserve human review gates for publishing, credentials, external actions,
+  GitHub pushes, costly experiments, and sensitive claims.
+
+### Tests Run
+
+- `docker compose config --quiet`
+- `bash -n docker/entrypoint.sh`
+- `docker compose build`
+- `docker compose up -d --force-recreate`
+- `docker compose exec -T openclaw-local openclaw config get agents.defaults.model.primary`
+- `docker compose exec -T openclaw-local openclaw config get agents.defaults.models`
+- `docker compose exec -T openclaw-local openclaw config get models.providers.verde.models`
+- `docker compose exec -T openclaw-local openclaw agent --agent main --session-id verde-default-smoke-20260713 --message "Reply with exactly: VERDE_DEFAULT_OK" --timeout 120 --json` failed with a Verde `HTTP 401` blocked-key response, confirming the route reached Verde but the current key needs unblocking or replacement.
+- `scripts/test-panel.sh`
+- `curl -fsS http://127.0.0.1:18789/`
+- `git diff --check`
+
+## 2026-07-13 - Local Gateway Password Auth
+
+### Prompt Summary
+
+Fix the local OpenClaw Control UI auth loop after unauthenticated Gateway mode
+was refused by the container binding rules.
+
+### Files Changed
+
+- `.env.example`
+- `docker-compose.yml`
+- `Makefile`
+- `README.md`
+- `scripts/disable-openclaw-cron.sh`
+- `scripts/open-control-ui.sh`
+- `docker/entrypoint.sh`
+- `docker/seed-workspace/scripts/start-interaction-agent.sh`
+- `projects/fractal_corridors/workspace/scripts/start-pi-liaison.sh`
+- `projects/fractal_corridors/workspace/public_repo/scripts/start-pi-liaison.sh`
+- `docs/quick-start.md`
+- `docs/use/launch-locally.md`
+- `docs/troubleshooting.md`
+- `docs/operations.md`
+- `CHANGELOG.md`
+- `PROMPT_ACTION_LOG.md`
+
+### Architectural Decisions
+
+- Keep the local Gateway authenticated because OpenClaw refuses unauthenticated
+  LAN/container binding.
+- Support `OPENCLAW_GATEWAY_AUTH_MODE=password` in both Gateway startup and TUI
+  attachment paths.
+- Document password mode as a local browser credential, separate from provider
+  API keys, GitHub tokens, and GitHub Actions secrets.
+- Prefer stable local token mode for no-prompt browser access because the
+  Control UI supports `#token=<token>` fragments while password mode is not
+  stored by the browser UI.
+- Forward `OPENCLAW_GATEWAY_TOKEN` through Docker Compose so the container and
+  browser URL can share a stable local-only token.
+- Change `make up` to detached mode and add `make start` as the one-command
+  local launch path.
+- Disable persisted OpenClaw Gateway cron jobs by default during container
+  startup because old scheduled jobs can keep sending repeated Slack errors.
+- Add `make cron-off` for disabling all live local cron jobs without copying job
+  IDs by hand.
+- Disable the extra Control UI browser/device pairing gate for the default local
+  container run while keeping Gateway token/password auth enabled.
+
+### Tests Run
+
+- `bash -n docker/seed-workspace/scripts/start-interaction-agent.sh projects/fractal_corridors/workspace/scripts/start-pi-liaison.sh projects/fractal_corridors/workspace/public_repo/scripts/start-pi-liaison.sh`
+- `SCIENCECLAW_OPEN_UI_DRY_RUN=1 scripts/open-control-ui.sh`
+- `docker compose exec -T openclaw-local openclaw cron list --all --json`
+- `docker compose exec -T openclaw-local openclaw cron disable <JOB_ID>`
+- `make cron-off`
+- `docker compose exec -T openclaw-local openclaw config get gateway.controlUi.dangerouslyDisableDeviceAuth`
+- `scripts/test-panel.sh`
+- `git diff --check`
+- `docker compose config --quiet`
+- `docker compose build`
+- `docker compose up -d --force-recreate`
+- `docker compose ps`
+- `curl -fsS http://127.0.0.1:18789/#token=scienceclaw-local`
+- Verified `openclaw-local` has `OPENCLAW_GATEWAY_AUTH_MODE=password` and a
+  configured `OPENCLAW_GATEWAY_PASSWORD` without printing the value.
+- Verified `openclaw-local` has `OPENCLAW_GATEWAY_AUTH_MODE=token` and a
+  configured `OPENCLAW_GATEWAY_TOKEN` without printing the value.
+- Verified the OpenClaw Gateway, Workspace CMS, and JupyterLab URLs returned
+  pages from the host.
+- Verified `scienceclaw-panel-control status --workspace /data/workspace`
+  reported the seeded panel state.
+
 ## 2026-07-10 - Discussion Dashboard And Site Imagery
 
 ### Prompt Summary

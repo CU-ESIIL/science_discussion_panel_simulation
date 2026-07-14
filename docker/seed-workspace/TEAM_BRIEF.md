@@ -1,6 +1,8 @@
-# TEAM_BRIEF.md - Working Group Brief
+# TEAM_BRIEF.md - Scientific Panel Digital Twin Brief
 
-This document is written and maintained by the PI Liaison for the scientific working group. It should translate the user's answers into a structured internal brief without inventing goals, facts, data sources, or approvals.
+This document is written and maintained by the PI Liaison for the Scientific
+Panel Digital Twin. It should translate the user's answers into a structured
+internal brief without inventing goals, facts, data sources, or approvals.
 
 ## Project summary
 
@@ -27,13 +29,14 @@ This document is written and maintained by the PI Liaison for the scientific wor
 | Role | Initial task | Expected output | Due or review point |
 | --- | --- | --- | --- |
 | Scientific Director | `[pending intake]` | `[pending]` | `[pending]` |
-| Deputy Director / Integrator | `[pending intake]` | `[pending]` | `[pending]` |
+| Discussion Intelligence Agent | `[pending intake]` | `[pending]` | `[pending]` |
+| Decision Recorder | `[pending intake]` | `[pending]` | `[pending]` |
 
 ## Assumptions to test
 
 - `[To be drafted from user intake and mirrored in ASSUMPTIONS.md as needed.]`
 
-## Issues requiring skeptic review
+## Issues requiring skeptical review
 
 - `[To be identified before major claims are promoted.]`
 

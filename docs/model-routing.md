@@ -1,8 +1,12 @@
 # Model Routing
 
-A scientific working group does not need every role to use the same model route. In this container, the PI Liaison and Scientific Director should stay on the most reliable human-facing route available, while narrower specialist agents can be evaluated against open-model APIs.
+A scientific discussion panel does not need every role to use the same model route. In this container, the current approved local default is Verde for every panel role.
 
-The practical pattern is conservative: keep the user-facing and decision-setting roles on OpenAI/Codex OAuth or another approved high-reliability route, then experiment with hosted open models for bounded work such as data inventories, literature triage, first-pass technical drafts, and skeptic checklists. This follows the same bounded-role idea used throughout the working group: agents get specific jobs, expected outputs, and explicit limits.
+The practical pattern is still conservative: route all agents through the approved Verde OpenAI-compatible endpoint, keep human review gates for publishing, credentials, GitHub pushes, external messaging, costly experiments, and sensitive claims, and record any future route changes before relying on them. This follows the same bounded-role idea used throughout the panel: agents get specific jobs, expected outputs, and explicit limits.
+
+Local startup also sets `SCIENCECLAW_VERDE_ONLY_MODE=1` by default. That rewrites
+the OpenClaw default agent model allowlist to the configured Verde route so
+older persisted OpenAI/Codex routes do not remain available by accident.
 
 The workspace seed includes `/workspace/MODEL_ASSIGNMENTS.md` as the role-level routing register. Update that file when a role changes model route, and record meaningful changes or reversions in `/workspace/DECISIONS.md`.
 
@@ -10,11 +14,10 @@ The workspace seed includes `/workspace/MODEL_ASSIGNMENTS.md` as the role-level 
 
 | Role group | Recommended route | Why |
 | --- | --- | --- |
-| PI Liaison / User Interview Agent | OpenAI/Codex OAuth or another approved high-reliability route | This role talks to the user, manages Slack intake, and batches decisions. |
-| Scientific Director | OpenAI/Codex OAuth or another approved high-reliability route | This role sets scientific direction and decides when claims can advance. |
-| Deputy Director / Integrator | High-reliability route first, open-model experiments after evaluation | This role maintains coherence across the team. |
-| Data, modeling, citation, communication, and skeptic roles | Approved open-model API route allowed for bounded tasks | These roles can be tested with narrower prompts and reviewable outputs. |
-| Societal Impact / Translation Agent | High-reliability route preferred | Sensitive claims about communities, policy, public health, legal rules, or sovereignty require careful review. |
+| PI Liaison | `verde/js2/gpt-oss-120b` | Coordinates human-facing discussion, assignments, transitions, and approvals. |
+| Scientific reasoning roles | `verde/js2/gpt-oss-120b` | Scientific Director, Domain Scientist, Quantitative Modeler, Data Engineer, Citation and Evidence Curator, and Skeptical Reviewer produce reviewable reasoning. |
+| Collaboration and memory roles | `verde/js2/gpt-oss-120b` | Team Science Facilitator, Scientific Narrative Lead, Decision Recorder, and Discussion Intelligence Agent preserve structured memory and dashboard metadata. |
+| Impact and operations roles | `verde/js2/gpt-oss-120b` | Societal Impact Agent, Cloud Infrastructure Engineer, and Agent Operations Manager handle broader impact and runtime operations under approval gates. |
 
 ## Verde-Style API Experiments
 
@@ -23,8 +26,10 @@ For Verde/CyVerse experiments, use the OpenAI-compatible base URL `https://llm-a
 ```dotenv
 VERDE_LLM_BASE_URL=https://llm-api.cyverse.ai/v1
 VERDE_LLM_API_KEY=
-VERDE_LLM_DEFAULT_MODEL=
+VERDE_LLM_DEFAULT_MODEL=js2/gpt-oss-120b
 VERDE_LLM_PROVIDER_NAME=verde
+OPENCLAW_MODEL=verde/js2/gpt-oss-120b
+OPENCLAW_DEFAULT_MODEL=verde/js2/gpt-oss-120b
 ```
 
 After setting a local key, inspect the models your team can access:
@@ -71,7 +76,7 @@ These variables are intentionally generic placeholders. They make the container 
 3. Run the same task with the open-model candidate.
 4. Compare evidence handling, citation behavior, role compliance, and uncertainty language.
 5. Record the result in `/workspace/agent_reports/model_evaluations.md` or `/workspace/DECISIONS.md`.
-6. Promote the route only after human approval when the role is user-facing, Slack-facing, director-level, or involved in sensitive claims.
+6. Change the default route only after human approval when the role is user-facing, Slack-facing, director-level, or involved in sensitive claims.
 
 ## Scaling Pattern
 

@@ -31,9 +31,36 @@
 
 - `scripts/start-instance.sh` now validates that `SCIENCECLAW_RUNTIME_ROOT` is writable before use and automatically falls back to `$RUNNER_TEMP`/`/tmp` with a warning when the configured path is unavailable. This prevents startup failures like `mkdir: cannot create directory '/private': Permission denied` on restricted runners.
 - Clarified the local browser startup path in `README.md`, `docs/quick-start.md`, `docs/operations.md`, and `docs/troubleshooting.md` so the main OpenClaw chat opens from the tokenized `127.0.0.1:18789` Gateway URL rather than the `8090` CMS sidecar, and so first-run token auth plus one-time device pairing are documented explicitly.
+- Added password-auth support to the local Gateway startup scripts so Docker
+  Compose can run the container with `OPENCLAW_GATEWAY_AUTH_MODE=password` and a
+  local `OPENCLAW_GATEWAY_PASSWORD` instead of relying on a tokenized dashboard
+  URL.
+- Added `OPENCLAW_GATEWAY_TOKEN` to Compose environment forwarding and documented
+  a stable local token URL for no-prompt Control UI access.
+- Added `make open-ui` and `scripts/open-control-ui.sh` to open the local
+  Control UI with the configured token fragment.
+- Changed `make up` to start Docker Compose in detached mode and added
+  `make start` as the one-command local launch path.
+- Disabled the extra Control UI browser/device pairing gate by default for local
+  containers with `SCIENCECLAW_DISABLE_CONTROL_UI_DEVICE_PAIRING=1`; Gateway
+  token or password auth still applies.
+- Disabled persisted OpenClaw Gateway cron jobs by default on container startup
+  with `SCIENCECLAW_DISABLE_OPENCLAW_CRON=1`, and added `make cron-off` for
+  disabling any live scheduled jobs.
 
 ### Changed
 
+- Reset the default OpenClaw agent architecture to the 14-role Scientific Panel
+  Digital Twin: PI Liaison, Scientific Director, Domain Scientist, Quantitative
+  Modeler, Data Engineer / Infrastructure Scientist, Citation and Evidence
+  Curator, Skeptical Reviewer, Team Science Facilitator, Scientific Narrative
+  Lead, Societal Impact Agent, Decision Recorder, Discussion Intelligence Agent,
+  Cloud Infrastructure Engineer, and Agent Operations Manager.
+- Added seed-level structured discussion infrastructure for dashboard
+  integration: `TAG_ONTOLOGY.md`, `STRUCTURED_MEMORY.md`, and
+  `DISCUSSION_EVENT_TEMPLATE.md`.
+- Removed the old default real-person-inspired panelist source notes and
+  older role reproducibility templates from the seed initializer.
 - Reframed the default repository and seeded workspace from a deliverable-oriented
   scientific working group to a persistent scientific discussion panel while
   preserving Docker, Docker Compose, OpenClaw, AI-VERDE, mounted secrets, CMS,
@@ -43,6 +70,11 @@
   seed startup prompts, Makefile targets, smoke tests, and GitHub Actions labels
   for the panel model while retaining deprecated working-group aliases for
   compatibility.
+- Switched the default local OpenClaw route and all panel role assignments to
+  AI-VERDE `verde/js2/gpt-oss-120b` after operator approval, replacing the
+  previous OpenAI/Codex-first defaults for human-facing and director roles, and
+  added `SCIENCECLAW_VERDE_ONLY_MODE=1` to prune stale OpenAI/Codex routes from
+  the persisted default agent allowlist.
 - Updated `AGENTS.md` to identify this repository as the OASIS Scientific
   Discussion Panel container appliance and to document what users need for local
   operation, secrets, GitHub access, and Docker resource settings.

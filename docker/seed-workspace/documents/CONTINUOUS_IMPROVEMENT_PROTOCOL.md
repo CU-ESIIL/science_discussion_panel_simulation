@@ -18,8 +18,8 @@ It is not an autonomous permission system. It does not grant authority to publis
 1. **Trigger**: PI Liaison starts the loop manually, by heartbeat, or by a reviewed automation.
 2. **Scope**: PI Liaison names the files, milestone, or question being reviewed.
 3. **Role review**: Relevant agents inspect their own outputs and write short findings in `agent_reports/`.
-4. **Synthesis**: Deputy Director / Integrator merges overlapping findings and flags conflicts.
-5. **Skeptic check**: Skeptic / Adversarial Reviewer identifies overclaims, missing controls, and brittle assumptions.
+4. **Synthesis**: Scientific Director merges overlapping findings and flags scientific conflicts.
+5. **Skeptical check**: Skeptical Reviewer identifies overclaims, missing controls, and brittle assumptions.
 6. **Action proposal**: The team proposes small edits, tests, or next tasks.
 7. **Human gate**: PI Liaison asks the user only for decisions that affect scope, publication, risk, cost, credentials, or scientific direction.
 8. **Record**: PI Liaison updates `CONTINUOUS_IMPROVEMENT_LOG.md`, `DECISIONS.md`, `ASSUMPTIONS.md`, and `QUESTIONS_FOR_USER.md` as needed.

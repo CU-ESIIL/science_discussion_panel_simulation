@@ -29,7 +29,7 @@ if [ ! -f "${prompt_path}" ]; then
 fi
 
 if [ ! -f "${prompt_path}" ]; then
-  echo "Interaction Agent startup prompt not found." >&2
+  echo "PI Liaison startup prompt not found." >&2
   exit 1
 fi
 
@@ -39,6 +39,7 @@ fi
 
 prompt="$(cat "${prompt_path}")"
 gateway_token="${OPENCLAW_GATEWAY_TOKEN:-}"
+gateway_password="${OPENCLAW_GATEWAY_PASSWORD:-}"
 if [ -z "${gateway_token}" ] && [ -f "${config_path}" ]; then
   gateway_token="$(
     node -e '
@@ -57,11 +58,11 @@ fi
 cat <<EOF
 
 OASIS Scientific Discussion Panel
-Interaction Agent is the default human-facing agent.
+PI Liaison is the default human-facing agent.
 
-The Interaction Agent summarizes panel memory, queues user questions, requests
-targeted rounds, reports disagreement and evidence status, and respects pause,
-cadence, budget, and approval controls.
+The PI Liaison summarizes panel memory, assigns questions, requests targeted
+rounds, reports disagreement and evidence status, and respects pause, cadence,
+budget, dashboard metadata, and approval controls.
 
 EOF
 
@@ -86,9 +87,11 @@ if [ -n "${OPENCLAW_INTERACTION_AGENT_ID:-}" ] && openclaw agent --help 2>/dev/n
 fi
 
 if openclaw tui --help 2>/dev/null | grep -q -- "--message"; then
-  tui_args=(tui --session "${session}" --url "${gateway_url}" --message "${prompt}")
+  tui_args=(tui --session "${session}" --message "${prompt}")
   if [ "${gateway_auth}" = "token" ] && [ -n "${gateway_token}" ]; then
-    tui_args+=(--token "${gateway_token}")
+    tui_args+=(--url "${gateway_url}" --token "${gateway_token}")
+  elif [ "${gateway_auth}" = "password" ] && [ -n "${gateway_password}" ]; then
+    tui_args+=(--url "${gateway_url}" --password "${gateway_password}")
   fi
   exec openclaw "${tui_args[@]}"
 fi

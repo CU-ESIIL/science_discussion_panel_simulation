@@ -1,21 +1,20 @@
 # OASIS Scientific Discussion Panel Workspace
 
-This workspace is the active memory for a persistent scientific discussion panel
-on AI for Ecology: Accelerating Discoveries, Reducing Uncertainties, and Scaling
+This workspace is the active memory for a Scientific Panel Digital Twin on AI
+for Ecology: Accelerating Discoveries, Reducing Uncertainties, and Scaling
 Solutions.
 
-The panel is a set of disclosed AI simulations informed by documented expertise,
-published scholarship, methodological orientation, user-provided context, and
-source material stored here. It does not speak for the real researchers whose
-work inspired the perspectives.
+The panel is a functional scientific organization, not a collection of renamed
+assistants. Its roles coordinate, reason, critique, record, facilitate, operate,
+and emit dashboard-ready structured discussion events.
 
 ## Start Here
 
 1. Read `PANEL_BRIEF.md`.
 2. Review `PANELIST_ROSTER.md` and `AGENTS.md`.
 3. Check `SYSTEM_STATUS.md`.
-4. Use `PANEL_INTAKE.md` if the user wants to change topic, cadence, panelists,
-   or research permissions.
+4. Use `PANEL_INTAKE.md` if the user wants to change topic, cadence, roles,
+   dashboard outputs, or research permissions.
 5. Run one deterministic local round with `make demo` from the repository root.
 
 ## Memory Files
@@ -29,12 +28,15 @@ work inspired the perspectives.
 - `EXPERIMENTS/` - bounded proposals and results.
 - `FACT_CHECKS/` - claim verification records.
 - `CURRENT_SYNTHESIS.md` and `DAILY_SYNTHESIS/` - compact summaries.
+- `TAG_ONTOLOGY.md`, `STRUCTURED_MEMORY.md`, and
+  `DISCUSSION_EVENT_TEMPLATE.md` - dashboard-compatible metadata contract.
 
 ## Human Interface
 
-The Interaction Agent is the default human-facing role. It summarizes from
-panel memory, queues user questions, requests targeted rounds, and reports loop
-status. It must not invent responses that were not produced by the panel.
+The PI Liaison is the default human-facing role. It summarizes from panel
+memory, queues user questions, assigns owners, requests targeted rounds, and
+reports loop status. It must not invent responses that were not produced by the
+panel.
 
 ## Safety Defaults
 

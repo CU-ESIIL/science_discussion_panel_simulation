@@ -2,7 +2,7 @@
 
 This page documents the reproducible operating path for the ScienceClaw/OpenClaw
 scientific discussion panel container with Slack Socket Mode and ChatGPT/Codex
-OAuth. Slack should route through the Interaction Agent; it must not bypass
+OAuth. Slack should route through the PI Liaison; it must not bypass
 human approval gates or directly trigger arbitrary shell execution.
 
 The working deployment has four separate gates:
@@ -114,13 +114,13 @@ Healthy Codex OAuth status should show the `openai-codex` profile and may show u
 Before testing Slack, run a direct agent reply check:
 
 ```bash
-docker exec <container-id> openclaw agent --session-id slack-ready-check-$(date +%s) --message 'Reply with exactly: Interaction Agent ready' --timeout 120
+docker exec <container-id> openclaw agent --session-id slack-ready-check-$(date +%s) --message 'Reply with exactly: PI Liaison ready' --timeout 120
 ```
 
 Expected output:
 
 ```text
-Interaction Agent ready
+PI Liaison ready
 ```
 
 Then test in Slack:
@@ -133,9 +133,9 @@ Then test in Slack:
 
 | Symptom | Likely cause | Fix |
 | --- | --- | --- |
-| Browser opens `http://127.0.0.1:8090/` but no chat is visible | The CMS sidecar opened instead of the main Gateway UI | Open `http://127.0.0.1:18789/` or use `openclaw dashboard --no-open` from the live container |
-| Browser reaches `http://127.0.0.1:18789/` but shows `Auth required` | The Gateway is up, but the browser is using an un-tokenized URL | Use the token-bearing URL from `openclaw dashboard --no-open` |
-| Browser accepts the token but shows `Device pairing required` | The local browser has not been approved for Control UI access yet | Run `openclaw devices list`, then `openclaw devices approve <REQUEST_ID>` inside the live Gateway container |
+| Browser opens `http://127.0.0.1:8090/` but no chat is visible | The CMS sidecar opened instead of the main Gateway UI | Open `http://127.0.0.1:18789/#token=scienceclaw-local` or use `openclaw dashboard --no-open` from the live container |
+| Browser reaches `http://127.0.0.1:18789/` but shows `Auth required` | The Gateway is up, but the browser does not have the configured credential | For local token mode, open `http://127.0.0.1:18789/#token=scienceclaw-local`; for password mode, enter `OPENCLAW_GATEWAY_PASSWORD`; for generated token mode, use the token-bearing URL from `openclaw dashboard --no-open` |
+| Browser accepts the token but shows `Device pairing required` | The Gateway requires one-time browser approval | Keep `SCIENCECLAW_DISABLE_CONTROL_UI_DEVICE_PAIRING=1` for local runs and recreate the container, or run `openclaw devices list` and `openclaw devices approve <REQUEST_ID>` inside the live Gateway container when pairing is intentionally enabled |
 | Slack says `access not configured` | Slack user is not paired | Run `openclaw pairing approve slack <PAIRING_CODE>` inside the Gateway container |
 | Slack provider is not connected | Socket Mode token, bot token, channel, or Slack app setup is wrong | Run `scripts/check-secret-config.sh`, check Socket Mode, app-level token, bot membership, and event subscriptions |
 | Slack replies with `Model login expired` | Gateway cannot refresh Codex OAuth | Run `openclaw models auth login --provider openai-codex --set-default` inside the live Gateway container |
@@ -168,7 +168,18 @@ docker exec <container-id> openclaw cron disable <JOB_ID>
 docker exec <container-id> openclaw tasks list --status running --json
 ```
 
-Use recurring jobs conservatively. Continuous-improvement loops should be opt-in and slow enough that one run finishes before the next begins.
+For the local Compose stack, persisted OpenClaw Gateway cron jobs are disabled
+on container startup by default with `SCIENCECLAW_DISABLE_OPENCLAW_CRON=1`. To
+disable any jobs in a running local container, use:
+
+```bash
+make cron-off
+```
+
+Use recurring jobs conservatively. Continuous-improvement loops should be opt-in
+and slow enough that one run finishes before the next begins. Set
+`SCIENCECLAW_DISABLE_OPENCLAW_CRON=0` only when intentionally testing scheduled
+Gateway work.
 
 ## Recover a Multi-Instance Gateway
 
@@ -181,7 +192,7 @@ docker exec <gateway-container> openclaw agents list
 docker exec <gateway-container> openclaw sessions --agent main --json
 ```
 
-The agent list should show the Interaction Agent plus panel and backstage roles. If only `main` appears, repair the agent registry before using the browser. If a session-lock error appears, archive the failed session rather than deleting the instance. See the [multi-instance runbook](instance-runbook.md) before copying state or updating OpenClaw.
+The agent list should show the 14 Scientific Panel Digital Twin roles. If only `main` appears, repair the agent registry before using the browser. If a session-lock error appears, archive the failed session rather than deleting the instance. See the [multi-instance runbook](instance-runbook.md) before copying state or updating OpenClaw.
 
 ## Scaling Notes
 
@@ -189,7 +200,7 @@ Use one narrowly mounted `workspace/` per scientific discussion panel or project
 
 For multiple Slack channels, prefer explicit channel ids in `.env` or deployment-specific environment files. Use a stable value such as `channel:C0123456789` when supported, because channel names can change.
 
-For multiple users, approve each Slack sender intentionally and document who is allowed to operate the Interaction Agent. Slack should remain the Interaction Agent interface, not a direct execution surface for every agent.
+For multiple users, approve each Slack sender intentionally and document who is allowed to operate the PI Liaison. Slack should remain the PI Liaison interface, not a direct execution surface for every agent.
 
 For multiple deployments, keep secrets out of images and git. Build the same image, provide different `.env` files or deployment secrets, and keep each deployment's `~/.openclaw` state separate.
 

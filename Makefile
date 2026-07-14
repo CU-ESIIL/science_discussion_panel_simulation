@@ -1,11 +1,14 @@
-.PHONY: help build up down shell init-panel init-working-group panel-status panel-pause panel-resume panel-round panel-summary panel-queue doctor checkpoint demo demo-environmental smoke-test test-panel test-working-group test-layout check-secrets test-secrets workspace-smoke-test github-smoke-test
+.PHONY: help build up start down open-ui cron-off shell init-panel init-working-group panel-status panel-pause panel-resume panel-round panel-summary panel-queue doctor checkpoint demo demo-environmental smoke-test test-panel test-working-group test-layout check-secrets test-secrets workspace-smoke-test github-smoke-test
 
 help:
 	@echo "OASIS Scientific Discussion Panel commands"
 	@echo
 	@echo "  make build               Build the local container image"
-	@echo "  make up                  Start the local compose stack"
+	@echo "  make up                  Start the local compose stack in the background"
+	@echo "  make start               Start the stack and open the Control UI"
 	@echo "  make down                Stop the local compose stack"
+	@echo "  make open-ui             Open the local Control UI with the configured token"
+	@echo "  make cron-off            Disable all local OpenClaw cron jobs"
 	@echo "  make shell               Open a shell in the OpenClaw container"
 	@echo "  make init-panel          Initialize the local scientific discussion panel scaffold"
 	@echo "  make panel-status        Show panel loop state and queued questions"
@@ -28,10 +31,18 @@ build:
 	@docker compose build
 
 up:
-	@docker compose up
+	@docker compose up -d
+
+start: up open-ui
 
 down:
 	@docker compose down
+
+open-ui:
+	@scripts/open-control-ui.sh
+
+cron-off:
+	@scripts/disable-openclaw-cron.sh
 
 shell:
 	@docker compose run --rm openclaw-local bash

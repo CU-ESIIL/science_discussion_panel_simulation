@@ -20,18 +20,39 @@ cp .env.example .env
 docker compose build
 docker compose up -d
 docker compose ps
+make open-ui
 ```
+
+After the first build, `make start` starts the stack in the background and opens
+the Control UI.
 
 Open:
 
 | Interface | URL | Purpose |
 | --- | --- | --- |
-| OpenClaw Control UI | `http://127.0.0.1:18789/` | Chat, sessions, agents, Gateway status |
+| OpenClaw Control UI | `http://127.0.0.1:18789/#token=scienceclaw-local` | Chat, sessions, agents, Gateway status |
 | Workspace CMS | `http://127.0.0.1:8090/` | File review, previews, GitHub manager, public promotion |
 | JupyterLab | `http://127.0.0.1:8888/lab?token=scienceclaw` | Notebooks, file browsing, workspace editing |
 
 If ports are changed in `.env`, use `docker compose ps` to see the active
 bindings.
+
+For local no-prompt browser access, keep `OPENCLAW_GATEWAY_AUTH_MODE=token` and
+set a stable local `OPENCLAW_GATEWAY_TOKEN` in `.env`. Open the Control UI with
+the token in the URL fragment, for example
+`http://127.0.0.1:18789/#token=scienceclaw-local`.
+
+Local containers also disable the extra one-time Control UI device-pairing gate
+by default with `SCIENCECLAW_DISABLE_CONTROL_UI_DEVICE_PAIRING=1`. Token or
+password auth still applies. Set the value to `0` only when you want each
+browser profile to be explicitly approved with `openclaw devices approve`.
+
+If the Control UI shows an auth screen and you are using a generated token
+instead, get the token-bearing URL from:
+
+```bash
+docker compose exec openclaw-local openclaw dashboard --no-open
+```
 
 ## Panel Commands
 

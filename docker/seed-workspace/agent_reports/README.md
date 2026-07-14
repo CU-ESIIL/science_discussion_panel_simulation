@@ -1,7 +1,12 @@
 # Agent Reports
 
-Use this directory for role-specific memos, handoff notes, skeptic reviews, integration reports, and impact translation notes.
+Use this directory for role-specific memos, handoff notes, skeptical reviews,
+evidence audits, collaboration notes, infrastructure reviews, decision records,
+and dashboard metadata QA.
 
-Reports should name the role, date, evidence used, unresolved questions, and requested human review when relevant.
+Reports should name the role, date, evidence used, topic tags, stance,
+confidence, unresolved questions, action items, owners, and requested human
+review when relevant.
 
-The seeded role reproducibility notes define each role's inputs, outputs, decision rights, handoffs, and failure checks. Treat them as templates to adapt for each deployment.
+The canonical role definitions live in `../AGENTS.md`. Treat
+`scientific_panel_role_notes.md` as the shared template for role reviews.

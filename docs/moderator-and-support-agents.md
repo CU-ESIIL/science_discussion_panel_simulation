@@ -1,19 +1,19 @@
-# Moderator And Support Agents
+# Coordination And Operations Roles
 
-The Moderator maintains agenda, balanced participation, direct response,
-evidence requests, and summaries that do not force consensus.
+The Scientific Panel Digital Twin no longer uses a separate Moderator plus
+backstage helper template. Coordination and operations are distributed across
+explicit scientific-panel roles.
 
-Backstage agents:
+| Role | Coordination Responsibility |
+| --- | --- |
+| PI Liaison | Keeps discussions focused, assigns questions, requests clarification, declares consensus when supported, and summarizes transitions. |
+| Team Science Facilitator | Monitors participation, detects dominance, encourages quieter agents, maintains psychological safety, and documents collaboration norms. |
+| Decision Recorder | Records decisions, consensus, dissent, ownership, deadlines, and action status. |
+| Discussion Intelligence Agent | Converts conversation into structured dashboard metadata and detects repeated or low-engagement topics. |
+| Agent Operations Manager | Tracks workload, idle agents, performance, resource allocation, and subagent needs. |
+| Cloud Infrastructure Engineer | Handles runtime, Kubernetes, storage, GPU, container, and distributed-execution planning. |
 
-- Interaction Agent: user-facing memory retrieval, question queueing, pause and
-  cadence control.
-- Discussion Producer: topic queue, round scheduling, repetition and balance
-  checks.
-- Evidence and Literature Curator: source search, metadata, evidence strength,
-  and citation provenance.
-- Fact Checker: claim verification and correction records.
-- Experiment Steward: bounded experiment proposals and reproducible results.
-- Memory and Transcript Curator: append-only rounds, summaries, indexes, and
-  position history.
-- Bias and Balance Reviewer: dominance, false balance, missing perspectives,
-  and framing checks.
+Scientific reasoning remains distributed across the Scientific Director, Domain
+Scientist, Quantitative Modeler, Data Engineer / Infrastructure Scientist,
+Citation and Evidence Curator, Skeptical Reviewer, Scientific Narrative Lead,
+and Societal Impact Agent.

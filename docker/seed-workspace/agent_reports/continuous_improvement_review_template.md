@@ -32,5 +32,4 @@ Use this template when a role reviews its own outputs during a continuous improv
 
 ## Recommended Next Step
 
-`[One concise recommendation for the PI Liaison or Deputy Director / Integrator.]`
-
+`[One concise recommendation for the PI Liaison, Scientific Director, Decision Recorder, or Agent Operations Manager.]`

@@ -34,10 +34,16 @@ cp .env.example .env
 make init-panel
 make doctor
 make build
-make up
+make start
 ```
 
-Open the main OpenClaw dashboard URL printed by:
+Open the main OpenClaw dashboard. For the default local token, use:
+
+```text
+http://127.0.0.1:18789/#token=scienceclaw-local
+```
+
+If you let OpenClaw generate a token instead, use the URL printed by:
 
 ```bash
 docker compose exec openclaw-local openclaw dashboard --no-open
@@ -105,15 +111,15 @@ self-hosted runner secrets, or Kubernetes Secrets:
 VERDE_LLM_BASE_URL=https://llm-api.cyverse.ai/v1
 VERDE_LLM_API_KEY=
 VERDE_LLM_API_KEY_FILE=
-VERDE_LLM_DEFAULT_MODEL=
+VERDE_LLM_DEFAULT_MODEL=js2/gpt-oss-120b
 VERDE_LLM_PROVIDER_NAME=verde
-OPENCLAW_MODEL=
-OPENCLAW_DEFAULT_MODEL=
+OPENCLAW_MODEL=verde/js2/gpt-oss-120b
+OPENCLAW_DEFAULT_MODEL=verde/js2/gpt-oss-120b
 ```
 
 Role-level assignments live in `docker/seed-workspace/MODEL_ASSIGNMENTS.md` and
-the spawned workspace copy. Do not hard-code a commercial provider as the only
-route.
+the spawned workspace copy. The default local route is Verde for every panel
+role unless the human operator approves a different route.
 
 ## Secrets
 
@@ -129,14 +135,17 @@ See [Secret Migration](docs/secret-migration.md).
 
 ## Safety Model
 
-- The Interaction Agent is the default human-facing agent.
-- On-stage panelists are simulated perspectives, not real people.
-- The Moderator manages agenda and disagreement without forcing consensus.
-- Evidence, fact checks, experiments, and position changes are traceable files.
+- The PI Liaison is the default human-facing coordinator.
+- The default panel is a 14-role Scientific Panel Digital Twin, not renamed
+  software-development agents.
+- Every meaningful contribution should produce structured discussion metadata
+  for the dashboard.
+- Evidence, fact checks, decisions, action items, experiments, norms, and
+  position changes are traceable files.
 - Human approval is required for secrets, publishing, deletion, GitHub pushes,
   new mounts, third-party tools, expensive jobs, billed APIs, and sensitive
   public claims.
-- Slack, when enabled, should route through the Interaction Agent only.
+- Slack, when enabled, should route through the PI Liaison only.
 - Kubernetes workers remain bounded execution mechanisms, not autonomous
   unbounded agents.
 

@@ -33,6 +33,10 @@ The aim is repeatable scientific work, not bureaucracy. If a file does not help 
 
 ## Continuous Improvement Loop
 
-The continuous improvement loop is for private, bounded self-review. It can be triggered manually, by heartbeat, or by an approved automation. The PI Liaison scopes the review, relevant roles write findings, the Deputy Director integrates them, the Skeptic checks overclaims, and the PI Liaison asks the user only for decisions that matter.
+The continuous improvement loop is for private, bounded self-review. It can be
+triggered manually, by heartbeat, or by an approved automation. The PI Liaison
+scopes the review, relevant roles write findings, the Scientific Director
+synthesizes scientific issues, the Skeptical Reviewer checks overclaims, and the
+PI Liaison asks the user only for decisions that matter.
 
 The loop may propose edits, tests, clearer prose, provenance updates, or new simulations. It does not authorize publication, deletion, GitHub pushes, new skills, new mounts, paid API use, or sensitive claims.

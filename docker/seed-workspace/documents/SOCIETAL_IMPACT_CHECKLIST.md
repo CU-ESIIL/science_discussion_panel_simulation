@@ -28,6 +28,6 @@ Use this checklist before translating scientific work into public, policy, commu
 
 - [ ] PI Liaison has batched unresolved human questions.
 - [ ] Citation & Evidence Curator has checked claim support.
-- [ ] Skeptic / Adversarial Reviewer has reviewed major claims.
-- [ ] Societal Impact / Translation Agent has flagged audience and misuse risks.
+- [ ] Skeptical Reviewer has reviewed major claims.
+- [ ] Societal Impact Agent has flagged audience and misuse risks.
 - [ ] Human PI has explicitly approved external-facing language.

@@ -1,6 +1,6 @@
-# Interaction Agent Slack Service
+# PI Liaison Slack Service
 
-This compatibility directory stores Slack setup notes for the Interaction Agent.
+This compatibility directory stores Slack setup notes for the PI Liaison.
 Slack messages should enter panel queues and memory files for reviewable routing.
 Slack must never directly trigger arbitrary shell execution.
 

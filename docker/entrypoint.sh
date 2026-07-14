@@ -127,7 +127,8 @@ const crypto = require("crypto");
 
 const configPath = process.env.OPENCLAW_CONFIG_PATH || `${process.env.OPENCLAW_CONFIG_DIR || "/root/.openclaw"}/openclaw.json`;
 const workspace = process.env.OPENCLAW_WORKSPACE || "/workspace";
-const defaultModel = process.env.OPENCLAW_MODEL || process.env.OPENCLAW_DEFAULT_MODEL || "codex/gpt-5.5";
+const defaultModel = process.env.OPENCLAW_MODEL || process.env.OPENCLAW_DEFAULT_MODEL || "verde/js2/gpt-oss-120b";
+const verdeOnlyMode = process.env.SCIENCECLAW_VERDE_ONLY_MODE !== "0";
 const verdeProviderName = process.env.VERDE_LLM_PROVIDER_NAME || "verde";
 const verdeApiKey = process.env.VERDE_LLM_API_KEY || process.env.AI_VERDE_API_KEY || "";
 const verdeBaseUrl = process.env.VERDE_LLM_BASE_URL || "https://llm-api.cyverse.ai/v1";
@@ -135,6 +136,7 @@ const verdeDefaultModel = process.env.VERDE_LLM_DEFAULT_MODEL || "js2/gpt-oss-12
 const gatewayBind = process.env.OPENCLAW_GATEWAY_BIND || "lan";
 const gatewayPort = Number(process.env.OPENCLAW_GATEWAY_PORT || "18789");
 const authMode = process.env.OPENCLAW_GATEWAY_AUTH_MODE || "token";
+const disableDevicePairing = process.env.SCIENCECLAW_DISABLE_CONTROL_UI_DEVICE_PAIRING !== "0";
 const origins = (process.env.OPENCLAW_CONTROL_ORIGINS || "http://127.0.0.1:18789,http://localhost:18789")
   .split(",")
   .map((value) => value.trim())
@@ -153,9 +155,64 @@ config.agents ||= {};
 config.agents.defaults ||= {};
 config.agents.defaults.workspace = workspace;
 config.agents.defaults.models ||= {};
+if (verdeOnlyMode) {
+  config.agents.defaults.models = {};
+}
 config.agents.defaults.models[defaultModel] ||= {};
 config.agents.defaults.model ||= {};
 config.agents.defaults.model.primary = defaultModel;
+const panelSubagents = [
+  "scientific-director",
+  "domain-scientist",
+  "quantitative-modeler",
+  "data-engineer",
+  "citation-evidence-curator",
+  "skeptical-reviewer",
+  "team-science-facilitator",
+  "scientific-narrative-lead",
+  "societal-impact-agent",
+  "decision-recorder",
+  "discussion-intelligence-agent",
+  "cloud-infrastructure-engineer",
+  "agent-operations-manager",
+];
+const panelAgentNames = {
+  main: "PI Liaison",
+  "scientific-director": "Scientific Director",
+  "domain-scientist": "Domain Scientist",
+  "quantitative-modeler": "Quantitative Modeler",
+  "data-engineer": "Data Engineer / Infrastructure Scientist",
+  "citation-evidence-curator": "Citation and Evidence Curator",
+  "skeptical-reviewer": "Skeptical Reviewer",
+  "team-science-facilitator": "Team Science Facilitator",
+  "scientific-narrative-lead": "Scientific Narrative Lead",
+  "societal-impact-agent": "Societal Impact Agent",
+  "decision-recorder": "Decision Recorder",
+  "discussion-intelligence-agent": "Discussion Intelligence Agent",
+  "cloud-infrastructure-engineer": "Cloud Infrastructure Engineer",
+  "agent-operations-manager": "Agent Operations Manager",
+};
+config.agents.defaults.subagents ||= {};
+config.agents.defaults.subagents.allowAgents = panelSubagents;
+config.agents.defaults.subagents.maxConcurrent ||= 8;
+config.agents.defaults.subagents.archiveAfterMinutes ||= 60;
+config.agents.defaults.maxConcurrent ||= 4;
+config.agents.list = [
+  {
+    id: "main",
+    default: true,
+    name: panelAgentNames.main,
+    workspace,
+    model: { primary: defaultModel },
+    subagents: { allowAgents: panelSubagents },
+  },
+  ...panelSubagents.map((id) => ({
+    id,
+    name: panelAgentNames[id],
+    workspace,
+    model: { primary: defaultModel },
+  })),
+];
 
 config.models ||= {};
 config.models.mode ||= "merge";
@@ -208,6 +265,9 @@ if (authMode === "token") {
 }
 config.gateway.controlUi ||= {};
 config.gateway.controlUi.allowedOrigins = origins;
+if (disableDevicePairing) {
+  config.gateway.controlUi.dangerouslyDisableDeviceAuth = true;
+}
 
 config.plugins ||= {};
 config.plugins.entries ||= {};
@@ -271,6 +331,40 @@ if [ "${OPENCLAW_CONFIGURE_SLACK:-1}" != "0" ] \
     sed -E 's/(xoxb-|xapp-)[A-Za-z0-9._-]+/\1****REDACTED/g' /tmp/openclaw-slack-configure.log | tail -n 80 >&2
     exit 1
   }
+fi
+
+if [ "${SCIENCECLAW_DISABLE_OPENCLAW_CRON:-1}" != "0" ]; then
+  node - "${config_dir}/cron/jobs.json" <<'NODE'
+const fs = require("fs");
+const path = process.argv[2];
+
+if (!path || !fs.existsSync(path)) process.exit(0);
+
+try {
+  const data = JSON.parse(fs.readFileSync(path, "utf8"));
+  const jobs = Array.isArray(data?.jobs)
+    ? data.jobs
+    : Array.isArray(data)
+      ? data
+      : data?.jobs && typeof data.jobs === "object"
+        ? Object.values(data.jobs)
+        : [];
+  let changed = false;
+  for (const job of jobs) {
+    if (job && job.enabled !== false) {
+      job.enabled = false;
+      job.updatedAtMs = Date.now();
+      changed = true;
+    }
+  }
+  if (changed) {
+    fs.writeFileSync(path, `${JSON.stringify(data, null, 2)}\n`, { mode: 0o600 });
+  }
+} catch (error) {
+  console.error(`Could not disable OpenClaw cron jobs: ${error.message}`);
+  process.exit(1);
+}
+NODE
 fi
 
 start_interaction="${OPENCLAW_START_INTERACTION_AGENT:-${OPENCLAW_START_PI_LIAISON:-1}}"

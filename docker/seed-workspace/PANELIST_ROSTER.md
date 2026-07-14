@@ -1,14 +1,23 @@
 # PANELIST_ROSTER.md
 
-All on-stage panelists are disclosed simulations. They do not speak for the real
-people whose public expertise informed the perspective design.
+The Scientific Panel Digital Twin is organized around functional scientific
+roles. These agents are not impersonations of real people and do not claim
+private expertise or views. Each role contributes a bounded perspective to a
+shared scientific discussion.
 
-| Agent | Disclosure | Expertise Focus | Source Note | Status |
-| --- | --- | --- | --- | --- |
-| Tanya Berger-Wolf simulated perspective | Simulated perspective informed by published work and documented expertise. | computational ecology, wildlife computer vision, biodiversity AI, imageomics | `panel_sources/tanya_berger_wolf.md` | active |
-| Lauren Gillespie simulated perspective | Simulated perspective informed by published work and documented expertise. | biodiversity ML, multimodal models, dataset bias, transfer | `panel_sources/lauren_gillespie.md` | active |
-| Jenna Kline simulated perspective | Simulated perspective informed by user-provided context and documented expertise. | drones, autonomous sensing, edge AI, field robotics | `panel_sources/jenna_kline.md` | active |
-| Justin Kitzes simulated perspective | Simulated perspective informed by published work and documented expertise. | passive acoustic monitoring, detection pipelines, open ecological software | `panel_sources/justin_kitzes.md` | active |
-| Katherine Siegel simulated perspective | Simulated perspective informed by user-provided affiliation context and documented expertise. | geography, causal inference, uncertainty, external validity | `panel_sources/katherine_siegel.md` | active |
-| Ty Tuff simulated perspective | Simulated perspective informed by published work, documented expertise, and user-provided context. | cyberinfrastructure, reproducible science, agentic workflows, open science | `panel_sources/ty_tuff.md` | active |
-| Moderator composite simulation | Disclosed composite informed by the organizing roles of Cibele Amaral and Jennifer Balch. | synthesis, ecological importance, environmental decisions, balanced participation | `panel_sources/moderator.md` | active |
+| Agent | Purpose | Primary Responsibilities | Status |
+| --- | --- | --- | --- |
+| PI Liaison | Coordinate discussions | focus, assignments, clarification, consensus calls, transitions | active |
+| Scientific Director | Maintain scientific vision | goals, breakthroughs, theory links, missing expertise, future directions | active |
+| Domain Scientist | Represent subject-matter expertise | ecological realism, assumptions, literature, biological implications | active |
+| Quantitative Modeler | Represent mathematical reasoning | models, statistics, uncertainty, simulations, scaling, performance | active |
+| Data Engineer / Infrastructure Scientist | Represent computational infrastructure | data architecture, metadata, APIs, reproducibility, storage, efficiency | active |
+| Citation and Evidence Curator | Maintain scientific evidence | citations, claim checks, bibliography, evidence strength, confidence | active |
+| Skeptical Reviewer | Constructively challenge ideas | weaknesses, alternatives, hidden assumptions, failure modes, robustness | active |
+| Team Science Facilitator | Improve collaboration | participation, dominance, quiet voices, norms, psychological safety | active |
+| Scientific Narrative Lead | Maintain the evolving story | summaries, conceptual evolution, manuscript language, figures, messages | active |
+| Societal Impact Agent | Represent broader impacts | policy, management, stakeholders, ethics, communication, implementation | active |
+| Decision Recorder | Maintain structured records | decisions, action items, consensus, dissent, deadlines, ownership | active |
+| Discussion Intelligence Agent | Produce structured metadata | topic coding, stance, evidence, uncertainty, norms, dashboard events | active |
+| Cloud Infrastructure Engineer | Optimize execution | Kubernetes, GPUs, cloud deployment, storage, orchestration, subagents | active |
+| Agent Operations Manager | Manage the panel itself | workload, idle agents, spawning, performance, resources, efficiency | active |

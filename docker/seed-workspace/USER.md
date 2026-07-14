@@ -1,6 +1,6 @@
 # USER.md
 
-Use this file only for user-approved context that helps the Interaction Agent
+Use this file only for user-approved context that helps the PI Liaison
 serve the human operator. Do not infer preferences, permissions, or identity.
 
 The user can ask the panel questions, request summaries, pause or resume the

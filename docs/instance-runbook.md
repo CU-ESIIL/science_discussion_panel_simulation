@@ -11,7 +11,7 @@ A healthy OASIS ScienceClaw instance has four separate parts:
 | Layer | What to check | Why it matters |
 | --- | --- | --- |
 | Gateway | OpenClaw Control UI port, token auth, allowed browser origins | The chat UI can load but still fail to connect if the origin or token state is wrong. |
-| Agent registry | 11 configured agents, with `main` named PI Liaison | If only `main` exists, the agent dropdown disappears and the working group was not seeded correctly. |
+| Agent registry | 14 configured agents, with `main` named PI Liaison | If only `main` exists, the agent dropdown disappears and the Scientific Panel Digital Twin was not seeded correctly. |
 | Workspace services | JupyterLab and CMS ports | Files, outputs, GitHub manager, and review tools live outside the Gateway process. |
 | Persistent state | `instances/<name>/openclaw`, `workspace`, `data`, and `external_storage` | These folders distinguish one working group from another and keep project work from mixing. |
 
@@ -70,9 +70,9 @@ docker exec <gateway-container> openclaw sessions --agent main --json
 
 Expected results:
 
-- `openclaw agents list` shows 11 agents.
+- `openclaw agents list` shows 14 agents.
 - `main` is named `PI Liaison`.
-- Specialist agents such as `scientific-director`, `data-engineer`, `skeptic`, and `societal-impact-translation` are present.
+- Specialist agents such as `scientific-director`, `data-engineer`, `skeptical-reviewer`, `discussion-intelligence-agent`, and `agent-operations-manager` are present.
 - The default model is the expected route, usually `verde/js2/gpt-oss-120b` for open-model testing.
 - `openclaw status` reports the intended gateway port for that instance.
 

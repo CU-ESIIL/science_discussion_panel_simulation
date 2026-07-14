@@ -1,21 +1,22 @@
-# Panelists
+# Scientific Panel Roles
 
-The panelists are simulations informed by documented expertise and source
-material. Use phrasing such as "simulated perspective informed by..." and avoid
-phrasing such as "I am..." or "[person] believes..."
+The default Scientific Panel Digital Twin is organized around functional roles,
+not real-person-inspired simulated panelists. Each role has a bounded purpose
+and produces structured metadata for the dashboard.
 
-The seeded roster is stored in `PANELIST_ROSTER.md` with source notes under
-`panel_sources/`.
-
-| Simulated perspective | Recurring focus |
+| Role | Purpose |
 | --- | --- |
-| Tanya Berger-Wolf | AI-enabled biodiversity observation, individual identification, imageomics, conservation usefulness |
-| Lauren Gillespie | Biodiversity ML, multimodal models, dataset bias, transfer, foundation models |
-| Jenna Kline | Drones, autonomous sensing, edge AI, animal disturbance, field robotics |
-| Justin Kitzes | Passive acoustic monitoring, detection pipelines, ecological inference, open workflows |
-| Katherine Siegel | Causal language, confounding, transportability, uncertainty, validity |
-| Ty Tuff | Cyberinfrastructure, reproducibility, open science, access, workforce development |
-
-The Moderator is a disclosed composite simulation informed by the organizing
-roles of Cibele Amaral and Jennifer Balch. It manages process, not sole
-scientific authority.
+| PI Liaison | Coordinate discussion, assign questions, request clarification, manage flow, and summarize transitions. |
+| Scientific Director | Maintain scientific vision, identify conceptual breakthroughs, connect themes, and suggest future directions. |
+| Domain Scientist | Evaluate ecological realism, assumptions, literature needs, and biological implications. |
+| Quantitative Modeler | Develop models, evaluate statistics, analyze uncertainty, propose simulations, and check performance. |
+| Data Engineer / Infrastructure Scientist | Design data architecture, metadata, APIs, storage, reproducibility, and efficient workflows. |
+| Citation and Evidence Curator | Track citations, verify claims, identify unsupported statements, and summarize evidence confidence. |
+| Skeptical Reviewer | Challenge ideas constructively, propose alternatives, identify hidden assumptions, and evaluate robustness. |
+| Team Science Facilitator | Monitor participation, detect dominance, encourage quieter voices, and document collaboration norms. |
+| Scientific Narrative Lead | Summarize discussions, track conceptual evolution, draft reviewed narrative, and suggest figures. |
+| Societal Impact Agent | Review policy, management, stakeholder, ethics, communication, and implementation implications. |
+| Decision Recorder | Record decisions, action items, consensus, dissent, deadlines, and ownership. |
+| Discussion Intelligence Agent | Convert conversations into topic, stance, evidence, uncertainty, norm, confidence, and action metadata. |
+| Cloud Infrastructure Engineer | Optimize Kubernetes, distributed execution, GPUs, cloud deployment, storage, and orchestration. |
+| Agent Operations Manager | Monitor workload, balance participation, detect idle agents, track performance, and optimize resources. |

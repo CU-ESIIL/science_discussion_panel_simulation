@@ -4,7 +4,7 @@ set -Eeuo pipefail
 workspace="${OPENCLAW_WORKSPACE:-${WORKSPACE_DIR:-/workspace}}"
 
 echo "start-pi-liaison.sh is a deprecated compatibility alias."
-echo "Starting the Scientific Discussion Panel Interaction Agent instead."
+echo "Starting the Scientific Panel Digital Twin PI Liaison instead."
 
 if [ -x "${workspace}/scripts/start-interaction-agent.sh" ]; then
   exec "${workspace}/scripts/start-interaction-agent.sh" "$@"

@@ -1,7 +1,8 @@
 # Discussion Coding Protocol
 
-This protocol tells panel agents how to record structured minutes that can feed
-the public discussion dashboard after human review.
+This protocol tells Scientific Panel Digital Twin agents how to record
+structured minutes that can feed the public discussion dashboard after human
+review.
 
 The goal is not to count every word. The goal is to preserve the shape of the
 scientific conversation: what was discussed, what was ignored, where agreement
@@ -12,7 +13,8 @@ what the panel wants to examine next.
 
 Record a `DiscussionEvent` for every meaningful contribution:
 
-- a new claim, question, proposal, decision, norm, action item, evidence note, or summary
+- a new claim, question, proposal, counterargument, decision, norm, action item,
+  evidence note, or summary
 - a clear agreement, disagreement, clarification, or unresolved issue
 - a topic that was proposed but did not gain traction
 - a change in the panel's understanding, priorities, or public-facing synthesis
@@ -54,20 +56,29 @@ type DiscussionEvent = {
   summary: string
   sourceText?: string
   topicTags: string[]
-  stance: "agree" | "disagree" | "neutral" | "unresolved" | "clarification"
+  normalizedTags: string[]
+  proposedTags?: string[]
+  stance: "agree" | "disagree" | "neutral" | "unresolved" | "clarification" | "mixed"
   contributionType:
     | "claim"
     | "evidence"
     | "question"
     | "proposal"
+    | "counterargument"
     | "decision"
     | "norm"
     | "action"
     | "summary"
   relatedEventIds?: string[]
-  confidence?: number
+  relatedQuestionIds?: string[]
+  relatedDecisionIds?: string[]
+  question?: string
+  decision?: string
+  uncertainty?: string
+  norm?: string
+  confidence?: "low" | "medium" | "high" | "not-assessed"
   evidenceRefs?: string[]
-  actionOwner?: string
+  actionItems?: Array<{ owner: string; task: string; due?: string; status: string }>
   status?: string
 }
 ```
@@ -79,17 +90,26 @@ taxonomy does not fit.
 
 | Category | Example Tags |
 | --- | --- |
-| Scientific domain | ecology, biodiversity, species richness, mechanisms |
+| Scientific Domain | ecology, biodiversity, species richness, mechanisms |
+| Methods | benchmarks, interpretability, validation |
 | Data | data quality, dataset bias, metadata, sampling gaps |
-| Methods | benchmarks, interpretability, validation, uncertainty |
-| Models | foundation models, forecasting, transfer, generalization |
 | Infrastructure | container, GitHub, dashboard, automation, workers |
+| AI | foundation models, agents, automation, machine learning |
+| Modeling | forecasting, transfer, generalization, simulations |
+| Statistics | uncertainty, calibration, inference, robustness |
+| Remote Sensing | satellites, drones, cameras, acoustic sensors |
+| Ecology | organisms, populations, communities, ecosystems |
+| Policy | management, governance, regulation |
 | Ethics | data sovereignty, community review, bias, accountability |
 | Governance | approval gates, publication review, benchmark governance |
+| Visualization | dashboards, figures, maps, network views |
+| Communication | narrative, public summary, manuscript language |
+| Future Work | deferred, needs evidence, assigned, unassigned |
+| Questions | open question, clarification, research question |
 | Evidence | citation, evidence packet, provenance, fact check |
-| Collaboration | norms, decision protocol, minority viewpoints |
-| Decisions | accepted, revisiting, completed, proposed |
-| Future work | deferred, needs evidence, assigned, unassigned |
+| Action Items | owner, deadline, task, follow-up |
+| Norms | collaboration norms, decision protocol, minority viewpoints |
+| Uncertainty | confidence, caveat, unresolved issue |
 
 Normalize near-duplicate tags before summarizing. For example, `data bias`,
 `biased data`, and `dataset bias` should roll up to `dataset bias`.
@@ -106,7 +126,7 @@ Normalize near-duplicate tags before summarizing. For example, `data bias`,
 ## File Flow
 
 1. Agents write structured minutes in the workspace.
-2. The panel or Interaction Agent updates the latest-discussion brief.
+2. The panel or PI Liaison updates the latest-discussion brief.
 3. A human reviews the brief and dashboard output.
 4. Reviewed Markdown and static dashboard files are promoted into `docs/`.
 5. GitHub Pages renders the public site from the repository.

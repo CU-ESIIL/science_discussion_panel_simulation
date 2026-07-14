@@ -45,13 +45,34 @@ That is the most reliable local browser entry point.
 
 ## Browser Says `Auth required` Or `Device pairing required`
 
-`Auth required` means the browser reached the Gateway, but it does not yet have a matching token. Use the token-bearing URL from:
+`Auth required` means the browser reached the Gateway, but it does not yet have
+a matching credential. For local no-prompt browser access, use token mode and
+open the Control UI with the token in the URL fragment:
+
+```text
+http://127.0.0.1:18789/#token=scienceclaw-local
+```
+
+If `.env` uses `OPENCLAW_GATEWAY_AUTH_MODE=password`, enter
+`OPENCLAW_GATEWAY_PASSWORD` in the Control UI password field. Passwords are not
+stored by the browser UI.
+
+If `.env` uses the default token mode, use the token-bearing URL from:
 
 ```bash
 docker compose exec openclaw-local openclaw dashboard --no-open
 ```
 
-`Device pairing required` means the token worked, but this browser still needs one-time approval from the Gateway host:
+`Device pairing required` means the token worked, but this browser still needs
+one-time approval from the Gateway host. For the default local ScienceClaw run,
+keep this line in `.env` and recreate the container:
+
+```dotenv
+SCIENCECLAW_DISABLE_CONTROL_UI_DEVICE_PAIRING=1
+```
+
+If you intentionally set that value to `0`, approve the shown request from the
+Gateway host:
 
 ```bash
 docker compose exec openclaw-local openclaw devices list
@@ -62,7 +83,9 @@ Reload the chat page after approval. If the transcript itself is stuck after con
 
 ## Agent Dropdown Is Missing
 
-The working-group template should show 11 agents, with `main` named PI Liaison. If the dropdown only shows `main`, the new instance did not load the full agent registry.
+The Scientific Panel Digital Twin should show 14 agents, with `main` named PI
+Liaison. If the dropdown only shows `main`, the new instance did not load the
+full agent registry.
 
 Check from the gateway container:
 

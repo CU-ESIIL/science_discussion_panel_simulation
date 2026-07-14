@@ -134,6 +134,6 @@ Validate before project work:
   docker exec ${gateway_container_id} openclaw status
   docker exec ${gateway_container_id} openclaw agent --agent main --session-id instance-smoke-\$(date +%s) --message 'Reply with exactly: OK' --timeout 120
 
-Expected: Interaction Agent plus panel/backstage roles, and the smoke test replies OK.
+Expected: 14 Scientific Panel Digital Twin agents, and the smoke test replies OK.
 If the dropdown is missing or a session-lock error appears, see docs/instance-runbook.md.
 EOF

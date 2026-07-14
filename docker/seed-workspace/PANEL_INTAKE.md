@@ -1,6 +1,6 @@
-# PANEL_INTAKE.md - Panel Configuration Interview
+# PANEL_INTAKE.md - Scientific Panel Digital Twin Configuration Interview
 
-The Interaction Agent may accept partial answers and apply safe defaults.
+The PI Liaison may accept partial answers and apply safe defaults.
 
 A. What scientific topic or controversy should the panel discuss?
 
@@ -8,9 +8,9 @@ B. Who is the intended audience?
 
 C. What background should the audience be assumed to have?
 
-D. Which panelists or perspectives should participate?
+D. Which scientific roles should lead the first round?
 
-E. Are the real-person-inspired agents acceptable, with clear simulation disclosure?
+E. Are additional expert perspectives needed beyond the default functional roles?
 
 F. What questions should the panel begin with?
 
@@ -31,3 +31,6 @@ M. Should discussion remain private, or may summaries be prepared for public rev
 N. What would make the discussion useful?
 
 O. What behavior should the panel avoid?
+
+P. What dashboard views matter most: timeline, topic network, participation,
+agreement, disagreement, evidence status, decisions, norms, or action items?

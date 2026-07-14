@@ -101,35 +101,35 @@ Search date: not applicable; no network or live literature search was used.
 
 All statements below are synthetic fixture text for an operational demo.
 
-## Tanya Berger-Wolf Simulated Perspective
+## Domain Scientist
 
 Predictive accuracy can matter when it connects observations to individuals,
 populations, traits, or conservation action. I would not call a leaderboard
 score discovery unless it changes the ecological question we can answer.
 
-## Lauren Gillespie Simulated Perspective
+## Data Engineer / Infrastructure Scientist
 
 Accuracy needs a missing-data audit. If the benchmark overrepresents a few
 places, seasons, or image styles, the result may be a brittle shortcut rather
 than transferable ecological knowledge.
 
-## Jenna Kline Simulated Perspective
+## Cloud Infrastructure Engineer
 
 The sensing process is part of the claim. A model can look accurate because the
 drone, camera, microphone, or edge filter sampled only easy contexts.
 
-## Justin Kitzes Simulated Perspective
+## Citation and Evidence Curator
 
 A detector is not an ecological inference pipeline by itself. False positives,
 false negatives, annotation burden, and reproducible workflows decide whether a
 prediction supports discovery.
 
-## Katherine Siegel Simulated Perspective
+## Quantitative Modeler
 
 Prediction is not explanation. Accuracy can motivate hypotheses, but causal or
 mechanistic claims need explicit assumptions, study design, and falsification.
 
-## Ty Tuff Simulated Perspective
+## Agent Operations Manager
 
 Discovery also depends on the system around the model: provenance, training,
 open workflows, infrastructure access, and whether ecologists can reproduce the
@@ -141,41 +141,41 @@ result outside one lab.
 
 Fixture status: synthetic.
 
-Moderator: The panel agrees that accuracy can be useful, but not sufficient. I
-want Katherine to respond directly to Tanya: when does prediction become a
-scientific lead rather than merely a tool?
+PI Liaison: The panel agrees that accuracy can be useful, but not sufficient. I
+want the Quantitative Modeler to respond directly to the Domain Scientist: when
+does prediction become a scientific lead rather than merely a tool?
 
-Katherine Siegel simulated perspective: It becomes a lead when the prediction
-is tied to a testable contrast. If the model says traits, places, or behaviors
-matter, the next step is a design that could show the apparent relationship is
-not just confounding or selection.
+Quantitative Modeler: It becomes a lead when the prediction is tied to a
+testable contrast. If the model says traits, places, or behaviors matter, the
+next step is a design that could show the apparent relationship is not just
+confounding or selection.
 
-Tanya Berger-Wolf simulated perspective: I agree on the need for tests. I would
-add that individual-level recognition and imageomics can create variables that
-were previously unavailable, which may make those tests possible.
+Domain Scientist: I agree on the need for tests. I would add that new
+observational systems can create ecological variables that were previously
+unavailable, which may make those tests possible.
 
-Justin Kitzes simulated perspective: The same caution applies in acoustics. A
-bird-call classifier can create scale, but occupancy or abundance still depends
-on the detection process and sampling design.
+Citation and Evidence Curator: The same caution applies across sensor
+modalities. A detector can create scale, but occupancy or abundance still
+depends on the detection process, sampling design, and evidence quality.
 
-Lauren Gillespie simulated perspective: And scale may amplify bias. If volunteer
+Data Engineer / Infrastructure Scientist: And scale may amplify bias. If
 observations are unevenly distributed, the model may learn visibility and access
 patterns alongside biology.
 
-Jenna Kline simulated perspective: Hardware choices can create the same problem.
-Edge AI that filters observations before storage must be audited, or the missing
-data become invisible.
+Cloud Infrastructure Engineer: Hardware choices can create the same problem.
+Edge AI that filters observations before storage must be audited, or the
+missing data become invisible.
 
-Ty Tuff simulated perspective: The operational answer is to preserve the
-pipeline: data provenance, model version, prompt or code, uncertainty, and the
-human decision that promoted a claim.
+Agent Operations Manager: The operational answer is to preserve the pipeline:
+data provenance, model version, prompt or code, uncertainty, structured event
+metadata, and the human decision that promoted a claim.
 """
     (round_dir / "exchange_transcript.md").write_text(transcript, encoding="utf-8")
 
     fact_check = f"""# Fact Check Request - {round_id}
 
 Date: {now()}
-Requester: Moderator
+Requester: PI Liaison
 Claim: Accuracy alone does not establish ecological mechanism or causality.
 Status: unverified
 Needed: Add methodological citations distinguishing prediction, explanation,
@@ -189,8 +189,8 @@ causal identification, and external validity before using this in public copy.
         "title": "Synthetic uncertainty calibration demonstration",
         "question": "Can high accuracy still hide calibration error?",
         "hypothesis": "A model can rank cases well while confidence remains miscalibrated.",
-        "proposer": "Experiment Steward",
-        "reviewer": "Katherine Siegel simulated perspective",
+        "proposer": "Quantitative Modeler",
+        "reviewer": "Quantitative Modeler",
         "data_source": "Synthetic fixture generated by scripts/demo_panel_discussion.py",
         "code_path": "scripts/demo_panel_discussion.py",
         "environment": "local Python, no network access",
@@ -221,9 +221,9 @@ Fixture status: synthetic demonstration text.
 
 ## Disagreement Preserved
 
-Tanya's simulated perspective gives more weight to AI systems that create new
-biological observables, while Katherine's simulated perspective keeps the bar
-for explanation and causality higher. The panel did not force consensus.
+The Domain Scientist gives more weight to AI systems that create new ecological
+observables, while the Quantitative Modeler keeps the bar for explanation and
+causality higher. The panel did not force consensus.
 
 ## Unresolved Questions
 
@@ -244,14 +244,14 @@ position history entry.
 
 Last updated: {now()}
 
-| Panelist | Topic | Current position | Confidence | Evidence basis | History |
+| Role | Topic | Current position | Confidence | Evidence basis | History |
 | --- | --- | --- | --- | --- | --- |
-| Tanya Berger-Wolf simulated perspective | {TOPIC_TITLE} | Accuracy matters when it creates biologically meaningful observables linked to individuals, populations, traits, or conservation outcomes. | medium | synthetic fixture round | POSITION_HISTORY/{round_id}.md |
-| Lauren Gillespie simulated perspective | {TOPIC_TITLE} | Accuracy must be interpreted through representativeness, transfer, and hidden dataset bias. | medium | synthetic fixture round | POSITION_HISTORY/{round_id}.md |
-| Jenna Kline simulated perspective | {TOPIC_TITLE} | Sensing design and edge filtering shape what accuracy means. | medium | synthetic fixture round | POSITION_HISTORY/{round_id}.md |
-| Justin Kitzes simulated perspective | {TOPIC_TITLE} | Detection accuracy is only one component of ecological inference. | medium | synthetic fixture round | POSITION_HISTORY/{round_id}.md |
-| Katherine Siegel simulated perspective | {TOPIC_TITLE} | Prediction does not equal explanation or causal identification. | high | synthetic fixture round | POSITION_HISTORY/{round_id}.md |
-| Ty Tuff simulated perspective | {TOPIC_TITLE} | Reproducible infrastructure and transparent provenance are part of whether AI can support discovery. | medium | synthetic fixture round | POSITION_HISTORY/{round_id}.md |
+| Domain Scientist | {TOPIC_TITLE} | Accuracy matters when it creates biologically meaningful observables linked to individuals, populations, traits, or conservation outcomes. | medium | synthetic fixture round | POSITION_HISTORY/{round_id}.md |
+| Data Engineer / Infrastructure Scientist | {TOPIC_TITLE} | Accuracy must be interpreted through representativeness, transfer, and hidden dataset bias. | medium | synthetic fixture round | POSITION_HISTORY/{round_id}.md |
+| Cloud Infrastructure Engineer | {TOPIC_TITLE} | Sensing design and edge filtering shape what accuracy means. | medium | synthetic fixture round | POSITION_HISTORY/{round_id}.md |
+| Citation and Evidence Curator | {TOPIC_TITLE} | Detection accuracy is only one component of ecological inference. | medium | synthetic fixture round | POSITION_HISTORY/{round_id}.md |
+| Quantitative Modeler | {TOPIC_TITLE} | Prediction does not equal explanation or causal identification. | high | synthetic fixture round | POSITION_HISTORY/{round_id}.md |
+| Agent Operations Manager | {TOPIC_TITLE} | Reproducible infrastructure and transparent event metadata are part of whether AI can support discovery. | medium | synthetic fixture round | POSITION_HISTORY/{round_id}.md |
 """
     (workspace / "CURRENT_POSITIONS.md").write_text(current_positions, encoding="utf-8")
     (workspace / "POSITION_HISTORY" / f"{round_id}.md").write_text(current_positions, encoding="utf-8")
@@ -264,8 +264,8 @@ Last updated: {now()}
 
 | Position | Panelists | Strongest current support | What could resolve it |
 | --- | --- | --- | --- |
-| Accuracy can create new ecological observables and therefore seed discovery. | Tanya, Ty | Individual recognition, imageomics, scalable monitoring workflows. | Case studies linking predictions to validated ecological mechanisms or decisions. |
-| Accuracy is not discovery without design, transfer checks, and explicit assumptions. | Katherine, Lauren, Justin, Jenna | Confounding, distribution shift, detection error, and sensor-selection concerns. | Benchmarks and studies that test mechanism, transportability, and uncertainty calibration. |
+| Accuracy can create new ecological observables and therefore seed discovery. | Domain Scientist, Agent Operations Manager | New observables, scalable monitoring workflows, structured provenance. | Case studies linking predictions to validated ecological mechanisms or decisions. |
+| Accuracy is not discovery without design, transfer checks, and explicit assumptions. | Quantitative Modeler, Data Engineer / Infrastructure Scientist, Citation and Evidence Curator, Cloud Infrastructure Engineer | Confounding, distribution shift, detection error, and sensor-selection concerns. | Benchmarks and studies that test mechanism, transportability, and uncertainty calibration. |
 
 Minority positions are preserved until evidence changes them.
 """
@@ -278,14 +278,14 @@ Minority positions are preserved until evidence changes them.
     evidence_strength: "panel interpretation; demonstration only"
     verification_status: "unverified"
     topics: ["{TOPIC_ID}"]
-    relevant_panelists: ["tanya_berger_wolf", "ty_tuff"]
+    relevant_panelists: ["domain-scientist", "agent-operations-manager"]
   - id: claim-{round_id}-002
     claim: "Accuracy alone does not identify mechanism or causality."
     source: "DISCUSSION_ROUNDS/{round_id}/fact_checks.md"
     evidence_strength: "methodological principle; citation needed"
     verification_status: "fact_check_requested"
     topics: ["{TOPIC_ID}"]
-    relevant_panelists: ["katherine_siegel", "lauren_gillespie", "justin_kitzes"]
+    relevant_panelists: ["quantitative-modeler", "data-engineer", "citation-evidence-curator"]
 """
     if not evidence_ledger_path.exists() or evidence_ledger_path.read_text(encoding="utf-8").strip() in {"", "claims: []"}:
         evidence_ledger_path.write_text("# EVIDENCE_LEDGER.yaml\nclaims:\n" + evidence_ledger_entry, encoding="utf-8")
@@ -299,7 +299,7 @@ Minority positions are preserved until evidence changes them.
     with index.open("a", encoding="utf-8") as handle:
         handle.write(f"- {now()} | {round_id} | {TOPIC_ID} | {TOPIC_TITLE}\n")
 
-    interaction_summary = f"""# Interaction Agent Summary
+    interaction_summary = f"""# PI Liaison Summary
 
 Fixture status: synthetic.
 

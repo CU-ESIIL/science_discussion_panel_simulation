@@ -8,5 +8,5 @@ Current defaults:
 - Panel status: paused/manual
 - Web research: off unless approved
 - Automatic experiments: off unless approved
-- Human-facing agent: Interaction Agent
-- Simulation disclosure: required
+- Human-facing agent: PI Liaison
+- Structured discussion events: required
