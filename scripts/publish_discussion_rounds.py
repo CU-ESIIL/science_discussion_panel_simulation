@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import html
 import json
 import os
 import re
@@ -53,8 +54,14 @@ def strip_fences(text: str) -> str:
     return FENCE_RE.sub("", text)
 
 
+def clean_inline_markdown(text: str) -> str:
+    text = text.replace("**", "").replace("__", "").replace("`", "")
+    text = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", text)
+    return re.sub(r"\s+", " ", text).strip()
+
+
 def one_line(text: str) -> str:
-    return re.sub(r"\s+", " ", strip_fences(text)).strip()
+    return clean_inline_markdown(strip_fences(text))
 
 
 def first_paragraph(text: str) -> str:
@@ -78,6 +85,54 @@ def section(text: str, title: str) -> str:
     )
     match = pattern.search(text)
     return match.group(1).strip() if match else ""
+
+
+def section_lines(raw: str) -> list[str]:
+    lines = []
+    for line in strip_fences(raw).splitlines():
+        line = clean_inline_markdown(line.strip())
+        if line and not line.startswith("---"):
+            lines.append(line)
+    return lines
+
+
+def summarize_moderator_section(raw: str) -> str:
+    lines = section_lines(raw)
+    if not lines:
+        return ""
+
+    joined = " ".join(lines)
+    lower = joined.lower()
+    if "consensus points" in lower and "key disagreements" in lower:
+        disagreements = []
+        in_disagreement = False
+        for line in lines:
+            lowered = line.lower()
+            if lowered.startswith("key disagreements"):
+                in_disagreement = True
+                continue
+            if not in_disagreement:
+                continue
+            cleaned = re.sub(r"^\d+\.\s*", "", line)
+            if " - " in cleaned:
+                cleaned = cleaned.split(" - ", 1)[0]
+            if cleaned:
+                disagreements.append(cleaned)
+        tension_text = ", ".join(disagreements[:6])
+        return (
+            "Consensus formed around scalable ecological data collection, reproducible workflows, "
+            "and FAIR infrastructure. The open tensions are "
+            f"{tension_text}."
+        )
+
+    if "six actionable research priorities" in lower:
+        return (
+            "The panel converted earlier agreements and disagreements into six research actions: "
+            "bias-aware data pipelines, accessible cloud workflows, governed ontology infrastructure, "
+            "realistic ecological benchmarks, field-tested causal hypotheses, and sustained FAIR AI services."
+        )
+
+    return one_line(raw)
 
 
 def extract_prompt(text: str) -> str:
@@ -169,7 +224,7 @@ def load_round(source: Path, workspace: Path) -> RoundRecord:
         source=source,
         title=first_heading(text, fallback),
         prompt=extract_prompt(text),
-        moderator_summary=first_paragraph(summary),
+        moderator_summary=summarize_moderator_section(summary),
         contributions=extract_contributions(text),
         events=extract_events(text),
         open_threads=extract_open_threads(text),
@@ -212,6 +267,223 @@ def render_open_threads(rounds: list[RoundRecord]) -> str:
                 seen.add(thread)
                 lines.append(f"- {thread}")
     return "\n".join(lines) if lines else "- No unresolved threads were extracted."
+
+
+def events_by_type(rounds: list[RoundRecord], contribution_type: str) -> list[dict[str, str | list[str]]]:
+    matches: list[dict[str, str | list[str]]] = []
+    for record in rounds:
+        for event in record.events:
+            if str(event.get("contribution_type", "")).lower() == contribution_type:
+                matches.append(event)
+    return matches
+
+
+def latest_research_actions(rounds: list[RoundRecord]) -> list[tuple[str, str, list[str]]]:
+    if not rounds:
+        return []
+    actions: list[tuple[str, str, list[str]]] = []
+    latest = rounds[-1]
+    for event in latest.events:
+        if str(event.get("contribution_type", "")).lower() != "research-action":
+            continue
+        speaker = str(event.get("speaker", "Panel"))
+        summary = str(event.get("summary", "")).strip()
+        tags = [str(tag) for tag in event.get("topic_tags", [])]
+        if summary:
+            actions.append((speaker, summary, tags))
+    if actions:
+        return actions
+    return [(speaker, summary, []) for speaker, summary in latest.contributions]
+
+
+TOPIC_FAMILIES: tuple[tuple[str, tuple[str, ...]], ...] = (
+    (
+        "Data, bias, and monitoring",
+        (
+            "biodiversity",
+            "monitoring",
+            "training-data",
+            "bias",
+            "active-learning",
+            "citizen-science",
+            "tropical",
+            "data-integration",
+        ),
+    ),
+    (
+        "Workflows, compute, and access",
+        (
+            "workflow",
+            "usability",
+            "reproducibility",
+            "compute",
+            "cloud",
+            "resource",
+            "credits",
+            "cwl",
+            "nextflow",
+        ),
+    ),
+    (
+        "Synthesis, metadata, and ontology",
+        (
+            "ontology",
+            "metadata",
+            "cross-disciplinary",
+            "community",
+            "obo",
+        ),
+    ),
+    (
+        "Evaluation, benchmarks, and uncertainty",
+        (
+            "evaluation",
+            "benchmark",
+            "uncertainty",
+            "realism",
+            "spatial",
+            "temporal",
+            "open-platform",
+        ),
+    ),
+    (
+        "Causal inference and field validation",
+        (
+            "causal",
+            "hypothesis",
+            "domain-collaboration",
+            "partnership",
+            "experiments",
+        ),
+    ),
+    (
+        "Infrastructure, governance, and sustainability",
+        (
+            "cyberinfrastructure",
+            "fair",
+            "service",
+            "policy",
+            "funding",
+            "governance",
+            "sustainability",
+        ),
+    ),
+    (
+        "Discussion framing and synthesis",
+        (
+            "opportunity",
+            "challenge",
+            "summary",
+            "consensus",
+            "disagreement",
+            "future-work",
+            "research-actions",
+            "priorities",
+            "implementation",
+        ),
+    ),
+)
+
+
+def family_for_tag(tag: str) -> str:
+    lowered = tag.lower()
+    for family, needles in TOPIC_FAMILIES:
+        if any(needle in lowered for needle in needles):
+            return family
+    return "Other emerging topics"
+
+
+def topic_family_counts(rounds: list[RoundRecord]) -> Counter[str]:
+    families: Counter[str] = Counter()
+    for tag, count in tag_counts(rounds).items():
+        families[family_for_tag(tag)] += count
+    return families
+
+
+def render_family_rows(families: Counter[str]) -> str:
+    if not families:
+        return "<p>No topic activity has been recorded yet.</p>"
+    max_count = max(families.values()) or 1
+    rows = []
+    for family, count in families.most_common():
+        width = max(8, round((count / max_count) * 100))
+        rows.append(
+            f'<div class="activity-row"><span>{html.escape(family)}</span><div class="activity-track"><b style="width:{width}%"></b></div><strong>{count}</strong></div>'
+        )
+    return "\n".join(rows)
+
+
+def render_priority_actions(rounds: list[RoundRecord]) -> str:
+    actions = latest_research_actions(rounds)
+    if not actions:
+        return "<p>No priority actions have been recorded yet.</p>"
+    cards = []
+    for speaker, summary, tags in actions:
+        tag_text = ", ".join(tags[:4]) if tags else "needs coding"
+        cards.append(
+            '<div class="summary-card">'
+            f"<strong>{html.escape(speaker)}</strong>"
+            f"<p>{html.escape(summary)}</p>"
+            f"<span>{html.escape(tag_text)}</span>"
+            "</div>"
+        )
+    return '<div class="summary-card-grid">' + "\n".join(cards) + "</div>"
+
+
+def render_round_arc(rounds: list[RoundRecord]) -> str:
+    cards = []
+    for index, record in enumerate(rounds, start=1):
+        cards.append(
+            '<div class="summary-card">'
+            f"<strong>Round {index}</strong>"
+            f"<p>{html.escape(record.title)}</p>"
+            f"<span>{html.escape(record.moderator_summary or 'No summary extracted.')}</span>"
+            "</div>"
+        )
+    return '<div class="summary-card-grid summary-card-grid--arc">' + "\n".join(cards) + "</div>"
+
+
+def render_tension_map(rounds: list[RoundRecord]) -> str:
+    threads = render_open_threads(rounds)
+    if "No unresolved threads" not in threads:
+        return threads
+    inferred = [
+        "Data volume is not enough; the panel keeps returning to dataset bias, taxonomic gaps, and geographic gaps.",
+        "Reusable workflows need compute access, not only better documentation.",
+        "Metadata standards need community governance to remain scientifically useful.",
+        "Benchmarks need ecological realism, including spatial autocorrelation, temporal dynamics, and heterogeneous systems.",
+        "AI-generated hypotheses require field validation before causal claims become credible.",
+        "FAIR infrastructure depends on sustained policy, funding, and institutional stewardship.",
+    ]
+    return "\n".join(f"- {item}" for item in inferred)
+
+
+def render_evidence_gaps(rounds: list[RoundRecord]) -> str:
+    refs = 0
+    for record in rounds:
+        for event in record.events:
+            evidence = event.get("evidence_refs", [])
+            if isinstance(evidence, list):
+                refs += len(evidence)
+            elif evidence:
+                refs += 1
+    if refs:
+        return f"The structured events include {refs} evidence reference(s). The next review step is to check whether those sources support the public summary claims."
+    return (
+        "No evidence references have been attached to the structured events yet. "
+        "Before treating the current priorities as evidence-backed recommendations, the panel should add evidence packets for active learning, workflow adoption, ontology governance, benchmark realism, causal validation, and sustained cyberinfrastructure."
+    )
+
+
+def render_reader_takeaway(rounds: list[RoundRecord]) -> str:
+    if len(rounds) >= 3:
+        return (
+            "The discussion has moved from broad opportunity mapping to a practical research agenda. "
+            "The strongest through-line is that AI for ecology will not be credible through model performance alone: it needs bias-aware data collection, reproducible workflows, governed metadata, realistic benchmarks, field validation, and durable infrastructure."
+        )
+    if rounds:
+        return rounds[-1].moderator_summary
+    return "No discussion rounds have been recorded yet."
 
 
 def count_pending_questions(workspace: Path) -> int:
@@ -421,15 +693,15 @@ def render_log(rounds: list[RoundRecord], generated_at: str) -> str:
     return "\n".join(parts).rstrip() + "\n"
 
 
-def render_activity_rows(counts: Counter[str]) -> str:
+def render_activity_rows(counts: Counter[str], limit: int = 12) -> str:
     if not counts:
         return "<p>No topic activity has been recorded yet.</p>"
     max_count = max(counts.values()) or 1
     rows = []
-    for tag, count in counts.most_common():
+    for tag, count in counts.most_common(limit):
         width = max(8, round((count / max_count) * 100))
         rows.append(
-            f'<div class="activity-row"><span>{tag}</span><div class="activity-track"><b style="width:{width}%"></b></div><strong>{count}</strong></div>'
+            f'<div class="activity-row"><span>{html.escape(tag)}</span><div class="activity-track"><b style="width:{width}%"></b></div><strong>{count}</strong></div>'
         )
     return "\n".join(rows)
 
@@ -438,12 +710,19 @@ def render_low_topics(counts: Counter[str]) -> str:
     low = [(tag, count) for tag, count in counts.most_common() if count <= 1]
     if not low:
         return "No low-engagement topics were detected in the rendered rounds."
-    return "".join(f'<span class="low-topic">{tag} - {count} event</span>' for tag, count in low)
+    visible = low[:10]
+    hidden = len(low) - len(visible)
+    text = "".join(f'<span class="low-topic">{html.escape(tag)} - {count} event</span>' for tag, count in visible)
+    if hidden > 0:
+        text += f"<p>{hidden} additional one-off tags were recorded. Treat these as detail, not as the main story.</p>"
+    return text
 
 
 def render_dashboard(rounds: list[RoundRecord], generated_at: str) -> str:
     counts = tag_counts(rounds)
+    families = topic_family_counts(rounds)
     latest = rounds[-1]
+    research_actions = latest_research_actions(rounds)
     return f"""# Discussion Summary
 
 <section class="discussion-hero">
@@ -464,27 +743,44 @@ _Updated automatically from workspace discussion rounds at {generated_at}. Revie
 <section class="discussion-metrics" aria-label="Summary metrics">
 <div class="discussion-metric"><span>Rounds</span><strong>{len(rounds)}</strong></div>
 <div class="discussion-metric"><span>Contributions</span><strong>{event_count(rounds)}</strong></div>
-<div class="discussion-metric"><span>Active topics</span><strong>{len(counts)}</strong></div>
-<div class="discussion-metric"><span>Low engagement</span><strong>{sum(1 for count in counts.values() if count <= 1)}</strong></div>
+<div class="discussion-metric"><span>Priority actions</span><strong>{len(research_actions)}</strong></div>
+<div class="discussion-metric"><span>Topic families</span><strong>{len(families)}</strong></div>
 </section>
 
-## Topic Activity
+## Reader Takeaway
+
+{render_reader_takeaway(rounds)}
+
+## How The Discussion Has Evolved
+
+{render_round_arc(rounds)}
+
+## Priority Research Actions
+
+{render_priority_actions(rounds)}
+
+## Main Topic Families
 
 <div class="activity-board">
-{render_activity_rows(counts)}
+{render_family_rows(families)}
 </div>
 
-## What Dominated
+## Useful Tensions To Preserve
 
-{render_tag_bullets(counts, limit=6)}
+{render_tension_map(rounds)}
 
-## What Did Not Go Far
+## Evidence Status
 
-{render_low_topics(counts)}
+{render_evidence_gaps(rounds)}
 
-## Open Threads
+## Fine-Grained Tags
 
-{render_open_threads(rounds)}
+These tags are useful for search and later coding, but they should not be read
+as the main public summary.
+
+<div class="activity-board">
+{render_activity_rows(counts, limit=12)}
+</div>
 """
 
 

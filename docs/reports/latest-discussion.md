@@ -10,7 +10,7 @@ No explicit prompt was recorded.
 
 ## Summary
 
-The panel converged on six actionable research priorities: 1. **Active-learning citizen-science pipelines** to address data bias (Tanya). 2. **Cloud-native workflow template library with compute-credit subsidies** for broader accessibility (Lauren). 3. **Community-governed ontology hub with validation tooling** to enable cross-disciplinary data synthesis (Jenna). 4. **Ecologically realistic benchmark suites** that capture spatial and temporal complexity (Justin). 5. **AI-hypothesis / field-ecologist partnership program** with funding for causal experiments (Katherine). 6. **Institutional funding and governance for a FAIR-compliant AI service platform** to sustain infrastructure (Ty).
+The panel converted earlier agreements and disagreements into six research actions: bias-aware data pipelines, accessible cloud workflows, governed ontology infrastructure, realistic ecological benchmarks, field-tested causal hypotheses, and sustained FAIR AI services.
 
 ## What Dominated
 
