@@ -52,32 +52,27 @@ workspace:
     - "SYSTEM_STATUS.md"
 
 agents:
-  user_facing_default: "pi-liaison"
+  user_facing_default: "main"
   human_review_required: true
   tiers:
-    coordination:
-      - "PI Liaison"
-      - "Scientific Director"
-      - "Team Science Facilitator"
-      - "Agent Operations Manager"
-    scientific_reasoning:
-      - "Domain Scientist"
-      - "Quantitative Modeler"
-      - "Data Engineer / Infrastructure Scientist"
-      - "Skeptical Reviewer"
-    evidence_and_memory:
-      - "Citation and Evidence Curator"
-      - "Decision Recorder"
+    moderator:
+      - "Cibele Amaral"
+    panelists:
+      - "Tanya Berger-Wolf"
+      - "Lauren Gillespie"
+      - "Jenna Kline"
+      - "Justin Kitzes"
+      - "Katherine Siegel"
+      - "Ty Tuff"
+    organizer:
+      - "Jennifer Balch"
+    support:
       - "Discussion Intelligence Agent"
-      - "Scientific Narrative Lead"
-    impact_and_execution:
-      - "Societal Impact Agent"
-      - "Cloud Infrastructure Engineer"
 
 integrations:
   slack:
     enabled: false
-    user_facing_component: "PI Liaison only"
+    user_facing_component: "Cibele Amaral as Moderator only"
   github:
     enabled: true
     role: "control-plane"
@@ -108,8 +103,8 @@ workflow_modes:
 resource_controls:
   autorun_default: false
   discussion_interval_minutes: 60
-  max_turns_per_round: 12
-  max_panelists_per_round: 4
+  max_turns_per_round: 16
+  max_panelists_per_round: 6
   max_research_tasks_per_round: 2
   max_experiments_per_day: 1
   require_experiment_approval: true
@@ -118,6 +113,7 @@ resource_controls:
 safety:
   simulation_disclosure_required: true
   no_impersonation: true
+  public_expertise_only: true
   no_final_consensus_required: true
   agents_may_recommend_humans_approve: true
   require_human_approval_for:

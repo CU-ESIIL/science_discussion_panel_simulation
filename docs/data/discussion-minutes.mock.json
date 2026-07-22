@@ -415,7 +415,7 @@
       "dissentingViews": "None recorded.",
       "date": "2026-07-10",
       "owner": "interaction-agent",
-      "followUpAction": "Maintain a panel-updated source brief in the workspace and promote it to docs after review.",
+      "followUpAction": "Maintain tracked public markdown in docs/reports, review changes in GitHub Desktop, and push so GitHub Actions rebuilds the site.",
       "status": "accepted"
     },
     {

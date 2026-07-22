@@ -12,12 +12,12 @@ The workspace seed includes `/workspace/MODEL_ASSIGNMENTS.md` as the role-level 
 
 ## Suggested Defaults
 
-| Role group | Recommended route | Why |
+| Agent or group | Recommended route | Why |
 | --- | --- | --- |
-| PI Liaison | `verde/js2/gpt-oss-120b` | Coordinates human-facing discussion, assignments, transitions, and approvals. |
-| Scientific reasoning roles | `verde/js2/gpt-oss-120b` | Scientific Director, Domain Scientist, Quantitative Modeler, Data Engineer, Citation and Evidence Curator, and Skeptical Reviewer produce reviewable reasoning. |
-| Collaboration and memory roles | `verde/js2/gpt-oss-120b` | Team Science Facilitator, Scientific Narrative Lead, Decision Recorder, and Discussion Intelligence Agent preserve structured memory and dashboard metadata. |
-| Impact and operations roles | `verde/js2/gpt-oss-120b` | Societal Impact Agent, Cloud Infrastructure Engineer, and Agent Operations Manager handle broader impact and runtime operations under approval gates. |
+| Cibele Amaral (Moderator) | `verde/js2/gpt-oss-120b` | Introduces topics, asks opening and follow-up questions, balances participation, summarizes transitions, and closes reports. |
+| Panelists | `verde/js2/gpt-oss-120b` | Tanya Berger-Wolf, Lauren Gillespie, Jenna Kline, Justin Kitzes, Katherine Siegel, and Ty Tuff produce reviewable public-expertise perspectives. |
+| Jennifer Balch (Organizer) | `verde/js2/gpt-oss-120b` | Selects themes, proposes questions, reviews final reports, and aligns sessions with workshop goals. |
+| Discussion Intelligence Agent | `verde/js2/gpt-oss-120b` | Preserves structured discussion metadata, agreement, disagreement, evidence gaps, related norms, and dashboard exports. |
 
 ## Verde-Style API Experiments
 

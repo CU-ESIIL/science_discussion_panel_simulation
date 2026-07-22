@@ -29,7 +29,7 @@ if [ ! -f "${prompt_path}" ]; then
 fi
 
 if [ ! -f "${prompt_path}" ]; then
-  echo "PI Liaison startup prompt not found." >&2
+  echo "Moderator startup prompt not found." >&2
   exit 1
 fi
 
@@ -58,11 +58,11 @@ fi
 cat <<EOF
 
 OASIS Scientific Discussion Panel
-PI Liaison is the default human-facing agent.
+Cibele Amaral is the default human-facing Moderator.
 
-The PI Liaison summarizes panel memory, assigns questions, requests targeted
-rounds, reports disagreement and evidence status, and respects pause, cadence,
-budget, dashboard metadata, and approval controls.
+Cibele summarizes panel memory, routes questions to the panelists, requests
+targeted rounds, reports disagreement and evidence status, and respects pause,
+cadence, budget, dashboard metadata, and approval controls.
 
 EOF
 

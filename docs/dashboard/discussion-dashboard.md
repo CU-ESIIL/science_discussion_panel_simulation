@@ -72,7 +72,7 @@ Each topic node is sized by event volume. Color marks broad agreement, disagreem
 
 | Decision | Topic | Confidence | Status | Owner | Follow-up |
 | --- | --- | ---: | --- | --- | --- |
-| Publish latest-discussion briefs only after human review and explicit labeling of synthetic panel content. | Open science workflow | 92% | accepted | interaction-agent | Maintain a panel-updated source brief in the workspace and promote it to docs after review. |
+| Publish latest-discussion briefs only after human review and explicit labeling of synthetic panel content. | Open science workflow | 92% | accepted | interaction-agent | Maintain tracked public markdown in `docs/reports/`, review changes in GitHub Desktop, and push so GitHub Actions rebuilds the site. |
 | Treat benchmark performance as useful evidence, not as a standalone definition of ecological discovery. | Benchmark governance | 76% | revisiting | scientific-director | Draft benchmark governance criteria for the next panel round. |
 
 ## Group Norms

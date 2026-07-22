@@ -83,9 +83,10 @@ Reload the chat page after approval. If the transcript itself is stuck after con
 
 ## Agent Dropdown Is Missing
 
-The Scientific Panel Digital Twin should show 14 agents, with `main` named PI
-Liaison. If the dropdown only shows `main`, the new instance did not load the
-full agent registry.
+The Scientific Panel Digital Twin should show 9 agents, with `main` named
+`Cibele Amaral (Moderator)`. If the dropdown only shows `main`, or if the old
+functional-role roster appears, the new instance did not load the intended
+panel registry.
 
 Check from the gateway container:
 

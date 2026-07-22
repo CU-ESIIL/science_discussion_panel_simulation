@@ -132,7 +132,7 @@ def queue_question(workspace: Path, question: str) -> int:
     state = load_state(workspace)
     state["pending_user_questions"] = count_pending_questions(workspace)
     save_state(workspace, state)
-    print("Queued question for the PI Liaison and Discussion Intelligence Agent.")
+    print("Queued question for Cibele Amaral and the Discussion Intelligence Agent.")
     return 0
 
 

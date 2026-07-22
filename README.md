@@ -66,6 +66,15 @@ make panel-summary
 The deprecated `make init-working-group` target remains as a compatibility
 alias, but the default scaffold is now panel-centered.
 
+## Website Discussion Log
+
+The local container mounts the tracked MkDocs source folder at
+`public_site/` inside the panel workspace. After substantive discussions, agents
+should append to `public_site/reports/panel-discussion-log.md` and update
+`public_site/reports/latest-discussion.md`. You can review those normal
+repository changes in GitHub Desktop and push; GitHub Actions rebuilds the
+website from `docs/`.
+
 ## Deterministic Demo
 
 The demo requires no API keys or network access. It writes a synthetic panel
@@ -135,9 +144,12 @@ See [Secret Migration](docs/secret-migration.md).
 
 ## Safety Model
 
-- The PI Liaison is the default human-facing coordinator.
-- The default panel is a 14-role Scientific Panel Digital Twin, not renamed
-  software-development agents.
+- Cibele Amaral is the default human-facing Moderator.
+- The default panel is a moderated Scientific Panel Digital Twin with six
+  disclosed public-expertise panelist simulations, Jennifer Balch as Organizer,
+  and a Discussion Intelligence Agent for structured records.
+- Named roles represent public scientific expertise and perspective only; they
+  must not imitate private views or personal identity.
 - Every meaningful contribution should produce structured discussion metadata
   for the dashboard.
 - Evidence, fact checks, decisions, action items, experiments, norms, and
@@ -145,7 +157,7 @@ See [Secret Migration](docs/secret-migration.md).
 - Human approval is required for secrets, publishing, deletion, GitHub pushes,
   new mounts, third-party tools, expensive jobs, billed APIs, and sensitive
   public claims.
-- Slack, when enabled, should route through the PI Liaison only.
+- Slack, when enabled, should route through the Moderator only.
 - Kubernetes workers remain bounded execution mechanisms, not autonomous
   unbounded agents.
 

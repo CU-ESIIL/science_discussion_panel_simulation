@@ -12,6 +12,8 @@ provider secrets, or billing credentials here.
   Panel Digital Twin role.
 - Keep `SCIENCECLAW_VERDE_ONLY_MODE=1` enabled for local runs so persisted
   OpenAI/Codex routes are removed from the default agent allowlist on startup.
+- Simulated named roles must represent public expertise and scientific
+  perspectives only; they must not imitate private views or personal identity.
 - Keep human review gates for public summaries, sensitive claims, credential
   changes, filesystem changes, GitHub pushes, costly work, external messaging,
   and billed actions.
@@ -20,22 +22,17 @@ provider secrets, or billing credentials here.
 
 ## Assignment Table
 
-| Role | Default route | Notes |
-| --- | --- | --- |
-| PI Liaison | `verde/js2/gpt-oss-120b` | Coordinates discussion, assigns questions, manages transitions, and summarizes for the user. |
-| Scientific Director | `verde/js2/gpt-oss-120b` | Maintains scientific vision, identifies breakthroughs, and connects themes. |
-| Domain Scientist | `verde/js2/gpt-oss-120b` | Evaluates ecological realism, assumptions, literature, and biological implications. |
-| Quantitative Modeler | `verde/js2/gpt-oss-120b` | Develops models, evaluates statistics, uncertainty, simulations, scaling, and performance. |
-| Data Engineer / Infrastructure Scientist | `verde/js2/gpt-oss-120b` | Owns data architecture, metadata, APIs, reproducibility, storage, and efficiency. |
-| Citation and Evidence Curator | `verde/js2/gpt-oss-120b` | Tracks citations, verifies claims, maintains bibliography, and estimates evidence confidence. |
-| Skeptical Reviewer | `verde/js2/gpt-oss-120b` | Challenges ideas constructively, identifies assumptions, and tests robustness. |
-| Team Science Facilitator | `verde/js2/gpt-oss-120b` | Monitors participation, dominance, quiet voices, norms, and psychological safety. |
-| Scientific Narrative Lead | `verde/js2/gpt-oss-120b` | Maintains discussion summaries, conceptual evolution, manuscript language, figures, and key messages. |
-| Societal Impact Agent | `verde/js2/gpt-oss-120b` | Reviews policy, management, stakeholder, ethics, communication, and implementation implications. |
-| Decision Recorder | `verde/js2/gpt-oss-120b` | Records decisions, action items, consensus, dissent, deadlines, and ownership. |
-| Discussion Intelligence Agent | `verde/js2/gpt-oss-120b` | Codes every meaningful contribution into structured dashboard-ready metadata. |
-| Cloud Infrastructure Engineer | `verde/js2/gpt-oss-120b` | Optimizes Kubernetes, distributed execution, GPUs, cloud, storage, orchestration, and subagents. |
-| Agent Operations Manager | `verde/js2/gpt-oss-120b` | Monitors workload, idle agents, spawning, performance, resources, and efficiency. |
+| Agent | OpenClaw id | Default route | Notes |
+| --- | --- | --- | --- |
+| Cibele Amaral (Moderator) | `main` | `verde/js2/gpt-oss-120b` | Introduces topics, asks opening and follow-up questions, balances participation, summarizes transitions, and closes reports. |
+| Tanya Berger-Wolf | `tanya-berger-wolf` | `verde/js2/gpt-oss-120b` | Represents public expertise in biodiversity AI, computer vision, foundation models, wildlife monitoring, and ecological observatories. |
+| Lauren Gillespie | `lauren-gillespie` | `verde/js2/gpt-oss-120b` | Represents public expertise in applied environmental AI, workflow development, usable infrastructure, reproducibility, and adoption. |
+| Jenna Kline | `jenna-kline` | `verde/js2/gpt-oss-120b` | Represents public expertise in ecological synthesis, working groups, cross-disciplinary collaboration, and scientific integration. |
+| Justin Kitzes | `justin-kitzes` | `verde/js2/gpt-oss-120b` | Represents public expertise in computational ecology, machine learning, statistics, scientific software, benchmarking, and uncertainty. |
+| Katherine Siegel | `katherine-siegel` | `verde/js2/gpt-oss-120b` | Represents public expertise in causal inference, scientific reasoning, model interpretation, experimental design, and assumptions. |
+| Ty Tuff | `ty-tuff` | `verde/js2/gpt-oss-120b` | Represents public expertise in scientific cyberinfrastructure, multi-agent AI, environmental data science, digital twins, and synthesis systems. |
+| Jennifer Balch (Organizer) | `jennifer-balch` | `verde/js2/gpt-oss-120b` | Selects themes, proposes questions, reviews final reports, aligns workshop goals, schedules sessions, and identifies external experts. |
+| Discussion Intelligence Agent | `discussion-intelligence-agent` | `verde/js2/gpt-oss-120b` | Codes statements into structured dashboard-ready metadata and tracks agreement, disagreement, assumptions, evidence gaps, and future work. |
 
 ## AI-VERDE Configuration
 

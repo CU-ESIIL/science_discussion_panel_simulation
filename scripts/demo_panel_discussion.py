@@ -101,39 +101,41 @@ Search date: not applicable; no network or live literature search was used.
 
 All statements below are synthetic fixture text for an operational demo.
 
-## Domain Scientist
+## Tanya Berger-Wolf
 
-Predictive accuracy can matter when it connects observations to individuals,
-populations, traits, or conservation action. I would not call a leaderboard
-score discovery unless it changes the ecological question we can answer.
+Predictive accuracy can matter when it creates biodiversity observations that
+were previously impossible at scale. I would not call a leaderboard score
+discovery unless it changes the ecological patterns we can ask AI to find.
 
-## Data Engineer / Infrastructure Scientist
+## Lauren Gillespie
 
 Accuracy needs a missing-data audit. If the benchmark overrepresents a few
 places, seasons, or image styles, the result may be a brittle shortcut rather
-than transferable ecological knowledge.
+than transferable ecological knowledge that researchers can use tomorrow.
 
-## Cloud Infrastructure Engineer
+## Jenna Kline
 
-The sensing process is part of the claim. A model can look accurate because the
-drone, camera, microphone, or edge filter sampled only easy contexts.
+The synthesis question is who can use and interpret the result across ecological
+communities. A model can be technically impressive and still fail to connect
+monitoring, theory, management, and field practice.
 
-## Citation and Evidence Curator
-
-A detector is not an ecological inference pipeline by itself. False positives,
-false negatives, annotation burden, and reproducible workflows decide whether a
-prediction supports discovery.
-
-## Quantitative Modeler
+## Justin Kitzes
 
 Prediction is not explanation. Accuracy can motivate hypotheses, but causal or
-mechanistic claims need explicit assumptions, study design, and falsification.
+mechanistic claims need explicit assumptions, study design, validation, and
+falsification.
 
-## Agent Operations Manager
+## Katherine Siegel
+
+If we want to say discovery rather than association, we need to ask what
+evidence would convince us the relationship is causal and what alternative
+explanations remain plausible.
+
+## Ty Tuff
 
 Discovery also depends on the system around the model: provenance, training,
 open workflows, infrastructure access, and whether ecologists can reproduce the
-result outside one lab.
+result outside one lab as part of a scientific operating system.
 """
     (round_dir / "opening_positions.md").write_text(openings, encoding="utf-8")
 
@@ -141,41 +143,41 @@ result outside one lab.
 
 Fixture status: synthetic.
 
-PI Liaison: The panel agrees that accuracy can be useful, but not sufficient. I
-want the Quantitative Modeler to respond directly to the Domain Scientist: when
-does prediction become a scientific lead rather than merely a tool?
+Cibele Amaral: The panel agrees that accuracy can be useful, but not sufficient.
+I want Justin to respond directly to Tanya: when does prediction become a
+scientific lead rather than merely a tool?
 
-Quantitative Modeler: It becomes a lead when the prediction is tied to a
-testable contrast. If the model says traits, places, or behaviors matter, the
-next step is a design that could show the apparent relationship is not just
+Justin Kitzes: It becomes a lead when the prediction is tied to a testable
+contrast. If the model says traits, places, or behaviors matter, the next step
+is a validation design that could show the apparent relationship is not just
 confounding or selection.
 
-Domain Scientist: I agree on the need for tests. I would add that new
+Tanya Berger-Wolf: I agree on the need for tests. I would add that new
 observational systems can create ecological variables that were previously
-unavailable, which may make those tests possible.
+unavailable, which may make those tests possible at biodiversity scale.
 
-Citation and Evidence Curator: The same caution applies across sensor
-modalities. A detector can create scale, but occupancy or abundance still
-depends on the detection process, sampling design, and evidence quality.
+Katherine Siegel: The same caution applies to causal language. A detector can
+create scale, but occupancy, abundance, or mechanism still depend on the
+detection process, sampling design, and evidence quality.
 
-Data Engineer / Infrastructure Scientist: And scale may amplify bias. If
-observations are unevenly distributed, the model may learn visibility and access
-patterns alongside biology.
+Lauren Gillespie: And scale may amplify bias. If observations are unevenly
+distributed, the model may learn visibility and access patterns alongside
+biology, then ship those assumptions into everyday workflows.
 
-Cloud Infrastructure Engineer: Hardware choices can create the same problem.
-Edge AI that filters observations before storage must be audited, or the
-missing data become invisible.
+Jenna Kline: That is also a synthesis problem. Different ecological communities
+may notice different failure modes, so the panel needs shared language for
+evidence, uncertainty, and use.
 
-Agent Operations Manager: The operational answer is to preserve the pipeline:
-data provenance, model version, prompt or code, uncertainty, structured event
-metadata, and the human decision that promoted a claim.
+Ty Tuff: The infrastructure answer is to preserve the pipeline: data provenance,
+model version, prompt or code, uncertainty, structured event metadata, and the
+human decision that promoted a claim.
 """
     (round_dir / "exchange_transcript.md").write_text(transcript, encoding="utf-8")
 
     fact_check = f"""# Fact Check Request - {round_id}
 
 Date: {now()}
-Requester: PI Liaison
+Requester: Cibele Amaral
 Claim: Accuracy alone does not establish ecological mechanism or causality.
 Status: unverified
 Needed: Add methodological citations distinguishing prediction, explanation,
@@ -189,8 +191,8 @@ causal identification, and external validity before using this in public copy.
         "title": "Synthetic uncertainty calibration demonstration",
         "question": "Can high accuracy still hide calibration error?",
         "hypothesis": "A model can rank cases well while confidence remains miscalibrated.",
-        "proposer": "Quantitative Modeler",
-        "reviewer": "Quantitative Modeler",
+        "proposer": "Justin Kitzes",
+        "reviewer": "Justin Kitzes",
         "data_source": "Synthetic fixture generated by scripts/demo_panel_discussion.py",
         "code_path": "scripts/demo_panel_discussion.py",
         "environment": "local Python, no network access",
@@ -221,9 +223,9 @@ Fixture status: synthetic demonstration text.
 
 ## Disagreement Preserved
 
-The Domain Scientist gives more weight to AI systems that create new ecological
-observables, while the Quantitative Modeler keeps the bar for explanation and
-causality higher. The panel did not force consensus.
+Tanya Berger-Wolf gives more weight to AI systems that create new ecological
+observables, while Justin Kitzes and Katherine Siegel keep the bar for
+explanation and causality higher. The panel did not force consensus.
 
 ## Unresolved Questions
 
@@ -244,14 +246,14 @@ position history entry.
 
 Last updated: {now()}
 
-| Role | Topic | Current position | Confidence | Evidence basis | History |
+| Agent | Topic | Current position | Confidence | Evidence basis | History |
 | --- | --- | --- | --- | --- | --- |
-| Domain Scientist | {TOPIC_TITLE} | Accuracy matters when it creates biologically meaningful observables linked to individuals, populations, traits, or conservation outcomes. | medium | synthetic fixture round | POSITION_HISTORY/{round_id}.md |
-| Data Engineer / Infrastructure Scientist | {TOPIC_TITLE} | Accuracy must be interpreted through representativeness, transfer, and hidden dataset bias. | medium | synthetic fixture round | POSITION_HISTORY/{round_id}.md |
-| Cloud Infrastructure Engineer | {TOPIC_TITLE} | Sensing design and edge filtering shape what accuracy means. | medium | synthetic fixture round | POSITION_HISTORY/{round_id}.md |
-| Citation and Evidence Curator | {TOPIC_TITLE} | Detection accuracy is only one component of ecological inference. | medium | synthetic fixture round | POSITION_HISTORY/{round_id}.md |
-| Quantitative Modeler | {TOPIC_TITLE} | Prediction does not equal explanation or causal identification. | high | synthetic fixture round | POSITION_HISTORY/{round_id}.md |
-| Agent Operations Manager | {TOPIC_TITLE} | Reproducible infrastructure and transparent event metadata are part of whether AI can support discovery. | medium | synthetic fixture round | POSITION_HISTORY/{round_id}.md |
+| Tanya Berger-Wolf | {TOPIC_TITLE} | Accuracy matters when it creates biologically meaningful observables linked to individuals, populations, traits, or conservation outcomes. | medium | synthetic fixture round | POSITION_HISTORY/{round_id}.md |
+| Lauren Gillespie | {TOPIC_TITLE} | Accuracy must be interpreted through representativeness, transfer, hidden dataset bias, and usability in real workflows. | medium | synthetic fixture round | POSITION_HISTORY/{round_id}.md |
+| Jenna Kline | {TOPIC_TITLE} | Discovery claims need shared synthesis language across ecological communities. | medium | synthetic fixture round | POSITION_HISTORY/{round_id}.md |
+| Justin Kitzes | {TOPIC_TITLE} | Prediction does not equal explanation or causal identification. | high | synthetic fixture round | POSITION_HISTORY/{round_id}.md |
+| Katherine Siegel | {TOPIC_TITLE} | Causal claims require explicit assumptions, alternative explanations, and evidence that could change the conclusion. | high | synthetic fixture round | POSITION_HISTORY/{round_id}.md |
+| Ty Tuff | {TOPIC_TITLE} | Reproducible infrastructure and transparent event metadata are part of whether AI can support discovery. | medium | synthetic fixture round | POSITION_HISTORY/{round_id}.md |
 """
     (workspace / "CURRENT_POSITIONS.md").write_text(current_positions, encoding="utf-8")
     (workspace / "POSITION_HISTORY" / f"{round_id}.md").write_text(current_positions, encoding="utf-8")
@@ -264,8 +266,8 @@ Last updated: {now()}
 
 | Position | Panelists | Strongest current support | What could resolve it |
 | --- | --- | --- | --- |
-| Accuracy can create new ecological observables and therefore seed discovery. | Domain Scientist, Agent Operations Manager | New observables, scalable monitoring workflows, structured provenance. | Case studies linking predictions to validated ecological mechanisms or decisions. |
-| Accuracy is not discovery without design, transfer checks, and explicit assumptions. | Quantitative Modeler, Data Engineer / Infrastructure Scientist, Citation and Evidence Curator, Cloud Infrastructure Engineer | Confounding, distribution shift, detection error, and sensor-selection concerns. | Benchmarks and studies that test mechanism, transportability, and uncertainty calibration. |
+| Accuracy can create new ecological observables and therefore seed discovery. | Tanya Berger-Wolf, Ty Tuff | New observables, scalable monitoring workflows, structured provenance. | Case studies linking predictions to validated ecological mechanisms or decisions. |
+| Accuracy is not discovery without design, transfer checks, and explicit assumptions. | Justin Kitzes, Katherine Siegel, Lauren Gillespie, Jenna Kline | Confounding, distribution shift, detection error, sensor-selection concerns, and synthesis barriers. | Benchmarks and studies that test mechanism, transportability, uncertainty calibration, and cross-community usability. |
 
 Minority positions are preserved until evidence changes them.
 """
@@ -278,14 +280,14 @@ Minority positions are preserved until evidence changes them.
     evidence_strength: "panel interpretation; demonstration only"
     verification_status: "unverified"
     topics: ["{TOPIC_ID}"]
-    relevant_panelists: ["domain-scientist", "agent-operations-manager"]
+    relevant_panelists: ["tanya-berger-wolf", "ty-tuff"]
   - id: claim-{round_id}-002
     claim: "Accuracy alone does not identify mechanism or causality."
     source: "DISCUSSION_ROUNDS/{round_id}/fact_checks.md"
     evidence_strength: "methodological principle; citation needed"
     verification_status: "fact_check_requested"
     topics: ["{TOPIC_ID}"]
-    relevant_panelists: ["quantitative-modeler", "data-engineer", "citation-evidence-curator"]
+    relevant_panelists: ["justin-kitzes", "katherine-siegel", "lauren-gillespie"]
 """
     if not evidence_ledger_path.exists() or evidence_ledger_path.read_text(encoding="utf-8").strip() in {"", "claims: []"}:
         evidence_ledger_path.write_text("# EVIDENCE_LEDGER.yaml\nclaims:\n" + evidence_ledger_entry, encoding="utf-8")
@@ -299,7 +301,7 @@ Minority positions are preserved until evidence changes them.
     with index.open("a", encoding="utf-8") as handle:
         handle.write(f"- {now()} | {round_id} | {TOPIC_ID} | {TOPIC_TITLE}\n")
 
-    interaction_summary = f"""# PI Liaison Summary
+    interaction_summary = f"""# Moderator Summary
 
 Fixture status: synthetic.
 

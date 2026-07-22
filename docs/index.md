@@ -54,8 +54,9 @@ has a final answer.
 
 ## Public Discussion Outputs
 
-The panel maintains a latest-discussion brief in the workspace. After human
-review, that brief can be promoted into the website so readers can see what the
+The panel maintains a tracked public discussion log and latest-discussion brief
+in the website source. After human review in GitHub Desktop, pushing the
+repository lets GitHub Actions rebuild the site so readers can see what the
 panel most recently discussed, what dominated, what stalled, what remains
 unresolved, and what should happen next.
 
@@ -68,6 +69,11 @@ norms, future queue, timeline, and agent participation.
     <strong>Latest discussion</strong>
     <p>Reviewed public brief of the most recent panel round.</p>
     <span>Read the brief</span>
+  </a>
+  <a class="homepage-card" href="reports/panel-discussion-log/">
+    <strong>Discussion log</strong>
+    <p>Append-only markdown record of substantive panel discussions.</p>
+    <span>Open the log</span>
   </a>
   <a class="homepage-card" href="dashboard/discussion-dashboard/">
     <strong>Conversation dashboard</strong>

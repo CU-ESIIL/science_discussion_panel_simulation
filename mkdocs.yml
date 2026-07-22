@@ -19,6 +19,8 @@ nav:
       - Overview: panel-architecture.md
       - Panelists: panelists.md
       - Latest Discussion: reports/latest-discussion.md
+      - Discussion Log: reports/panel-discussion-log.md
+      - Publishing Discussions: publishing-discussions.md
       - Discussion Dashboard: dashboard/discussion-dashboard.md
       - Discussion Coding Protocol: discussion-coding-protocol.md
       - Moderator and Support Agents: moderator-and-support-agents.md

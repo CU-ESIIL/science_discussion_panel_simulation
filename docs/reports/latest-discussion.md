@@ -1,9 +1,9 @@
 # Latest Panel Discussion
 
 !!! note "Reviewed public brief"
-    This page is the public copy of the panel-updated latest-discussion brief.
-    Agents should update the workspace source first; humans review before this
-    page is promoted to the website.
+    This page is the tracked GitHub Pages source for the latest-discussion
+    brief. Agents update it through `public_site/reports/latest-discussion.md`;
+    humans review the GitHub Desktop diff before pushing.
 
 ## Session
 
@@ -42,7 +42,7 @@ structured contributions over 94 minutes.
 
 ## Decisions And Follow-Up
 
-- **accepted**: Publish latest-discussion briefs only after human review and explicit labeling of synthetic panel content. Follow-up: Maintain a panel-updated source brief in the workspace and promote it to docs after review.
+- **accepted**: Publish latest-discussion briefs only after human review and explicit labeling of synthetic panel content. Follow-up: Maintain tracked public markdown in `docs/reports/`, review changes in GitHub Desktop, and push so GitHub Actions rebuilds the site.
 - **revisiting**: Treat benchmark performance as useful evidence, not as a standalone definition of ecological discovery. Follow-up: Draft benchmark governance criteria for the next panel round.
 
 ## Dashboard
@@ -50,3 +50,8 @@ structured contributions over 94 minutes.
 See the [discussion dashboard](../dashboard/discussion-dashboard.md) for topic
 activity, stance distributions, open questions, future queue, decisions, group
 norms, timeline, and participation overview.
+
+## Discussion Log
+
+See the [panel discussion log](panel-discussion-log.md) for the running
+markdown record that agents append after substantive discussions.

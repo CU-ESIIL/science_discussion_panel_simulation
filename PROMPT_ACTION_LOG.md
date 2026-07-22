@@ -2,6 +2,95 @@
 
 This log records implementation prompts that change the reusable ScienceClaw/OASIS template. Keep private user data, credentials, and live workspace secrets out of this file.
 
+## 2026-07-22 - GitHub Pages Discussion Log Path
+
+### Prompt Summary
+
+Add a simple GitHub Desktop-friendly workflow for capturing panel discussions
+on the GitHub Pages site. Panel agents update tracked markdown under the
+workspace-visible `public_site/` mount; a human reviews the diff and pushes so
+GitHub Actions rebuilds the website.
+
+### Files Changed
+
+- `README.md`
+- `mkdocs.yml`
+- `docker-compose.yml`
+- `docs/reports/panel-discussion-log.md`
+- `docs/reports/latest-discussion.md`
+- `docs/reports/index.md`
+- `docs/index.md`
+- `docs/publishing-discussions.md`
+- `docker/seed-workspace/AGENTS.md`
+- `docker/seed-workspace/README.md`
+- `docker/seed-workspace/TOOLS.md`
+- `docker/seed-workspace/prompts/pi-liaison-startup.md`
+- `docker/seed-workspace/reports/README.md`
+- `docker/seed-workspace/reports/latest-discussion.md`
+- live `workspace/` seed copy
+- `CHANGELOG.md`
+
+### Architectural Decisions
+
+- Mount tracked `docs/` into the panel workspace as `public_site/`.
+- Keep `public_site/reports/panel-discussion-log.md` as the append-oriented
+  public discussion log.
+- Keep `public_site/reports/latest-discussion.md` as the current public brief.
+- Require human review in GitHub Desktop before push.
+- Let the existing Pages workflow rebuild the site from tracked markdown.
+
+### Tests Run
+
+- `docker compose exec -T openclaw-local sh -lc 'test -f /data/workspace/public_site/reports/panel-discussion-log.md && test -f /workspace/public_site/reports/latest-discussion.md && echo public-site-mounted'`
+- `scripts/test-panel.sh`
+- `git diff --check`
+
+## 2026-07-22 - Correct Agent Assignments To Named Scientific Panel
+
+### Prompt Summary
+
+Correct the Scientific Panel Digital Twin agent assignments from the interim
+14-role functional roster to the intended moderated panel architecture described
+in the project brief.
+
+### Files Changed
+
+- `docker/entrypoint.sh`
+- `docker/seed-workspace/AGENTS.md`
+- `docker/seed-workspace/PANELIST_ROSTER.md`
+- `docker/seed-workspace/MODEL_ASSIGNMENTS.md`
+- `docker/seed-workspace/PANEL_BRIEF.md`
+- `docker/seed-workspace/config/working_group.yaml`
+- `docker/seed-workspace/config/discussion-coding-protocol.md`
+- `docker/seed-workspace/prompts/pi-liaison-startup.md`
+- `docker/seed-workspace/scripts/start-interaction-agent.sh`
+- `scripts/demo_panel_discussion.py`
+- `scripts/panel_control.py`
+- `scripts/test-panel.sh`
+- `config/working_group.yaml`
+- `docs/panelists.md`
+- `docs/model-routing.md`
+- `docs/moderator-and-support-agents.md`
+- `docs/panel-architecture.md`
+- `README.md`
+- `CHANGELOG.md`
+
+### Architectural Decisions
+
+- Use Cibele Amaral as the default Moderator and human-facing `main` agent.
+- Use Tanya Berger-Wolf, Lauren Gillespie, Jenna Kline, Justin Kitzes,
+  Katherine Siegel, and Ty Tuff as disclosed public-expertise panelist
+  simulations.
+- Keep Jennifer Balch as Organizer, not a scientific debate participant.
+- Keep the Discussion Intelligence Agent as the structured metadata and
+  dashboard support role.
+- Preserve the no-impersonation boundary: agents represent public expertise and
+  perspective, not private views or personal identity.
+
+### Tests Run
+
+- `scripts/test-panel.sh`
+
 ## 2026-07-13 - Scientific Panel Digital Twin Reset
 
 ### Prompt Summary

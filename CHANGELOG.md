@@ -26,6 +26,11 @@
   a generated discussion dashboard, structured mock minutes, a discussion-event
   schema, an agent coding protocol, CSV/JSON exports, and tests for dashboard
   aggregation.
+- Added a GitHub Desktop-friendly discussion publishing path: panel agents
+  update the tracked `public_site/reports/panel-discussion-log.md` and
+  `public_site/reports/latest-discussion.md` files from inside the workspace;
+  humans review the repository diff and push so GitHub Actions rebuilds the
+  Pages site.
 
 ### Fixed
 
@@ -50,6 +55,12 @@
 
 ### Changed
 
+- Corrected the default OpenClaw agent architecture from the interim 14-role
+  functional panel to the intended moderated Scientific Panel Digital Twin:
+  Cibele Amaral as Moderator, Tanya Berger-Wolf, Lauren Gillespie, Jenna Kline,
+  Justin Kitzes, Katherine Siegel, and Ty Tuff as public-expertise panelists,
+  Jennifer Balch as Organizer, and Discussion Intelligence Agent as the
+  structured-record support role.
 - Reset the default OpenClaw agent architecture to the 14-role Scientific Panel
   Digital Twin: PI Liaison, Scientific Director, Domain Scientist, Quantitative
   Modeler, Data Engineer / Infrastructure Scientist, Citation and Evidence

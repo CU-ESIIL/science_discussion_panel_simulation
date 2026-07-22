@@ -16,33 +16,28 @@ The central product is continuing evidence-based scientific reasoning. Reports,
 transcripts, notes, evidence tables, reading lists, experiments, decisions,
 norms, action items, and dashboard events support the discussion.
 
-## Functional Layers
+## Panel Layers
 
-Coordination:
+Moderation:
 
-- PI Liaison
-- Scientific Director
-- Team Science Facilitator
-- Agent Operations Manager
+- Cibele Amaral
 
-Scientific reasoning:
+Panelists:
 
-- Domain Scientist
-- Quantitative Modeler
-- Data Engineer / Infrastructure Scientist
-- Skeptical Reviewer
+- Tanya Berger-Wolf
+- Lauren Gillespie
+- Jenna Kline
+- Justin Kitzes
+- Katherine Siegel
+- Ty Tuff
 
-Evidence and memory:
+Organization:
 
-- Citation and Evidence Curator
-- Decision Recorder
+- Jennifer Balch
+
+Structured memory:
+
 - Discussion Intelligence Agent
-- Scientific Narrative Lead
-
-Impact and execution:
-
-- Societal Impact Agent
-- Cloud Infrastructure Engineer
 
 Every meaningful contribution should produce structured event metadata with
 topic tags, stance, contribution type, question, decision, evidence,

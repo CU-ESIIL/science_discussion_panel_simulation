@@ -65,6 +65,8 @@ services:
       - ${DATA_DIR:-./data}:/data
       - ${WORKSPACE_DIR:-./workspace}:/data/workspace
       - ${WORKSPACE_DIR:-./workspace}:/workspace
+      - ./docs:/data/workspace/public_site
+      - ./docs:/workspace/public_site
       - ${EXTERNAL_STORAGE_DIR:-./external_storage}:/external_storage/local
       - ${SCIENCECLAW_RUNTIME_SECRETS_DIR:-./secrets}:/run/scienceclaw-secrets:ro
       - ./storage:/repo/storage:ro
@@ -103,6 +105,8 @@ services:
       - ${DATA_DIR:-./data}:/data
       - ${WORKSPACE_DIR:-./workspace}:/data/workspace
       - ${WORKSPACE_DIR:-./workspace}:/workspace
+      - ./docs:/data/workspace/public_site
+      - ./docs:/workspace/public_site
       - ${EXTERNAL_STORAGE_DIR:-./external_storage}:/external_storage/local
       - ./storage:/repo/storage:ro
     ports:
@@ -148,6 +152,8 @@ services:
       - ${DATA_DIR:-./data}:/data
       - ${WORKSPACE_DIR:-./workspace}:/data/workspace
       - ${WORKSPACE_DIR:-./workspace}:/workspace
+      - ./docs:/data/workspace/public_site
+      - ./docs:/workspace/public_site
       - ${EXTERNAL_STORAGE_DIR:-./external_storage}:/external_storage/local
       - ${SCIENCECLAW_RUNTIME_SECRETS_DIR:-./secrets}:/run/scienceclaw-secrets:ro
       - ./docs:/repo/docs

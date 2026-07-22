@@ -6,46 +6,53 @@ panel:
   theme: "AI for Ecology: Accelerating Discoveries, Reducing Uncertainties, and Scaling Solutions"
   default_landing: "PANEL_BRIEF.md"
   architecture: "Scientific Panel Digital Twin"
-  default_human_interface: "PI Liaison"
+  default_human_interface: "Cibele Amaral (Moderator)"
   status: "paused"
   structured_minutes_required: true
   dashboard_events_required: true
 
 agents:
-  coordination:
-    - "PI Liaison"
-    - "Scientific Director"
-    - "Team Science Facilitator"
-    - "Agent Operations Manager"
-  scientific_reasoning:
-    - "Domain Scientist"
-    - "Quantitative Modeler"
-    - "Data Engineer / Infrastructure Scientist"
-    - "Skeptical Reviewer"
-  evidence_and_memory:
-    - "Citation and Evidence Curator"
-    - "Decision Recorder"
+  moderator:
+    - "Cibele Amaral"
+  panelists:
+    - "Tanya Berger-Wolf"
+    - "Lauren Gillespie"
+    - "Jenna Kline"
+    - "Justin Kitzes"
+    - "Katherine Siegel"
+    - "Ty Tuff"
+  organizer:
+    - "Jennifer Balch"
+  support:
     - "Discussion Intelligence Agent"
-    - "Scientific Narrative Lead"
-  impact_and_execution:
-    - "Societal Impact Agent"
-    - "Cloud Infrastructure Engineer"
 
 discussion_loop:
   autorun: false
   interval_minutes: 60
-  max_turns_per_round: 12
-  max_panelists_per_round: 4
+  max_turns_per_round: 16
+  max_panelists_per_round: 6
   max_research_tasks_per_round: 2
   max_experiments_per_day: 1
   require_experiment_approval: true
   idle_when_no_topic: true
   timezone: "America/Denver"
+  required_flow:
+    - "moderator_introduces_topic"
+    - "moderator_asks_opening_question"
+    - "panelists_respond_independently"
+    - "panelists_react_to_each_other"
+    - "clarifying_questions"
+    - "respectful_challenges"
+    - "identify_agreement"
+    - "identify_disagreement"
+    - "identify_missing_evidence"
+    - "suggest_future_work"
+    - "produce_written_report"
 
 integrations:
   slack:
     enabled: false
-    notes: "Slack should talk to the PI Liaison, not directly to execution agents."
+    notes: "Slack should talk to Cibele as Moderator, not directly to execution agents."
   verde:
     enabled: true
     notes: "AI-VERDE endpoint and key remain configurable through env or mounted secret files."
@@ -55,6 +62,7 @@ integrations:
 
 safety:
   no_impersonation: true
+  public_expertise_only: true
   no_final_consensus_required: true
   append_only_records:
     - "DISCUSSION_ROUNDS/"

@@ -99,20 +99,15 @@ for file in "${required_files[@]}"; do
 done
 
 for name in \
-  "PI Liaison" \
-  "Scientific Director" \
-  "Domain Scientist" \
-  "Quantitative Modeler" \
-  "Data Engineer / Infrastructure Scientist" \
-  "Citation and Evidence Curator" \
-  "Skeptical Reviewer" \
-  "Team Science Facilitator" \
-  "Scientific Narrative Lead" \
-  "Societal Impact Agent" \
-  "Decision Recorder" \
-  "Discussion Intelligence Agent" \
-  "Cloud Infrastructure Engineer" \
-  "Agent Operations Manager"; do
+  "Cibele Amaral" \
+  "Tanya Berger-Wolf" \
+  "Lauren Gillespie" \
+  "Jenna Kline" \
+  "Justin Kitzes" \
+  "Katherine Siegel" \
+  "Ty Tuff" \
+  "Jennifer Balch" \
+  "Discussion Intelligence Agent"; do
   if ! grep -q "${name}" "${workspace}/AGENTS.md"; then
     echo "Missing Scientific Panel Digital Twin role in AGENTS.md: ${name}" >&2
     exit 1
@@ -125,10 +120,12 @@ grep -q "Canonical Categories" "${workspace}/TAG_ONTOLOGY.md" || { echo "Tag ont
 grep -q "Structured memory" "${workspace}/STRUCTURED_MEMORY.md" || grep -q "Memory Type" "${workspace}/STRUCTURED_MEMORY.md" || { echo "Structured memory map missing." >&2; exit 1; }
 grep -q "Scientific Panel Digital Twin" "${workspace}/PANEL_BRIEF.md" || { echo "Panel digital twin brief missing." >&2; exit 1; }
 grep -q "no_impersonation: true" "${workspace}/config/working_group.yaml" || { echo "No-impersonation config missing." >&2; exit 1; }
+grep -q "public_expertise_only: true" "${workspace}/config/working_group.yaml" || { echo "Public-expertise boundary missing." >&2; exit 1; }
 grep -q "VERDE_LLM_API_KEY_FILE" "${workspace}/MODEL_ASSIGNMENTS.md" || { echo "AI-VERDE secret-file support missing." >&2; exit 1; }
 grep -q "max_experiments_per_day" "${workspace}/config/working_group.yaml" || { echo "Experiment bound missing." >&2; exit 1; }
 grep -q "citation" "${workspace}/AGENTS.md" || { echo "Citation discipline missing." >&2; exit 1; }
 grep -q "Discussion Intelligence Agent" "${workspace}/config/discussion-coding-protocol.md" || { echo "Discussion Intelligence Agent coding duty missing." >&2; exit 1; }
+grep -q "Cibele Amaral" "${workspace}/MODEL_ASSIGNMENTS.md" || { echo "Moderator model assignment missing." >&2; exit 1; }
 
 if ! grep -q "Files created: 0" <<< "${second_output}"; then
   echo "Init script is not idempotent; second run created files." >&2

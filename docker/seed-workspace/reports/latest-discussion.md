@@ -1,14 +1,31 @@
-# Latest Panel Discussion
+# Latest Panel Discussion Draft
 
-This is the workspace source for the public latest-discussion brief.
+This workspace file can be used for private drafting, but it is not the tracked
+GitHub Pages source.
 
-Panel agents may propose updates here as discussion rounds complete. A human
-must review the content before copying or promoting it into
-`docs/reports/latest-discussion.md`.
+For website updates, panel agents should use:
+
+- `public_site/reports/panel-discussion-log.md`
+- `public_site/reports/latest-discussion.md`
+
+The `public_site/` folder maps to the repository's tracked `docs/` folder when
+Docker Compose is running. A human reviews those changes in GitHub Desktop and
+pushes the repository so GitHub Actions rebuilds the website.
+
+Review status: draft
+Last panel update:
+Last human review:
+Source rounds:
+- `DISCUSSION_ROUNDS/`
+
+## Public Summary
+
+_Write two or three concise paragraphs explaining what the panel discussed,
+why it mattered, and what readers should understand now._
 
 ## Current Session
 
-_Add session title, date, and scope._
+_Add session title, date, scope, Moderator, and participating panelists._
 
 ## What Dominated
 
@@ -38,6 +55,11 @@ status._
 
 _List accepted or revisiting decisions, owners, confidence, dissent, and follow-up
 actions._
+
+## Evidence And Source Links
+
+_Link to source rounds, evidence packets, fact checks, decisions, and dashboard
+records. Do not include secrets, private notes, or unreviewed sensitive claims._
 
 ## Dashboard Data
 

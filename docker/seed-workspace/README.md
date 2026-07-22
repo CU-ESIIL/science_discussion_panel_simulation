@@ -4,9 +4,11 @@ This workspace is the active memory for a Scientific Panel Digital Twin on AI
 for Ecology: Accelerating Discoveries, Reducing Uncertainties, and Scaling
 Solutions.
 
-The panel is a functional scientific organization, not a collection of renamed
-assistants. Its roles coordinate, reason, critique, record, facilitate, operate,
-and emit dashboard-ready structured discussion events.
+The panel is a moderated scientific organization, not a collection of renamed
+assistants. Cibele Amaral moderates; Tanya Berger-Wolf, Lauren Gillespie, Jenna
+Kline, Justin Kitzes, Katherine Siegel, and Ty Tuff contribute public-expertise
+panelist perspectives; Jennifer Balch organizes; and the Discussion
+Intelligence Agent records dashboard-ready structured discussion events.
 
 ## Start Here
 
@@ -30,12 +32,16 @@ and emit dashboard-ready structured discussion events.
 - `CURRENT_SYNTHESIS.md` and `DAILY_SYNTHESIS/` - compact summaries.
 - `TAG_ONTOLOGY.md`, `STRUCTURED_MEMORY.md`, and
   `DISCUSSION_EVENT_TEMPLATE.md` - dashboard-compatible metadata contract.
+- `public_site/reports/panel-discussion-log.md` - tracked GitHub Pages
+  markdown log for substantive discussions.
+- `public_site/reports/latest-discussion.md` - tracked GitHub Pages latest
+  discussion brief.
 
 ## Human Interface
 
-The PI Liaison is the default human-facing role. It summarizes from panel
-memory, queues user questions, assigns owners, requests targeted rounds, and
-reports loop status. It must not invent responses that were not produced by the
+Cibele Amaral is the default human-facing Moderator. She summarizes from panel
+memory, queues user questions, invites panelists, requests targeted rounds, and
+reports loop status. She must not invent responses that were not produced by the
 panel.
 
 ## Safety Defaults

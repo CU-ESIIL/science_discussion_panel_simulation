@@ -65,27 +65,29 @@ Agent.
 
 ## Role Duties
 
-1. PI Liaison ensures every question has an owner.
-2. Scientific Director identifies emerging themes and future directions.
-3. Domain Scientist records ecological assumptions and biological implications.
-4. Quantitative Modeler records model, statistics, simulation, and uncertainty
-   details.
-5. Data Engineer / Infrastructure Scientist records data, metadata,
-   reproducibility, and infrastructure implications.
-6. Citation and Evidence Curator records evidence references and unsupported
-   claims.
-7. Skeptical Reviewer records counterarguments, assumptions, and failure modes.
-8. Team Science Facilitator records participation and adopted norms.
-9. Scientific Narrative Lead records conceptual evolution and story changes.
-10. Societal Impact Agent records policy, ethics, stakeholder, and
-    implementation implications.
-11. Decision Recorder records accepted decisions, dissent, owners, and due
-    dates.
-12. Discussion Intelligence Agent converts contributions into dashboard-ready
-    events.
-13. Cloud Infrastructure Engineer records execution and resource implications.
-14. Agent Operations Manager records workload, bottlenecks, idle agents, and
-    resource reallocation.
+1. Cibele Amaral introduces topics, asks opening and follow-up questions,
+   balances participation, summarizes transitions, and closes each discussion.
+2. Tanya Berger-Wolf records biodiversity AI, observation-scale, computer
+   vision, wildlife monitoring, foundation-model, and ecological observatory
+   implications.
+3. Lauren Gillespie records applied workflow, usable infrastructure,
+   reproducibility, operational science, implementation, and adoption
+   implications.
+4. Jenna Kline records synthesis, cross-disciplinary collaboration, working
+   group, integration, and scientific-process implications.
+5. Justin Kitzes records computational ecology, benchmarking, validation,
+   uncertainty, statistical rigor, and reproducibility implications.
+6. Katherine Siegel records causal inference, interpretation, assumption,
+   evidence-design, counterfactual, and uncertainty implications.
+7. Ty Tuff records cyberinfrastructure, multi-agent AI, environmental data
+   science, digital twin, synthesis-system, and future operating-system
+   implications.
+8. Jennifer Balch records theme selection, workshop alignment, scheduling, final
+   report review, and external-expert needs between panel discussions.
+9. Discussion Intelligence Agent converts contributions into dashboard-ready
+   events and continuously tracks agreement, disagreement, assumptions, evidence
+   gaps, competing hypotheses, future research priorities, related norms, and
+   action items.
 
 ## Guidelines
 

@@ -11,7 +11,7 @@ A healthy OASIS ScienceClaw instance has four separate parts:
 | Layer | What to check | Why it matters |
 | --- | --- | --- |
 | Gateway | OpenClaw Control UI port, token auth, allowed browser origins | The chat UI can load but still fail to connect if the origin or token state is wrong. |
-| Agent registry | 14 configured agents, with `main` named PI Liaison | If only `main` exists, the agent dropdown disappears and the Scientific Panel Digital Twin was not seeded correctly. |
+| Agent registry | 9 configured agents, with `main` named Cibele Amaral (Moderator) | If only `main` exists or the old functional roles appear, the Scientific Panel Digital Twin was not seeded correctly. |
 | Workspace services | JupyterLab and CMS ports | Files, outputs, GitHub manager, and review tools live outside the Gateway process. |
 | Persistent state | `instances/<name>/openclaw`, `workspace`, `data`, and `external_storage` | These folders distinguish one working group from another and keep project work from mixing. |
 
@@ -70,9 +70,9 @@ docker exec <gateway-container> openclaw sessions --agent main --json
 
 Expected results:
 
-- `openclaw agents list` shows 14 agents.
-- `main` is named `PI Liaison`.
-- Specialist agents such as `scientific-director`, `data-engineer`, `skeptical-reviewer`, `discussion-intelligence-agent`, and `agent-operations-manager` are present.
+- `openclaw agents list` shows 9 agents.
+- `main` is named `Cibele Amaral (Moderator)`.
+- Panel agents such as `tanya-berger-wolf`, `lauren-gillespie`, `jenna-kline`, `justin-kitzes`, `katherine-siegel`, `ty-tuff`, `jennifer-balch`, and `discussion-intelligence-agent` are present.
 - The default model is the expected route, usually `verde/js2/gpt-oss-120b` for open-model testing.
 - `openclaw status` reports the intended gateway port for that instance.
 
@@ -187,7 +187,7 @@ For new local ScienceClaw instances, treat `2026.5.18` as the current known-good
 
 The reusable image pins this baseline with `ARG OPENCLAW_VERSION=2026.5.18` in the Dockerfile. To test a newer OpenClaw version, build an experimental image with an explicit build argument and validate it on one noncritical instance before changing the default.
 
-Also check `openclaw status` for heartbeat state. A default OpenClaw instance may enable a 30-minute heartbeat on `main` even when no heartbeat block appears in `openclaw.json`. In gateway 3, that heartbeat repeatedly touched `agent:main:main` and kept recreating the lock error. For local template instances, explicitly disable the PI Liaison heartbeat unless the project needs it:
+Also check `openclaw status` for heartbeat state. A default OpenClaw instance may enable a 30-minute heartbeat on `main` even when no heartbeat block appears in `openclaw.json`. In gateway 3, that heartbeat repeatedly touched `agent:main:main` and kept recreating the lock error. For local template instances, explicitly disable the default-agent heartbeat unless the project needs it:
 
 ```json
 {
