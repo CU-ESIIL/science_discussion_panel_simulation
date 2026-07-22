@@ -1,8 +1,8 @@
 # Latest Panel Discussion
 
-**Round 2: Disagreements and Consensus on AI Opportunities & Challenges**
+**Round 3: Prioritized Research Actions for AI in Ecological Discovery**
 
-_Updated automatically from workspace discussion rounds at 2026-07-22 19:23 UTC. Review before publishing._
+_Updated automatically from workspace discussion rounds at 2026-07-22 21:41 UTC. Review before publishing._
 
 ## What They Are Discussing
 
@@ -10,25 +10,25 @@ No explicit prompt was recorded.
 
 ## Summary
 
-**Consensus points**: - All panelists agree AI can dramatically increase the scale of ecological data collection and synthesis. - Everyone acknowledges the need for reproducible, containerized workflows. - There is unanimous recognition that FAIR-principled infrastructure is foundational.
+The panel converged on six actionable research priorities: 1. **Active-learning citizen-science pipelines** to address data bias (Tanya). 2. **Cloud-native workflow template library with compute-credit subsidies** for broader accessibility (Lauren). 3. **Community-governed ontology hub with validation tooling** to enable cross-disciplinary data synthesis (Jenna). 4. **Ecologically realistic benchmark suites** that capture spatial and temporal complexity (Justin). 5. **AI-hypothesis / field-ecologist partnership program** with funding for causal experiments (Katherine). 6. **Institutional funding and governance for a FAIR-compliant AI service platform** to sustain infrastructure (Ty).
 
 ## What Dominated
 
-- **bias:** 1 event
+- **funding:** 2 events
 - **active-learning:** 1 event
 - **citizen-science:** 1 event
-- **compute:** 1 event
-- **cloud:** 1 event
-- **resource-access:** 1 event
+- **bias-mitigation:** 1 event
+- **tropical-insects:** 1 event
+- **workflow:** 1 event
 
 ## Panelist Contributions
 
-- **Tanya Berger-Wolf (Biodiversity AI):** I agree with the panel that scaling monitoring is a huge opportunity, but I think the biggest challenge is not just data availability-it's also the bias in existing datasets (geographic, taxonomic) that can lead to misleading biodiversity assessments. We need active learning and citizen-science pipelines to fill gaps.
-- **Lauren Gillespie (Applied Environmental AI):** I concur that reproducible workflows are essential, but I disagree with the notion that usability is the only barrier. Many researchers lack access to adequate compute resources; without cloud-scale infrastructure, even the best workflow remains unusable.
-- **Jenna Kline (Ecological Synthesis):** I see strong agreement on the need for common ontologies, but I disagree with the view that metadata standards alone will solve integration. We also need community-driven governance frameworks to ensure the ontologies stay relevant.
-- **Justin Kitzes (Computational Ecology):** I agree that evaluation frameworks are needed, but I think the panel underestimates the difficulty of creating benchmark datasets that are ecologically realistic. Many current benchmarks are synthetic and ignore spatial autocorrelation, leading to over-optimistic performance claims.
-- **Katherine Siegel (Causal Inference):** I share the optimism about AI-generated hypotheses, yet I remain skeptical about their causal validity without strong domain knowledge. Collaboration with field ecologists is non-negotiable for any causal claim.
-- **Ty Tuff (Scientific Cyberinfrastructure):** I agree that infrastructure is a bottleneck, but I think the panel is overlooking policy and funding constraints that shape FAIR-data services. Without sustained institutional support, any infrastructure we build may not survive.
+- **Tanya Berger-Wolf (Biodiversity AI):** We should develop active-learning pipelines that integrate citizen-science contributions to continuously enrich training datasets while explicitly modeling and correcting geographic and taxonomic bias. A pilot project could focus on tropical insect monitoring where data gaps are severe.
+- **Lauren Gillespie (Applied Environmental AI):** Create a cloud-native, container-based workflow template library (e.g., using CWL or Nextflow) that bundles AI models, preprocessing steps, and resource specifications. Pair this with a low-cost compute credit program for smaller institutions to lower the barrier to entry.
+- **Jenna Kline (Ecological Synthesis):** Establish a community-governed ontology hub (e.g., using the OBO Foundry model) that curates cross-disciplinary metadata standards for ecological AI datasets. Provide tooling for automatic validation of dataset metadata against the hub.
+- **Justin Kitzes (Computational Ecology):** Design and release a suite of ecologically realistic benchmark datasets that include spatial autocorrelation, temporal dynamics, and multi-scale heterogeneity. Host these benchmarks on an open platform with standardized evaluation scripts.
+- **Katherine Siegel (Causal Inference):** Launch a collaborative program that pairs AI hypothesis-generation tools with field ecologists to co-design causal experiments. Provide funding for pilot studies that test AI-suggested mechanisms using randomized or quasi-experimental designs.
+- **Ty Tuff (Scientific Cyberinfrastructure):** Secure sustained institutional funding for a FAIR-compliant AI service platform that offers on-demand model training, data catalogues, and provenance tracking. Embed policy and governance mechanisms to ensure long-term maintenance.
 
 ## Open Threads
 
