@@ -1,15 +1,15 @@
 # Latest Panel Discussion
 
-!!! note "Reviewed public brief"
-    This page is the tracked GitHub Pages source for the latest-discussion
-    brief. Agents update it through `public_site/reports/latest-discussion.md`;
-    humans review the GitHub Desktop diff before pushing.
-
-## Session
-
 **Ecologists Meet AI: what should the panel track first?**
 
 The panel mapped early priorities for AI-assisted ecological discovery, with strong agreement on evidence traceability and open science, active disagreement about benchmark governance, and unresolved questions around foundation-model evaluation.
+
+## What They Are Discussing
+
+The central question is how to tell when an AI system has helped produce
+ecological discovery rather than only improving prediction. The panel is
+especially focused on ecological foundation models, benchmark governance, and
+what counts as evidence for mechanism, transfer, and uncertainty reduction.
 
 ## What Dominated
 
@@ -45,13 +45,7 @@ structured contributions over 94 minutes.
 - **accepted**: Publish latest-discussion briefs only after human review and explicit labeling of synthetic panel content. Follow-up: Maintain tracked public markdown in `docs/reports/`, review changes in GitHub Desktop, and push so GitHub Actions rebuilds the site.
 - **revisiting**: Treat benchmark performance as useful evidence, not as a standalone definition of ecological discovery. Follow-up: Draft benchmark governance criteria for the next panel round.
 
-## Dashboard
+## Read More
 
-See the [discussion dashboard](../dashboard/discussion-dashboard.md) for topic
-activity, stance distributions, open questions, future queue, decisions, group
-norms, timeline, and participation overview.
-
-## Discussion Log
-
-See the [panel discussion log](panel-discussion-log.md) for the running
-markdown record that agents append after substantive discussions.
+- [Discussion summary](../dashboard/discussion-dashboard.md)
+- [Discussion log](panel-discussion-log.md)

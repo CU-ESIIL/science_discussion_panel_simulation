@@ -1,44 +1,48 @@
-# Panel Architecture
+# The Panel
 
-OASIS Scientific Discussion Panel keeps the ScienceClaw/OpenClaw infrastructure
-while resetting the operating model to a Scientific Panel Digital Twin.
+OASIS Scientific Discussion Panel is a disclosed simulated panel about AI for
+ecology. It is meant to preserve the shape of a scientific discussion: the
+questions asked, the evidence used, the points of agreement, the unresolved
+disagreements, and the next work the group wants to do.
 
-```text
-GitHub = control plane
-repository = durable public configuration and memory
-container = replaceable runtime
-workspace = active panel memory
-external storage = large or durable source material
-structured events = dashboard input
-```
+The panel does not claim to speak for the real people whose public expertise
+inspired the roles. It is a working simulation for exploring how AI-supported
+scientific deliberation could be documented and reviewed.
 
-The central product is continuing evidence-based scientific reasoning. Reports,
-transcripts, notes, evidence tables, reading lists, experiments, decisions,
-norms, action items, and dashboard events support the discussion.
+## Purpose
 
-## Panel Layers
+The panel focuses on **AI for Ecology: Accelerating Discoveries, Reducing
+Uncertainties, and Scaling Solutions**. Its public record is intentionally
+simple:
 
-Moderation:
+- What is the panel discussing now?
+- What has the panel discussed so far?
+- Which topics dominated, stalled, or remained unresolved?
+- What should be reviewed or discussed next?
 
-- Cibele Amaral
+## Roles
 
-Panelists:
+| Role | Function |
+| --- | --- |
+| Cibele Amaral | Moderates the conversation, frames questions, invites responses, and closes rounds. |
+| Tanya Berger-Wolf | Represents biodiversity AI, computer vision, wildlife monitoring, and scalable biodiversity science. |
+| Lauren Gillespie | Represents applied environmental AI, reproducible workflows, infrastructure, and adoption. |
+| Jenna Kline | Represents ecological synthesis, working groups, cross-disciplinary collaboration, and scientific process. |
+| Justin Kitzes | Represents computational ecology, statistics, scientific software, benchmarking, and uncertainty. |
+| Katherine Siegel | Represents causal inference, scientific reasoning, model interpretation, assumptions, and uncertainty. |
+| Ty Tuff | Represents scientific cyberinfrastructure, environmental data science, multi-agent AI, and digital twins. |
+| Jennifer Balch | Organizes theme selection, workshop alignment, scheduling, and report review. |
+| Discussion Intelligence Agent | Records structured discussion memory: topics, stance, open questions, decisions, and follow-up items. |
 
-- Tanya Berger-Wolf
-- Lauren Gillespie
-- Jenna Kline
-- Justin Kitzes
-- Katherine Siegel
-- Ty Tuff
+## Public Output
 
-Organization:
+After each substantive round, the panel should update two public-facing files:
 
-- Jennifer Balch
+- [Current discussion](reports/latest-discussion.md), a short reviewed summary
+  of the latest round.
+- [Discussion log](reports/panel-discussion-log.md), a dated running record of
+  panel discussions.
 
-Structured memory:
-
-- Discussion Intelligence Agent
-
-Every meaningful contribution should produce structured event metadata with
-topic tags, stance, contribution type, question, decision, evidence,
-uncertainty, norm, confidence, and action-item fields.
+The [discussion summary](dashboard/discussion-dashboard.md) turns the structured
+records into a compact view of what dominated, what did not go far, and what
+remains unresolved.
