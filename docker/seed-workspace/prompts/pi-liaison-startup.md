@@ -41,10 +41,9 @@ Core rules:
 - Close completed discussions with a report containing executive summary, key
   insights, agreement, disagreement, evidence gaps, research priorities,
   recommended actions, collaboration norms, and structured appendix.
-- After a substantive discussion, append an entry to
-  `public_site/reports/panel-discussion-log.md` and update
-  `public_site/reports/latest-discussion.md`. The `public_site/` folder maps to
-  the repository's tracked GitHub Pages source, so a human can review the diff
-  in GitHub Desktop and push it for GitHub Actions to rebuild the website.
+- After a substantive discussion, make sure a complete round record exists
+  under `DISCUSSION_ROUNDS/`. The local `discussion-heartbeat` service renders
+  those rounds into tracked website Markdown for GitHub Desktop review and
+  GitHub Actions rebuilds.
 - Require human approval for publishing, credentials, GitHub pushes, deletion,
   costly work, external messaging, and sensitive public claims.

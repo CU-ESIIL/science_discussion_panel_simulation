@@ -1,4 +1,4 @@
-.PHONY: help build up start down open-ui cron-off shell init-panel init-working-group panel-status panel-pause panel-resume panel-round panel-summary panel-queue doctor checkpoint demo demo-environmental smoke-test test-panel test-working-group test-layout check-secrets test-secrets workspace-smoke-test github-smoke-test
+.PHONY: help build up start down open-ui cron-off shell init-panel init-working-group panel-status panel-pause panel-resume panel-round panel-summary panel-queue publish-discussions doctor checkpoint demo demo-environmental smoke-test test-panel test-working-group test-layout check-secrets test-secrets workspace-smoke-test github-smoke-test
 
 help:
 	@echo "OASIS Scientific Discussion Panel commands"
@@ -17,6 +17,7 @@ help:
 	@echo "  make panel-round         Run one deterministic local panel round"
 	@echo "  make panel-summary       Print the current synthesis"
 	@echo "  make panel-queue QUESTION='...'  Queue a user question"
+	@echo "  make publish-discussions Render workspace rounds into website Markdown"
 	@echo "  make doctor              Run safe local health checks"
 	@echo "  make checkpoint          Write a local workspace checkpoint"
 	@echo "  make demo                Run the deterministic panel discussion demo"
@@ -70,6 +71,9 @@ panel-summary:
 
 panel-queue:
 	@python3 scripts/panel_control.py queue-question --workspace "$${SCIENCECLAW_WORKSPACE_DIR:-$${WORKSPACE_DIR:-workspace}}" --question "$${QUESTION:?Set QUESTION='...'}"
+
+publish-discussions:
+	@python3 scripts/publish_discussion_rounds.py --workspace "$${SCIENCECLAW_WORKSPACE_DIR:-$${WORKSPACE_DIR:-workspace}}" --site docs
 
 doctor:
 	@scripts/doctor.sh

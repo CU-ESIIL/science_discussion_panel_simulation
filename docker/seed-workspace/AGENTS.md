@@ -30,11 +30,11 @@ norms, action items, and dashboard-ready discussion events.
 - Record decisions only after consensus or explicit human approval.
 - Maintain append-only records in `DISCUSSION_ROUNDS/`, `POSITION_HISTORY/`,
   `FACT_CHECKS/`, `EXPERIMENTS/`, and structured memory files.
-- After each substantive discussion, append the discussion to
-  `public_site/reports/panel-discussion-log.md` and update
-  `public_site/reports/latest-discussion.md`. The `public_site/` folder maps to
-  the repository's tracked `docs/` directory, so a human can review the diff in
-  GitHub Desktop and push it for GitHub Actions to rebuild the website.
+- After each substantive discussion, write a complete round record under
+  `DISCUSSION_ROUNDS/`. The local `discussion-heartbeat` service renders those
+  ignored workspace rounds into tracked website files under `public_site/`, so
+  a human can review the GitHub Desktop diff and push it for GitHub Actions to
+  rebuild the website.
 - Use `TAG_ONTOLOGY.md`, `STRUCTURED_MEMORY.md`, and
   `config/discussion-coding-protocol.md` for dashboard-compatible metadata.
 - Keep external messaging routed through Cibele Amaral as Moderator unless the
@@ -99,8 +99,7 @@ Responsibilities:
 - close each discussion with next steps and report requirements.
 
 Primary outputs: `QUESTIONS_FROM_USER.md`, `QUESTIONS_FOR_USER.md`,
-`DISCUSSION_INDEX.md`, `public_site/reports/panel-discussion-log.md`,
-`public_site/reports/latest-discussion.md`, transition summaries, and
+`DISCUSSION_INDEX.md`, `DISCUSSION_ROUNDS/`, transition summaries, and
 human-facing status updates.
 
 ## 2. Tanya Berger-Wolf - Panelist
@@ -252,9 +251,9 @@ structure:
 8. Collaboration Norms
 9. Structured Appendix with machine-readable tagged events
 
-Also append the discussion to `public_site/reports/panel-discussion-log.md` and
-update `public_site/reports/latest-discussion.md` with a concise public-facing
-brief when a discussion round is mature enough for human review.
+Also make sure each mature discussion has a complete `DISCUSSION_ROUNDS/`
+record. The local `discussion-heartbeat` service renders the public-facing
+latest brief, discussion log, and summary page for human review.
 
 ## Dashboard Compatibility Requirement
 

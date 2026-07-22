@@ -162,6 +162,20 @@ grep -q "Prediction does not equal explanation" "${workspace}/CURRENT_POSITIONS.
 grep -q "claim-round-001-001" "${workspace}/EVIDENCE_LEDGER.yaml" || { echo "Structured evidence ledger missing." >&2; exit 1; }
 grep -q "Last completed round | round-002" "${workspace}/SYSTEM_STATUS.md" || { echo "Panel status not updated after demo." >&2; exit 1; }
 
+public_site="${workspace}/public_site"
+python3 "${repo_root}/scripts/publish_discussion_rounds.py" --workspace "${workspace}" --site "${public_site}" >/tmp/scienceclaw-panel-publish.log
+for path in \
+  "${public_site}/reports/latest-discussion.md" \
+  "${public_site}/reports/panel-discussion-log.md" \
+  "${public_site}/dashboard/discussion-dashboard.md"; do
+  if [ ! -s "${path}" ]; then
+    echo "Missing expected website discussion output: ${path}" >&2
+    exit 1
+  fi
+done
+grep -q "round-002" "${public_site}/reports/panel-discussion-log.md" || { echo "Rendered discussion log missing latest round source." >&2; exit 1; }
+grep -q "Updated automatically from workspace discussion rounds" "${public_site}/reports/latest-discussion.md" || { echo "Latest discussion was not rendered by publisher." >&2; exit 1; }
+
 SCIENCECLAW_SECRET_MODE=verde SECRETS_ENV_FILE=/dev/null "${repo_root}/scripts/check-secret-config.sh" >/tmp/scienceclaw-panel-secret-check.log 2>&1 && {
   echo "Secret checker should fail when Verde mode lacks required config." >&2
   exit 1

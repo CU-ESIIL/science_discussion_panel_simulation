@@ -4,8 +4,8 @@
   <img src="../assets/panel/ecologists-meet-ai-hero.png" alt="Ecologists and AI researchers in a panel discussion at a science summit">
   <div>
     <p class="eyebrow">What the panel has discussed</p>
-    <h2>Ecologists Meet AI: what should the panel track first?</h2>
-    <p>The panel mapped early priorities for AI-assisted ecological discovery, with strong agreement on evidence traceability and open science, active disagreement about benchmark governance, and unresolved questions around foundation-model evaluation.</p>
+    <h2>Round 2: Disagreements and Consensus on AI Opportunities & Challenges</h2>
+    <p>**Consensus points**: - All panelists agree AI can dramatically increase the scale of ecological data collection and synthesis. - Everyone acknowledges the need for reproducible, containerized workflows. - There is unanimous recognition that FAIR-principled infrastructure is foundational.</p>
     <div class="dashboard-actions">
       <a class="md-button md-button--primary" href="../reports/latest-discussion.md">Current discussion</a>
       <a class="md-button" href="../reports/panel-discussion-log.md">Discussion log</a>
@@ -13,53 +13,70 @@
   </div>
 </section>
 
+_Updated automatically from workspace discussion rounds at 2026-07-22 19:23 UTC. Review before publishing._
+
 <section class="discussion-metrics" aria-label="Summary metrics">
-<div class="discussion-metric" title="Total elapsed session time"><span>Discussion time</span><strong>94 min</strong></div>
-<div class="discussion-metric" title="Recorded structured discussion events"><span>Contributions</span><strong>22</strong></div>
-<div class="discussion-metric" title="Topics with at least one event"><span>Active topics</span><strong>9</strong></div>
-<div class="discussion-metric" title="Topics with two or fewer events"><span>Low engagement</span><strong>2</strong></div>
-<div class="discussion-metric" title="Questions not marked resolved"><span>Open questions</span><strong>3</strong></div>
-<div class="discussion-metric" title="Recorded decision register entries"><span>Decisions</span><strong>2</strong></div>
-<div class="discussion-metric" title="Share of events tagged as agreement"><span>Agreement</span><strong>36%</strong></div>
-<div class="discussion-metric" title="Share of events tagged as disagreement"><span>Disagreement</span><strong>9%</strong></div>
+<div class="discussion-metric"><span>Rounds</span><strong>2</strong></div>
+<div class="discussion-metric"><span>Contributions</span><strong>14</strong></div>
+<div class="discussion-metric"><span>Active topics</span><strong>37</strong></div>
+<div class="discussion-metric"><span>Low engagement</span><strong>33</strong></div>
 </section>
 
 ## Topic Activity
 
 <div class="activity-board">
-<div class="activity-row"><span>Ecological foundation models</span><div class="activity-track"><b style="width:100%"></b></div><strong>7</strong></div><div class="activity-row"><span>Benchmark governance</span><div class="activity-track"><b style="width:86%"></b></div><strong>6</strong></div><div class="activity-row"><span>Evidence traceability</span><div class="activity-track"><b style="width:86%"></b></div><strong>6</strong></div><div class="activity-row"><span>Open science workflow</span><div class="activity-track"><b style="width:86%"></b></div><strong>6</strong></div><div class="activity-row"><span>Model interpretability</span><div class="activity-track"><b style="width:71%"></b></div><strong>5</strong></div><div class="activity-row"><span>AI ethics and sovereignty</span><div class="activity-track"><b style="width:57%"></b></div><strong>4</strong></div><div class="activity-row"><span>Agent governance</span><div class="activity-track"><b style="width:57%"></b></div><strong>4</strong></div><div class="activity-row"><span>Data quality and bias</span><div class="activity-track"><b style="width:57%"></b></div><strong>4</strong></div><div class="activity-row"><span>Remote sensing</span><div class="activity-track"><b style="width:29%"></b></div><strong>2</strong></div>
+<div class="activity-row"><span>opportunity</span><div class="activity-track"><b style="width:100%"></b></div><strong>2</strong></div>
+<div class="activity-row"><span>challenge</span><div class="activity-track"><b style="width:100%"></b></div><strong>2</strong></div>
+<div class="activity-row"><span>ontology</span><div class="activity-track"><b style="width:100%"></b></div><strong>2</strong></div>
+<div class="activity-row"><span>causal-inference</span><div class="activity-track"><b style="width:100%"></b></div><strong>2</strong></div>
+<div class="activity-row"><span>biodiversity-monitoring</span><div class="activity-track"><b style="width:50%"></b></div><strong>1</strong></div>
+<div class="activity-row"><span>training-data</span><div class="activity-track"><b style="width:50%"></b></div><strong>1</strong></div>
+<div class="activity-row"><span>workflow</span><div class="activity-track"><b style="width:50%"></b></div><strong>1</strong></div>
+<div class="activity-row"><span>usability</span><div class="activity-track"><b style="width:50%"></b></div><strong>1</strong></div>
+<div class="activity-row"><span>reproducibility</span><div class="activity-track"><b style="width:50%"></b></div><strong>1</strong></div>
+<div class="activity-row"><span>data-integration</span><div class="activity-track"><b style="width:50%"></b></div><strong>1</strong></div>
+<div class="activity-row"><span>cross-disciplinary</span><div class="activity-track"><b style="width:50%"></b></div><strong>1</strong></div>
+<div class="activity-row"><span>evaluation</span><div class="activity-track"><b style="width:50%"></b></div><strong>1</strong></div>
+<div class="activity-row"><span>uncertainty</span><div class="activity-track"><b style="width:50%"></b></div><strong>1</strong></div>
+<div class="activity-row"><span>hypothesis-generation</span><div class="activity-track"><b style="width:50%"></b></div><strong>1</strong></div>
+<div class="activity-row"><span>cyberinfrastructure</span><div class="activity-track"><b style="width:50%"></b></div><strong>1</strong></div>
+<div class="activity-row"><span>FAIR</span><div class="activity-track"><b style="width:50%"></b></div><strong>1</strong></div>
+<div class="activity-row"><span>service-oriented</span><div class="activity-track"><b style="width:50%"></b></div><strong>1</strong></div>
+<div class="activity-row"><span>summary</span><div class="activity-track"><b style="width:50%"></b></div><strong>1</strong></div>
+<div class="activity-row"><span>bias</span><div class="activity-track"><b style="width:50%"></b></div><strong>1</strong></div>
+<div class="activity-row"><span>active-learning</span><div class="activity-track"><b style="width:50%"></b></div><strong>1</strong></div>
+<div class="activity-row"><span>citizen-science</span><div class="activity-track"><b style="width:50%"></b></div><strong>1</strong></div>
+<div class="activity-row"><span>compute</span><div class="activity-track"><b style="width:50%"></b></div><strong>1</strong></div>
+<div class="activity-row"><span>cloud</span><div class="activity-track"><b style="width:50%"></b></div><strong>1</strong></div>
+<div class="activity-row"><span>resource-access</span><div class="activity-track"><b style="width:50%"></b></div><strong>1</strong></div>
+<div class="activity-row"><span>governance</span><div class="activity-track"><b style="width:50%"></b></div><strong>1</strong></div>
+<div class="activity-row"><span>community</span><div class="activity-track"><b style="width:50%"></b></div><strong>1</strong></div>
+<div class="activity-row"><span>benchmark</span><div class="activity-track"><b style="width:50%"></b></div><strong>1</strong></div>
+<div class="activity-row"><span>spatial-autocorrelation</span><div class="activity-track"><b style="width:50%"></b></div><strong>1</strong></div>
+<div class="activity-row"><span>realism</span><div class="activity-track"><b style="width:50%"></b></div><strong>1</strong></div>
+<div class="activity-row"><span>causal-validity</span><div class="activity-track"><b style="width:50%"></b></div><strong>1</strong></div>
+<div class="activity-row"><span>domain-collaboration</span><div class="activity-track"><b style="width:50%"></b></div><strong>1</strong></div>
+<div class="activity-row"><span>policy</span><div class="activity-track"><b style="width:50%"></b></div><strong>1</strong></div>
+<div class="activity-row"><span>funding</span><div class="activity-track"><b style="width:50%"></b></div><strong>1</strong></div>
+<div class="activity-row"><span>sustainability</span><div class="activity-track"><b style="width:50%"></b></div><strong>1</strong></div>
+<div class="activity-row"><span>consensus</span><div class="activity-track"><b style="width:50%"></b></div><strong>1</strong></div>
+<div class="activity-row"><span>disagreement</span><div class="activity-track"><b style="width:50%"></b></div><strong>1</strong></div>
+<div class="activity-row"><span>future-work</span><div class="activity-track"><b style="width:50%"></b></div><strong>1</strong></div>
 </div>
 
 ## What Dominated
 
-- **Ecological foundation models**: whether they support discovery or mainly interpolate patterns.
-- **Benchmark governance**: who chooses evaluation tasks and whose knowledge is represented.
-- **Evidence traceability**: how public summaries should separate evidence, synthesis, and speculation.
+- **opportunity:** 2 events
+- **challenge:** 2 events
+- **ontology:** 2 events
+- **causal-inference:** 2 events
+- **biodiversity-monitoring:** 1 event
+- **training-data:** 1 event
 
 ## What Did Not Go Far
 
-<span class="low-topic">Agent governance · 4 events</span><span class="low-topic">Remote sensing · 2 events</span>
+<span class="low-topic">biodiversity-monitoring - 1 event</span><span class="low-topic">training-data - 1 event</span><span class="low-topic">workflow - 1 event</span><span class="low-topic">usability - 1 event</span><span class="low-topic">reproducibility - 1 event</span><span class="low-topic">data-integration - 1 event</span><span class="low-topic">cross-disciplinary - 1 event</span><span class="low-topic">evaluation - 1 event</span><span class="low-topic">uncertainty - 1 event</span><span class="low-topic">hypothesis-generation - 1 event</span><span class="low-topic">cyberinfrastructure - 1 event</span><span class="low-topic">FAIR - 1 event</span><span class="low-topic">service-oriented - 1 event</span><span class="low-topic">summary - 1 event</span><span class="low-topic">bias - 1 event</span><span class="low-topic">active-learning - 1 event</span><span class="low-topic">citizen-science - 1 event</span><span class="low-topic">compute - 1 event</span><span class="low-topic">cloud - 1 event</span><span class="low-topic">resource-access - 1 event</span><span class="low-topic">governance - 1 event</span><span class="low-topic">community - 1 event</span><span class="low-topic">benchmark - 1 event</span><span class="low-topic">spatial-autocorrelation - 1 event</span><span class="low-topic">realism - 1 event</span><span class="low-topic">causal-validity - 1 event</span><span class="low-topic">domain-collaboration - 1 event</span><span class="low-topic">policy - 1 event</span><span class="low-topic">funding - 1 event</span><span class="low-topic">sustainability - 1 event</span><span class="low-topic">consensus - 1 event</span><span class="low-topic">disagreement - 1 event</span><span class="low-topic">future-work - 1 event</span>
 
-They were mentioned, but the group did not build them out. The summary treats
-that as a signal about discussion shape, not as a judgment that those topics are
-unimportant.
+## Open Threads
 
-## Where The Panel Agreed
-
-- Public summaries should make evidence traceable.
-- Benchmark scores are useful, but not enough to define ecological discovery.
-- Low discussion volume should not be mistaken for low scientific importance.
-
-## Where The Panel Has Not Resolved The Question
-
-- How to evaluate foundation-model claims against mechanistic baselines.
-- How to represent under-sampled regions and community-held knowledge in benchmarks.
-- How to score interpretability without implying stronger causal evidence than exists.
-
-## Open Questions
-
-| Question | Topic | Mentions | Priority | Status | Agents |
-| --- | ---: | ---: | --- | --- | --- |
-| When does predictive accuracy count as ecological discovery rather than pattern interpolation? | Ecological foundation models | 4 | high | needs evidence | Domain Scientist, Quantitative Modeler, Skeptic |
-| How should ecological benchmarks represent under-sampled regions and community-held knowledge? | Benchmark governance | 3 | high | actively discussed | Societal Impact Translator, Scientific Director, Scientific Narrative Lead |
-| Which remote-sensing evidence packets should be assembled before drawing conclusions? | Remote sensing | 2 | medium | deferred | Data Engineer, Citation and Evidence Curator |
+- No unresolved threads were extracted.

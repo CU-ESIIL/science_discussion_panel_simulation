@@ -164,3 +164,30 @@ services:
     command:
       - python3
       - /opt/scienceclaw/cms/scienceclaw_cms.py
+
+  discussion-heartbeat:
+    image: openclaw-local
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /repo
+    entrypoint:
+      - /usr/bin/tini
+      - --
+    environment:
+      SCIENCECLAW_DISCUSSION_HEARTBEAT_INTERVAL: ${SCIENCECLAW_DISCUSSION_HEARTBEAT_INTERVAL:-10}
+      SCIENCECLAW_DISCUSSION_HEARTBEAT_QUEUE_QUESTIONS: ${SCIENCECLAW_DISCUSSION_HEARTBEAT_QUEUE_QUESTIONS:-1}
+    volumes:
+      - ${WORKSPACE_DIR:-./workspace}:/workspace
+      - ./docs:/workspace/public_site
+      - ./scripts:/repo/scripts:ro
+    command:
+      - python3
+      - /repo/scripts/publish_discussion_rounds.py
+      - --workspace
+      - /workspace
+      - --site
+      - /workspace/public_site
+      - --watch
+      - --interval
+      - ${SCIENCECLAW_DISCUSSION_HEARTBEAT_INTERVAL:-10}
