@@ -20,6 +20,18 @@ FENCE_RE = re.compile(r"```.*?```", re.DOTALL)
 HEADING_RE = re.compile(r"^(#{1,6})\s+(.+?)\s*$", re.MULTILINE)
 
 
+AVATAR_LABELS = {
+    "Cibele Amaral": "Moderator avatar based on the public online persona of Cibele Amaral",
+    "Tanya Berger-Wolf": "Avatar based on the public online persona of Tanya Berger-Wolf",
+    "Lauren Gillespie": "Avatar based on the public online persona of Lauren Gillespie",
+    "Jenna Kline": "Avatar based on the public online persona of Jenna Kline",
+    "Justin Kitzes": "Avatar based on the public online persona of Justin Kitzes",
+    "Katherine Siegel": "Avatar based on the public online persona of Katherine Siegel",
+    "Ty Tuff": "Avatar based on the public online persona of Ty Tuff",
+    "Jennifer Balch": "Organizer avatar based on the public online persona of Jennifer Balch",
+}
+
+
 @dataclass(frozen=True)
 class RoundRecord:
     round_id: str
@@ -58,6 +70,11 @@ def clean_inline_markdown(text: str) -> str:
     text = text.replace("**", "").replace("__", "").replace("`", "")
     text = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", text)
     return re.sub(r"\s+", " ", text).strip()
+
+
+def avatar_label(name: str) -> str:
+    base = name.split("(", 1)[0].strip()
+    return AVATAR_LABELS.get(base, f"Simulated panel avatar: {name}")
 
 
 def one_line(text: str) -> str:
@@ -245,7 +262,7 @@ def event_count(rounds: list[RoundRecord]) -> int:
 
 
 def render_contribution_bullets(record: RoundRecord, limit: int = 8) -> str:
-    lines = [f"- **{speaker}:** {summary}" for speaker, summary in record.contributions[:limit]]
+    lines = [f"- **{avatar_label(speaker)}:** {summary}" for speaker, summary in record.contributions[:limit]]
     return "\n".join(lines) if lines else "- No panelist contributions were extracted."
 
 
@@ -422,7 +439,7 @@ def render_priority_actions(rounds: list[RoundRecord]) -> str:
         tag_text = ", ".join(tags[:4]) if tags else "needs coding"
         cards.append(
             '<div class="summary-card">'
-            f"<strong>{html.escape(speaker)}</strong>"
+            f"<strong>{html.escape(avatar_label(speaker))}</strong>"
             f"<p>{html.escape(summary)}</p>"
             f"<span>{html.escape(tag_text)}</span>"
             "</div>"
@@ -635,7 +652,7 @@ _Updated automatically from workspace discussion rounds at {generated_at}. Revie
 
 {render_tag_bullets(tag_counts([record]), limit=6)}
 
-## Panelist Contributions
+## Avatar Contributions
 
 {render_contribution_bullets(record)}
 
@@ -680,7 +697,7 @@ def render_log(rounds: list[RoundRecord], generated_at: str) -> str:
                 "",
                 render_tag_bullets(tag_counts([record]), limit=6),
                 "",
-                "### Panelist Contributions",
+                "### Avatar Contributions",
                 "",
                 render_contribution_bullets(record),
                 "",

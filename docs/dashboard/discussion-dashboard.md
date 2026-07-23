@@ -34,12 +34,12 @@ The discussion has moved from broad opportunity mapping to a practical research 
 
 ## Priority Research Actions
 
-<div class="summary-card-grid"><div class="summary-card"><strong>Tanya Berger-Wolf</strong><p>Proposed active-learning citizen-science pipelines to mitigate dataset bias, with a pilot on tropical insects.</p><span>active-learning, citizen-science, bias-mitigation, tropical-insects</span></div>
-<div class="summary-card"><strong>Lauren Gillespie</strong><p>Suggested a cloud-native workflow template library with compute-credit subsidies for under-resourced groups.</p><span>workflow, cloud, compute-credits, CWL</span></div>
-<div class="summary-card"><strong>Jenna Kline</strong><p>Advocated for a community-governed ontology hub with automatic metadata validation tools.</p><span>ontology, metadata, community-governance, OBO</span></div>
-<div class="summary-card"><strong>Justin Kitzes</strong><p>Proposed creating ecologically realistic benchmark suites with spatial and temporal complexity, hosted on an open platform.</p><span>benchmark, spatial-autocorrelation, temporal-dynamics, open-platform</span></div>
-<div class="summary-card"><strong>Katherine Siegel</strong><p>Recommended a partnership program linking AI hypothesis generation with field ecologists and funding pilot causal experiments.</p><span>causal-experiments, partnership, funding, hypothesis-generation</span></div>
-<div class="summary-card"><strong>Ty Tuff</strong><p>Called for institutional funding and governance for a FAIR-compliant AI service platform with on-demand capabilities.</p><span>FAIR, service-platform, policy, funding</span></div></div>
+<div class="summary-card-grid"><div class="summary-card"><strong>Avatar based on the public online persona of Tanya Berger-Wolf</strong><p>Proposed active-learning citizen-science pipelines to mitigate dataset bias, with a pilot on tropical insects.</p><span>active-learning, citizen-science, bias-mitigation, tropical-insects</span></div>
+<div class="summary-card"><strong>Avatar based on the public online persona of Lauren Gillespie</strong><p>Suggested a cloud-native workflow template library with compute-credit subsidies for under-resourced groups.</p><span>workflow, cloud, compute-credits, CWL</span></div>
+<div class="summary-card"><strong>Avatar based on the public online persona of Jenna Kline</strong><p>Advocated for a community-governed ontology hub with automatic metadata validation tools.</p><span>ontology, metadata, community-governance, OBO</span></div>
+<div class="summary-card"><strong>Avatar based on the public online persona of Justin Kitzes</strong><p>Proposed creating ecologically realistic benchmark suites with spatial and temporal complexity, hosted on an open platform.</p><span>benchmark, spatial-autocorrelation, temporal-dynamics, open-platform</span></div>
+<div class="summary-card"><strong>Avatar based on the public online persona of Katherine Siegel</strong><p>Recommended a partnership program linking AI hypothesis generation with field ecologists and funding pilot causal experiments.</p><span>causal-experiments, partnership, funding, hypothesis-generation</span></div>
+<div class="summary-card"><strong>Avatar based on the public online persona of Ty Tuff</strong><p>Called for institutional funding and governance for a FAIR-compliant AI service platform with on-demand capabilities.</p><span>FAIR, service-platform, policy, funding</span></div></div>
 
 ## Main Topic Families
 

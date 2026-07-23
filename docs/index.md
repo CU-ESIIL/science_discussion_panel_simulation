@@ -22,19 +22,19 @@ scientific panel about **AI for Ecology: Accelerating Discoveries, Reducing
 Uncertainties, and Scaling Solutions**.
 
 The panel is designed to make scientific reasoning easier to follow. It keeps
-track of what was discussed, where panelists agreed, where they disagreed, which
+track of what was discussed, where avatars agreed, where they disagreed, which
 questions stalled, and what should come next.
 
 ## What The Panel Is
 
-The panel is a disclosed simulation of a moderated scientific discussion. It is
-not presented as private statements from real people. Its job is to test how a
-scientific working group might use AI agents to preserve memory, surface
-uncertainty, and turn ongoing discussion into reviewable public summaries.
+The panel is a disclosed simulation of a moderated scientific discussion. Its
+participants are avatars based on public online personas, public scientific
+work, and publicly available professional context. The site does not present
+their outputs as statements, views, or endorsements from the real people.
 
-The current panel includes a moderator, six scientific panelists, an organizer,
-and a discussion-intelligence agent that records topics, stance, decisions, open
-questions, and follow-up work.
+The current panel includes a moderator avatar, six scientific avatars, an
+organizer avatar, and a discussion-intelligence agent that records topics,
+stance, decisions, open questions, and follow-up work.
 
 <div class="homepage-card-grid">
   <a class="homepage-card" href="panel-architecture.md">
@@ -88,6 +88,7 @@ holds dated entries as the panel updates them.
 
 ## Representation
 
-The panelists are disclosed simulations informed by documented expertise and
-source material. They do not speak for the real people whose work inspired the
-perspectives, and generated statements must never be presented as private views.
+The panelists are disclosed avatars informed by public online personas,
+documented expertise, and source material. They do not speak for the real people
+whose work inspired the perspectives, and generated statements must never be
+presented as personal views, private views, or endorsements.

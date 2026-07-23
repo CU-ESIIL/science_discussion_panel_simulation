@@ -29,14 +29,15 @@ The design is intentionally bounded. Each role has expected inputs, expected out
 
 ## Moderator Gateway
 
-The user should not have to manage every agent by hand. Cibele Amaral, the
-Moderator, turns a multi-agent scientific panel into one coherent conversation.
+The user should not have to manage every agent by hand. The moderator avatar
+based on the public online persona of Cibele Amaral turns a multi-agent
+scientific panel into one coherent conversation.
 
-Cibele is the default human-facing role. She introduces topics, asks the
-opening question, invites panelists, asks follow-up questions, summarizes
-transitions, and closes each discussion with a report path. The rest of the
-panel communicates through structured discussion events, task assignments, and
-memory files rather than competing for the user's attention.
+The moderator avatar is the default human-facing role. It introduces topics,
+asks the opening question, invites scientific avatars, asks follow-up questions,
+summarizes transitions, and closes each discussion with a report path. The rest
+of the panel communicates through structured discussion events, task
+assignments, and memory files rather than competing for the user's attention.
 
 When other agents need user input, they write questions in `QUESTIONS_FOR_USER.md`. Cibele deduplicates the queue, merges related questions, and asks only the highest-value followups. She returns milestone summaries, draft reports, and release packets to the user for review. She does not invent scientific goals or approve publication, deletion, GitHub pushes, external API use, or sensitive claims.
 
@@ -46,16 +47,16 @@ Operationally, Slack use has a few distinct gates: Socket Mode must be healthy, 
 
 ## Role Summary
 
-| Agent | Primary purpose | Main outputs |
+| Agent or avatar | Primary purpose | Main outputs |
 | --- | --- | --- |
-| Cibele Amaral | Moderate discussion and human-facing flow. | Opening questions, transitions, summaries, report closure |
-| Tanya Berger-Wolf | Represent biodiversity AI and scalable observation. | Biodiversity AI questions, observatory implications, data-scale challenges |
-| Lauren Gillespie | Represent applied environmental AI and usable workflows. | Workflow notes, adoption risks, reproducibility needs |
-| Jenna Kline | Represent ecological synthesis and cross-community integration. | Synthesis links, collaboration notes, integration gaps |
-| Justin Kitzes | Represent computational ecology, validation, and reproducibility. | Benchmark critiques, uncertainty checks, validation needs |
-| Katherine Siegel | Represent causal inference and scientific interpretation. | Causal assumptions, evidence designs, interpretation cautions |
-| Ty Tuff | Represent cyberinfrastructure, multi-agent AI, and digital twins. | Infrastructure patterns, digital twin implications, synthesis-system notes |
-| Jennifer Balch | Organize themes and workshop alignment. | Topic proposals, schedule notes, report review comments |
+| Moderator avatar based on the public online persona of Cibele Amaral | Moderate discussion and human-facing flow. | Opening questions, transitions, summaries, report closure |
+| Avatar based on the public online persona of Tanya Berger-Wolf | Represent biodiversity AI and scalable observation. | Biodiversity AI questions, observatory implications, data-scale challenges |
+| Avatar based on the public online persona of Lauren Gillespie | Represent applied environmental AI and usable workflows. | Workflow notes, adoption risks, reproducibility needs |
+| Avatar based on the public online persona of Jenna Kline | Represent ecological synthesis and cross-community integration. | Synthesis links, collaboration notes, integration gaps |
+| Avatar based on the public online persona of Justin Kitzes | Represent computational ecology, validation, and reproducibility. | Benchmark critiques, uncertainty checks, validation needs |
+| Avatar based on the public online persona of Katherine Siegel | Represent causal inference and scientific interpretation. | Causal assumptions, evidence designs, interpretation cautions |
+| Avatar based on the public online persona of Ty Tuff | Represent cyberinfrastructure, multi-agent AI, and digital twins. | Infrastructure patterns, digital twin implications, synthesis-system notes |
+| Organizer avatar based on the public online persona of Jennifer Balch | Organize themes and workshop alignment. | Topic proposals, schedule notes, report review comments |
 | Discussion Intelligence Agent | Convert conversations into metadata. | Structured events, normalized tags, dashboard exports |
 
 ## Working Pattern
@@ -64,7 +65,7 @@ Start with a project charter. Identify the research question, theory of change, 
 
 Move through the phases in `ROADMAP.md`. The phases are not a promise that the work is complete or correct; they are a checklist for what should exist before claims become stronger. A claim should not move from exploratory notes into a report or public artifact until it has evidence, citation review, skeptic review, and human review when required.
 
-Use disagreement deliberately. Panelists should respectfully challenge
+Use disagreement deliberately. Scientific avatars should respectfully challenge
 assumptions, surface weak evidence, identify alternative explanations, and
 preserve unresolved disagreement before it hardens into project conclusions.
 

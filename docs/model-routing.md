@@ -1,6 +1,6 @@
 # Model Routing
 
-A scientific discussion panel does not need every role to use the same model route. In this container, the current approved local default is Verde for every panel role.
+A scientific discussion panel does not need every role to use the same model route. In this container, the current approved local default is Verde for every panel avatar and support role.
 
 The practical pattern is still conservative: route all agents through the approved Verde OpenAI-compatible endpoint, keep human review gates for publishing, credentials, GitHub pushes, external messaging, costly experiments, and sensitive claims, and record any future route changes before relying on them. This follows the same bounded-role idea used throughout the panel: agents get specific jobs, expected outputs, and explicit limits.
 
@@ -12,11 +12,11 @@ The workspace seed includes `/workspace/MODEL_ASSIGNMENTS.md` as the role-level 
 
 ## Suggested Defaults
 
-| Agent or group | Recommended route | Why |
+| Agent or avatar group | Recommended route | Why |
 | --- | --- | --- |
-| Cibele Amaral (Moderator) | `verde/js2/gpt-oss-120b` | Introduces topics, asks opening and follow-up questions, balances participation, summarizes transitions, and closes reports. |
-| Panelists | `verde/js2/gpt-oss-120b` | Tanya Berger-Wolf, Lauren Gillespie, Jenna Kline, Justin Kitzes, Katherine Siegel, and Ty Tuff produce reviewable public-expertise perspectives. |
-| Jennifer Balch (Organizer) | `verde/js2/gpt-oss-120b` | Selects themes, proposes questions, reviews final reports, and aligns sessions with workshop goals. |
+| Moderator avatar based on the public online persona of Cibele Amaral | `verde/js2/gpt-oss-120b` | Introduces topics, asks opening and follow-up questions, balances participation, summarizes transitions, and closes reports. |
+| Scientific avatars | `verde/js2/gpt-oss-120b` | Avatars based on the public online personas of Tanya Berger-Wolf, Lauren Gillespie, Jenna Kline, Justin Kitzes, Katherine Siegel, and Ty Tuff produce reviewable public-expertise perspectives. |
+| Organizer avatar based on the public online persona of Jennifer Balch | `verde/js2/gpt-oss-120b` | Selects themes, proposes questions, reviews final reports, and aligns sessions with workshop goals. |
 | Discussion Intelligence Agent | `verde/js2/gpt-oss-120b` | Preserves structured discussion metadata, agreement, disagreement, evidence gaps, related norms, and dashboard exports. |
 
 ## Verde-Style API Experiments

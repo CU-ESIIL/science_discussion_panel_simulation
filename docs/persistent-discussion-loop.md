@@ -9,7 +9,7 @@ Default cycle:
 2. Check user questions.
 3. Select a topic.
 4. Prepare evidence if needed.
-5. Ask selected panelists for independent openings.
+5. Ask selected scientific avatars for independent openings.
 6. Conduct a moderated exchange.
 7. Identify claims requiring verification.
 8. Route bounded research or experiment requests.

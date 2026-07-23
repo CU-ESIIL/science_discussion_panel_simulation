@@ -1,13 +1,17 @@
 # The Panel
 
 OASIS Scientific Discussion Panel is a disclosed simulated panel about AI for
-ecology. It is meant to preserve the shape of a scientific discussion: the
-questions asked, the evidence used, the points of agreement, the unresolved
-disagreements, and the next work the group wants to do.
+ecology. Its participants are avatars based on public online personas, public
+scientific work, and publicly available professional context. The panel is meant
+to preserve the shape of a scientific discussion: the questions asked, the
+evidence used, the points of agreement, the unresolved disagreements, and the
+next work the group wants to do.
 
 The panel does not claim to speak for the real people whose public expertise
-inspired the roles. It is a working simulation for exploring how AI-supported
-scientific deliberation could be documented and reviewed.
+inspired the avatars. Generated outputs are not statements, endorsements,
+private views, or current positions from those people. This is a working
+simulation for exploring how AI-supported scientific deliberation could be
+documented and reviewed.
 
 ## Purpose
 
@@ -22,16 +26,16 @@ simple:
 
 ## Roles
 
-| Role | Function |
+| Avatar | Function |
 | --- | --- |
-| Cibele Amaral | Moderates the conversation, frames questions, invites responses, and closes rounds. |
-| Tanya Berger-Wolf | Represents biodiversity AI, computer vision, wildlife monitoring, and scalable biodiversity science. |
-| Lauren Gillespie | Represents applied environmental AI, reproducible workflows, infrastructure, and adoption. |
-| Jenna Kline | Represents ecological synthesis, working groups, cross-disciplinary collaboration, and scientific process. |
-| Justin Kitzes | Represents computational ecology, statistics, scientific software, benchmarking, and uncertainty. |
-| Katherine Siegel | Represents causal inference, scientific reasoning, model interpretation, assumptions, and uncertainty. |
-| Ty Tuff | Represents scientific cyberinfrastructure, environmental data science, multi-agent AI, and digital twins. |
-| Jennifer Balch | Organizes theme selection, workshop alignment, scheduling, and report review. |
+| Moderator avatar based on the public online persona of Cibele Amaral | Moderates the conversation, frames questions, invites responses, and closes rounds. |
+| Avatar based on the public online persona of Tanya Berger-Wolf | Represents biodiversity AI, computer vision, wildlife monitoring, and scalable biodiversity science. |
+| Avatar based on the public online persona of Lauren Gillespie | Represents applied environmental AI, reproducible workflows, infrastructure, and adoption. |
+| Avatar based on the public online persona of Jenna Kline | Represents ecological synthesis, working groups, cross-disciplinary collaboration, and scientific process. |
+| Avatar based on the public online persona of Justin Kitzes | Represents computational ecology, statistics, scientific software, benchmarking, and uncertainty. |
+| Avatar based on the public online persona of Katherine Siegel | Represents causal inference, scientific reasoning, model interpretation, assumptions, and uncertainty. |
+| Avatar based on the public online persona of Ty Tuff | Represents scientific cyberinfrastructure, environmental data science, multi-agent AI, and digital twins. |
+| Organizer avatar based on the public online persona of Jennifer Balch | Organizes theme selection, workshop alignment, scheduling, and report review. |
 | Discussion Intelligence Agent | Records structured discussion memory: topics, stance, open questions, decisions, and follow-up items. |
 
 ## Public Output
